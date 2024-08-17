@@ -9,8 +9,8 @@
 #import "style/bachelor-cs.typ": bachelor-cs-set-style
 
 #import "utils/part.typ": *
-
 #import "utils/fonts.typ": *
+#import "utils/appendix.typ": *
 
 #let info = (
     title: ("毕业论文/设计题目",),
