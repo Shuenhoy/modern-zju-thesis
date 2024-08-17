@@ -44,15 +44,17 @@
 
 #include "common-body.typ"
 
-#heading(numbering: none, level: 2, [参考文献])
-#part-bib
+#individual("参考文献", outlined: true)[
+  #part-bib
+]
 
-#appendix[
-  == 附录
-  === 一个附录 <app1>
-  @app1
-  === 另一个附录
+#individual("附录", outlined: true)[
+  #appendix[
+    === 一个附录 <app1>
+    @app1
+    === 另一个附录
 
+  ]
 ]
 
 #individual("作者简历", outlined: true)[
