@@ -1,6 +1,4 @@
 #import "../lib.typ": *
-#import "../utils/fakebold.typ": show-cn-fakebold
-#show: show-cn-fakebold
 
 #let info = (
   info: (

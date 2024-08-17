@@ -1,6 +1,8 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/part.typ": *
 #import "../utils/header.typ": header, footer
+#import "../utils/fakebold.typ": *
+
 #import "@preview/i-figured:0.2.4"
 
 #let bachelor-cs-set-style(doc) = {
@@ -46,12 +48,12 @@
   show heading.where(level: 4): set text(size: 字号.四号)
   show heading: i-figured.reset-counters
   show figure: i-figured.show-figure
-
+  show: show-cn-fakebold
   show: show-part
   show: show-outline
   show math.equation.where(block: true): i-figured.show-equation
 
 
-  set text(font: 字体.仿宋, size: 字号.小四)
+  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
   doc
 }
