@@ -3,17 +3,12 @@
 #let info = (
   info: (
     title: ("毕业论文/设计题目",),
-    title-en: "My Title in English",
     grade: "2014级",
     student-id: "学号",
     author: "姓名",
-    author-en: "Ming Xing",
     department: "学院",
-    department-en: "School of Chemistry and Chemical Engineering",
     major: "专业",
-    major-en: "Chemistry",
-    supervisor: ("指导教师", "教授"),
-    supervisor-en: "Professor My Supervisor",
+    supervisor: "指导教师",
     submit-date: "递交日期",
   ),
 )

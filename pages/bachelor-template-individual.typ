@@ -19,7 +19,6 @@
     set text(font: 字体.仿宋)
 
 
-    // 居中对齐
     align(
       center,
       text(size: 字号.三号, weight: "bold")[

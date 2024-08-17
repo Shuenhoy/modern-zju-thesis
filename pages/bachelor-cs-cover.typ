@@ -13,7 +13,6 @@
   row-gutter: 11.5pt,
   anonymous-info-keys: ("grade", "student-id", "author", "supervisor"),
 ) = {
-  // 1.  默认参数
   fonts = 字体 + fonts
   info = (
     title: ("毕业论文/设计", "题目"),
@@ -32,8 +31,6 @@
   }
 
   context {
-    // 4.  正式渲染
-
     pagebreak(
       weak: true,
       to: if twoside {
@@ -48,19 +45,15 @@
       涉密论文 $square$ #h(1em) 公开论文 $square$ #h(8em)
     ]
 
-    // 居中对齐
     set align(center)
 
 
     v(22pt)
-    // 调整一下左边的间距
     pad(image("../assets/zju-name.svg", width: page.width * 0.5), left: 0.4cm)
     v(2pt)
 
-    // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
     text(size: 字号.小一, font: fonts.黑体, spacing: 50%)[本 科 生 毕 业 论 文<no-header>]
 
-    // 封面图标
     image("../assets/zju-emblem.svg", width: page.width * 0.17)
 
     v(20pt)
@@ -70,9 +63,10 @@
       width: 70%,
       [
         #set text(size: 字号.三号)
-        #table(
+        #grid(
           columns: (0.5fr, 1fr),
           align: (start, center),
+          rows: 1em,
           stroke: (x, y) => (
             bottom: if x == 1 {
               stoke-width
@@ -83,12 +77,12 @@
           row-gutter: row-gutter,
           "题目", info.title.first(),
           ..info.title.slice(1).map(v => (none, v)).flatten(),
-          table.cell(stroke: none)[], table.cell(stroke: none)[],
+          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
           "姓名与学号", info.author + " " + info.student-id,
-          "指导教师", info.supervisor.at(0),
+          "指导教师", info.supervisor,
           "年级与专业", info.grade + info.major,
           "所在学院", info.department,
-          table.cell(stroke: none)[], table.cell(stroke: none)[],
+          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
           "递交日期", info.submit-date,
         )
       ],
