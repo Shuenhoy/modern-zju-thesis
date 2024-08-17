@@ -20,12 +20,12 @@
 
 
     // 居中对齐
-    align(center,
-    // 将中文之间的空格间隙从 0.25 em 调整到 0.5 em
-    text(size: 字号.三号, weight: "bold",)[
-      #show heading: x => x.body
-      #heading(pagetitle, numbering: none, level:2, outlined: outlined)
-      #v(1em)]
+    align(
+      center,
+      text(size: 字号.三号, weight: "bold")[
+        #show heading: x => x.body
+        #heading(pagetitle, numbering: none, level: 2, outlined: outlined)
+        #v(1em)],
     )
 
     block(width: 100%)[
