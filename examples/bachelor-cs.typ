@@ -68,7 +68,7 @@
 ]
 
 #doc.pages.task
-#(doc.pages.eval)()
+#(doc.pages.eval)(scores: (8, 15, 5, 60))
 
 #part[开题报告]<part2>
 
