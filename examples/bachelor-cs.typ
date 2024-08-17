@@ -48,6 +48,7 @@
 #part-bib
 
 #appendix[
+  == 附录
   === 一个附录 <app1>
   @app1
   === 另一个附录

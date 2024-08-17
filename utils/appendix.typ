@@ -1,4 +1,4 @@
-#let appendix(title: "附录", level: 2, body) = {
+#let appendix(level: 2, body) = {
   counter(heading).update(0)
 
   set heading(
@@ -13,6 +13,5 @@
     supplement: [附录],
   )
 
-  heading(title, numbering: none, level: level)
   body
 }
