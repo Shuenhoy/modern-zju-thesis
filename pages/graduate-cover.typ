@@ -59,7 +59,7 @@
 
 
 
-    pad(image("../assets/zju-name.svg", width: page.width * 0.5), left: 0.4cm)
+    image("../assets/zju-name-graduate.png", width: page.width * 0.3)
     v(-30pt)
 
     text(size: 字号.小一, font: fonts.宋体)[#(info.degree)学位论文<no-header>]
@@ -96,7 +96,7 @@
 
           "申请人姓名：", info.author ,
           "指导教师：", info.supervisor,
-          "学科（专业）：", info.grade + info.major,
+          "专业名称：", info.grade + info.major,
           "研究方向：", info.field,
           "所在学院：", info.department,
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
@@ -111,7 +111,7 @@
         #grid(
           columns: (0.5fr, 0.3fr),
           align: (start, center),
-          "论文递交日期", info.submit-date,
+          "论文提交日期", info.submit-date,
         )
       ],
     )
