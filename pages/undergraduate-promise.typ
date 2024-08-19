@@ -1,5 +1,6 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
+#import "../utils/indent-first-par.typ": fake-par
 #import "./template-individual.typ": template-individual
 
 #let undergraduate-promise(
@@ -7,7 +8,8 @@
 ) = {
   template-individual("浙江大学本科生毕业论文（设计）承诺书")[
     #set underline(offset: 0.2em)
-    #show enum.item: x => [#h(2em) #x.number. #x.body]
+    #show enum.item: x => [ #x.number. #x.body]
+    #fake-par
 
     1. 本人郑重地承诺所呈交的毕业论文（设计），是在指导教师的指导下严格按照学校和学院有关规定完成的。
 

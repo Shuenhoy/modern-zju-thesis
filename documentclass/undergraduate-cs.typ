@@ -15,6 +15,7 @@
 #import "../utils/part.typ": *
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": *
+#import "../utils/indent-first-par.typ": *
 
 #import "@preview/i-figured:0.2.4"
 
@@ -39,7 +40,7 @@
     ),
     footer: footer(center: numbering => numbering),
   )
-  set par(leading: 1.3em)
+  set par(leading: 1.3em, first-line-indent: 2em)
 
 
   set heading(numbering: (..numbers) => {
@@ -60,6 +61,9 @@
   show heading.where(level: 2): set text(size: 字号.三号)
   show heading.where(level: 3): set text(size: 字号.小三)
   show heading.where(level: 4): set text(size: 字号.四号)
+  show: indent-first-par
+
+
   show heading: i-figured.reset-counters
   show figure: i-figured.show-figure
   show: show-cn-fakebold

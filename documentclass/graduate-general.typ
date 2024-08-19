@@ -6,15 +6,14 @@
 
 #import "../pages/template-individual.typ": template-individual
 #import "../pages/outline.typ": main-outline
-#import "../pages/undergraduate-task.typ": undergraduate-task
-#import "../pages/undergraduate-eval.typ": undergraduate-eval
-#import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
+
 
 
 #import "../utils/fonts.typ": *
 #import "../utils/appendix.typ": *
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": *
+#import "../utils/indent-first-par.typ": *
 
 #import "@preview/i-figured:0.2.4"
 
@@ -66,7 +65,7 @@
     header: header(
       left: [浙江大学#(degree)学位论文],
       right: context {
-        let selector = selector(heading).after(here())
+        let selector = selector(heading.where(level: 1)).after(here())
         let level = counter(selector)
         let headings = query(selector)
 
@@ -81,20 +80,18 @@
     ),
     footer: footer(center: numbering => numbering),
   )
-  set par(leading: 1.3em)
+  set par(leading: 1.3em, first-line-indent: 2em)
 
 
   set heading(numbering: "1.1")
-  show heading.where(level: 1): x => {
-    pagebreak()
-    v(12pt)
-    align(center, x)
-    v(6pt)
-  }
 
-  show heading.where(level: 2): set text(size: 字号.三号)
-  show heading.where(level: 3): set text(size: 字号.小三)
+  show heading.where(level: 2): set text(size: 字号.小三)
+  show heading.where(level: 2): set text(size: 字号.四号)
+  show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.四号)
+  show heading: set block(above: 1.5em, below: 1.5em)
+  show: indent-first-par
+
   show heading: i-figured.reset-counters
   show figure: i-figured.show-figure
   show: show-cn-fakebold
