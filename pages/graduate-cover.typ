@@ -9,8 +9,7 @@
   info: (:),
   // 其他参数
   stoke-width: 0.5pt,
-  row-gutter: 11.5pt,
-  degree: "硕士",
+  row-gutter: 11.5pt
 ) = {
   fonts = 字体 + fonts
 
@@ -63,7 +62,7 @@
     pad(image("../assets/zju-name.svg", width: page.width * 0.5), left: 0.4cm)
     v(-30pt)
 
-    text(size: 字号.小一, font: fonts.宋体)[#(degree)学位论文<no-header>]
+    text(size: 字号.小一, font: fonts.宋体)[#(info.degree)学位论文<no-header>]
 
     image("../assets/zju-emblem.svg", width: page.width * 0.15)
 
