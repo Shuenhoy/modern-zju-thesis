@@ -1,2 +1,2 @@
 #import "documentclass/undergraduate-cs.typ": *
-#import "documentclass/master-general.typ": *
+#import "documentclass/graduate-general.typ": *

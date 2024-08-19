@@ -9,6 +9,7 @@
     author: "姓名",
     department: "学院",
     major: "专业",
+    degree: "博士",
     supervisor: "指导教师",
     submit-date: "递交日期",
   ),
@@ -19,7 +20,7 @@
 
 
 
-#let doc = master-general(info)
+#let doc = graduate-general(info)
 #show: doc.style
 #bibliography("ref.bib")
 

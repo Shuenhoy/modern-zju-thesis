@@ -31,7 +31,29 @@
   s
 }
 
-#let graduate-general-set-style(doc) = {
+#let info = (
+  title: ("毕业论文/设计题目", ""),
+  title-en: ("Graduation Project/Design Title", ""),
+  grade: "20XX",
+  student-id: "1234567890",
+  clc: "O643.12",
+  unitcode: "10335",
+  reviewer: ("隐名", "隐名", "隐名", "隐名", "隐名"),
+  committe: ("主席", "委员", "委员", "委员", "委员", "委员"),
+  reviewer-en: ("Anonymous", "Anonymous", "Anonymous", "Anonymous", "Anonymous"),
+  committe-en: ("Chair", "Committeeman", "Committeeman", "Committeeman", "Committeeman", "Committeeman"),
+  secret-level: "无",
+  author: "张三",
+  department: "某学院",
+  major: "某专业",
+  degree: "硕士",
+  field: "某方向",
+  supervisor: "李四",
+  submit-date: datetime.today(),
+  defense-date: ("二一九三年六月", "September 2193"),
+)
+
+#let graduate-general-set-style(doc, degree: "硕士") = {
   set page(
     paper: "a4",
     margin: (
@@ -42,12 +64,20 @@
     header-ascent: 4mm,
     footer-descent: 35pt,
     header: header(
-      left: locate(loc => if not calc.even(loc.page()) {
-        "浙江大学本科生毕业论文"
-      }),
-      right: locate(loc => if calc.even(loc.page()) {
-        document.title
-      }),
+      left: [浙江大学#(degree)学位论文],
+      right: context {
+        let selector = selector(heading).after(here())
+        let level = counter(selector)
+        let headings = query(selector)
+
+        if headings.len() == 0 {
+          return
+        }
+
+        let heading = headings.first()
+
+        heading.body
+      },
     ),
     footer: footer(center: numbering => numbering),
   )
@@ -77,41 +107,21 @@
   doc
 }
 
-#let info = (
-  title: ("毕业论文/设计题目", ""),
-  title-en: ("Graduation Project/Design Title", ""),
-  grade: "20XX",
-  student-id: "1234567890",
-  clc: "O643.12",
-  unitcode: "10335",
-  reviewer: ("隐名", "隐名", "隐名", "隐名", "隐名"),
-  committe: ("主席", "委员", "委员", "委员", "委员", "委员"),
-  reviewer-en: ("Anonymous", "Anonymous", "Anonymous", "Anonymous", "Anonymous"),
-  committe-en: ("Chair", "Committeeman", "Committeeman", "Committeeman", "Committeeman", "Committeeman"),
-  secret-level: "无",
-  author: "张三",
-  author-en: "Zhang San",
-  department: "某学院",
-  major: "某专业",
-  field: "某方向",
-  supervisor: "李四",
-  submit-date: datetime.today(),
-  defense-date: ("二一九三年六月", "September 2193"),
-)
 
-#let master-general(config) = {
+#let graduate-general(config) = {
+  let info = info + config.info
   (
     pages: (
-      cover: graduate-cover(info: info + config.info),
-      title-zh: graduate-title-zh(info: info + config.info),
-      title-en: graduate-title-en(info: info + config.info),
+      cover: graduate-cover(info: info),
+      title-zh: graduate-title-zh(info: info),
+      title-en: graduate-title-en(info: info),
       decl: graduate-decl(),
       outline: main-outline(outlined: true, titlelevel: 1),
       individual: template-individual.with(outlined: true, titlelevel: 1),
     ),
     style: doc => {
       set document(title: info.title.join())
-      show: graduate-general-set-style
+      show: graduate-general-set-style.with(degree: info.degree)
       doc
     },
   )
