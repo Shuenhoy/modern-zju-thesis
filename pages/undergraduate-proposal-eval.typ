@@ -1,9 +1,9 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-#import "./bachelor-template-individual.typ": bachelor-template-individual
+#import "./template-individual.typ": template-individual
 
-#let bachelor-proposal-eval() = {
-  bachelor-template-individual("毕业论文（设计）文献综述和开题报告考核", outlined: true)[
+#let undergraduate-proposal-eval() = {
+  template-individual("毕业论文（设计）文献综述和开题报告考核", outlined: true)[
     #set text(weight: "bold", size: 字号.小四)
     导师对开题报告、外文翻译和文献综述的评语及成绩评定：<no-header>\
 

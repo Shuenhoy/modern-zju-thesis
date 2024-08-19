@@ -2,7 +2,7 @@
 #import "../utils/datetime-display.typ": datetime-display
 
 
-#let bachelor-cover(
+#let undergraduate-cover(
   // documentclass 传入的参数
   anonymous: false,
   twoside: false,

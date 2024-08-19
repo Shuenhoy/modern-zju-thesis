@@ -72,7 +72,7 @@
   s
 }
 
-#let show-outline(s) = {
+#let show-outline-with-part(s) = {
 
   show outline.entry: it => {
     if it.element.func() == figure {

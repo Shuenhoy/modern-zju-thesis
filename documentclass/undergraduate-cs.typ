@@ -1,3 +1,16 @@
+#import "../pages/undergraduate-cs-cover.typ": undergraduate-cover
+#import "../pages/undergraduate-promise.typ": undergraduate-promise
+#import "../pages/template-individual.typ": template-individual
+#import "../pages/outline.typ": main-outline
+#import "../pages/undergraduate-task.typ": undergraduate-task
+#import "../pages/undergraduate-eval.typ": undergraduate-eval
+#import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
+
+
+#import "../utils/part.typ": *
+#import "../utils/fonts.typ": *
+#import "../utils/appendix.typ": *
+
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/part.typ": *
 #import "../utils/header.typ": header, footer
@@ -5,7 +18,8 @@
 
 #import "@preview/i-figured:0.2.4"
 
-#let bachelor-cs-set-style(doc) = {
+
+#let undergraduate-cs-set-style(doc) = {
   set page(
     paper: "a4",
     margin: (
@@ -50,10 +64,43 @@
   show figure: i-figured.show-figure
   show: show-cn-fakebold
   show: show-part
-  show: show-outline
+  show: show-outline-with-part
   show math.equation.where(block: true): i-figured.show-equation
+  set underline(offset: 0.2em)
 
 
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
   doc
+}
+
+#let info = (
+  title: ("毕业论文/设计题目",),
+  grade: "20XX",
+  student-id: "1234567890",
+  author: "张三",
+  author-en: "Zhang San",
+  department: "某学院",
+  major: "某专业",
+  field: "某方向",
+  supervisor: "李四",
+  submit-date: datetime.today(),
+)
+
+#let undergraduate-cs(config) = {
+  (
+    pages: (
+      cover: undergraduate-cover(info: info + config.info),
+      promise: undergraduate-promise(),
+      outline: main-outline(target: chapters-and-headings),
+      task: undergraduate-task(),
+      individual: template-individual,
+      eval: undergraduate-eval,
+      proposal-eval: undergraduate-proposal-eval(),
+    ),
+    style: doc => {
+      set document(title: info.title.join())
+      show: undergraduate-cs-set-style
+      doc
+    },
+  )
 }

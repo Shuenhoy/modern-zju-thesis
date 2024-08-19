@@ -1,11 +1,11 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-#import "./bachelor-template-individual.typ": bachelor-template-individual
+#import "./template-individual.typ": template-individual
 
-#let bachelor-promise(
+#let undergraduate-promise(
   row-gutter: 11.5pt,
 ) = {
-  bachelor-template-individual("浙江大学本科生毕业论文（设计）承诺书")[
+  template-individual("浙江大学本科生毕业论文（设计）承诺书")[
     #set underline(offset: 0.2em)
     #show enum.item: x => [#h(2em) #x.number. #x.body]
 

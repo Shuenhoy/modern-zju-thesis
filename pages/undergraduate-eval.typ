@@ -1,9 +1,9 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-#import "./bachelor-template-individual.typ": bachelor-template-individual
+#import "./template-individual.typ": template-individual
 
-#let bachelor-eval(scores: none) = {
-  bachelor-template-individual("本科生毕业论文（设计）考核", outlined: true)[
+#let undergraduate-eval(scores: none) = {
+  template-individual("本科生毕业论文（设计）考核", outlined: true)[
     #set text(weight: "bold", size: 字号.小四)
     一、指导教师对毕业论文（设计）的评语：<no-header>\
 

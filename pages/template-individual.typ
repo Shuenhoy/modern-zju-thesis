@@ -2,9 +2,10 @@
 #import "../utils/datetime-display.typ": datetime-display
 
 
-#let bachelor-template-individual(
+#let template-individual(
   twoside: false,
   outlined: false,
+  titlelevel: 2,
   pagetitle,
   s,
 ) = {
@@ -23,7 +24,7 @@
       center,
       text(size: 字号.三号, weight: "bold")[
         #show heading: x => x.body
-        #heading(pagetitle, numbering: none, level: 2, outlined: outlined)
+        #heading(pagetitle, numbering: none, level: titlelevel, outlined: outlined)
         #v(1em)],
     )
 
