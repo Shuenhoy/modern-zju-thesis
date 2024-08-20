@@ -85,8 +85,9 @@ $<eq:sample>
 #lorem(120)
 
 #lorem(130)
-= 另一个Chapter
+= 另一个Chapter<chap:1>
 == 又一个Section<sec:1>
+@chap:1
 @sec:1
 
 “就是——”她走近两步，放低了声音，极秘密似的切切的说，“一个人死了

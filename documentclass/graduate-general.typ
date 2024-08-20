@@ -14,6 +14,7 @@
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": *
 #import "../utils/indent-first-par.typ": *
+#import "../utils/supplement.typ": *
 
 #import "@preview/i-figured:0.2.4"
 
@@ -91,13 +92,15 @@
   show heading.where(level: 4): set text(size: 字号.四号)
   show heading: set block(above: 1.5em, below: 1.5em)
   show: indent-first-par
-
   show heading: i-figured.reset-counters
+  show: show-set-supplement
+
   show figure: i-figured.show-figure
   show: show-cn-fakebold
   show: show-outline-indent
   show math.equation.where(block: true): i-figured.show-equation
   set underline(offset: 0.2em)
+  show figure.where(kind: table): set figure.caption(position: top)
 
 
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
