@@ -1,6 +1,6 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-
+#import "../utils/twoside.typ": *
 
 #let graduate-cover(
   anonymous: false,
@@ -16,14 +16,9 @@
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
+  twoside-pagebreak
 
   context {
-    pagebreak(
-      weak: true,
-      to: if twoside {
-        "odd"
-      },
-    )
     counter(page).update(0)
     v(-40pt)
     set grid(
@@ -116,4 +111,5 @@
       ],
     )
   }
+  twoside-emptypage
 }

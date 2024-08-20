@@ -1,6 +1,6 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-
+#import "../utils/twoside.typ": *
 
 #let graduate-decl(
   twoside: false,
@@ -9,12 +9,7 @@
 ) = {
 
   context {
-    pagebreak(
-      weak: true,
-      to: if twoside {
-        "odd"
-      },
-    )
+    twoside-pagebreak
     set text(font: 字体.宋体)
     let zju = underline[#text(font: 字体.楷体, weight: "bold")[浙江大学]]
     block(width: 100%)[
@@ -67,8 +62,6 @@
 
 
     ]
-
-
-
   }
+  twoside-emptypage
 }

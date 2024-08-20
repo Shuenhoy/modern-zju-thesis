@@ -20,7 +20,7 @@
 
 
 
-#let doc = graduate-general(info)
+#let doc = graduate-general(info, twoside: true)
 #show: doc.style
 #bibliography("ref.bib")
 
@@ -29,20 +29,21 @@
 #doc.pages.cover
 #doc.pages.title-zh
 #doc.pages.title-en
+
 #doc.pages.decl
 
 #set page(numbering: "I")
-
-
+#counter(page).update(1)
 
 #let individual = doc.pages.individual
-
 #individual("致 谢")[]
 #individual("摘 要")[]
 #individual("Abstract")[]
 
 #doc.pages.outline
+
 #set page(numbering: "1")
+#counter(page).update(1)
 
 #include "common-body.typ"
 

@@ -1,6 +1,6 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-
+#import "../utils/twoside.typ": *
 
 #let graduate-title-zh(
   anonymous: false,
@@ -19,12 +19,7 @@
   }
 
   context {
-    pagebreak(
-      weak: true,
-      to: if twoside {
-        "odd"
-      },
-    )
+    twoside-pagebreak
     counter(page).update(0)
     v(-40pt)
     set grid(
@@ -111,7 +106,6 @@
         ]
       ],
     )
-
-
   }
+  twoside-emptypage
 }

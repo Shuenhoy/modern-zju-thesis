@@ -15,6 +15,7 @@
 #import "../utils/fakebold.typ": *
 #import "../utils/indent-first-par.typ": *
 #import "../utils/supplement.typ": *
+#import "../utils/twoside.typ": show-twoside-pagebreak
 
 #import "@preview/i-figured:0.2.4"
 
@@ -31,7 +32,7 @@
   s
 }
 
-#let info = (
+#let default-info = (
   title: ("毕业论文/设计题目", ""),
   title-en: ("Graduation Project/Design Title", ""),
   grade: "20XX",
@@ -104,12 +105,14 @@
 
 
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
+
+
   doc
 }
 
 
-#let graduate-general(config) = {
-  let info = info + config.info
+#let graduate-general(config, twoside: false) = {
+  let info = default-info + config.info
   (
     pages: (
       cover: graduate-cover(info: info),
@@ -122,6 +125,8 @@
     style: doc => {
       set document(title: info.title.join())
       show: graduate-general-set-style.with(degree: info.degree)
+      show: show-twoside-pagebreak.with(twoside: twoside)
+
       doc
     },
   )

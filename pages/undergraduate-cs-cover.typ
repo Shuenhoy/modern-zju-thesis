@@ -1,11 +1,9 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
+#import "../utils/twoside.typ": *
 
 
 #let undergraduate-cover(
-  // documentclass 传入的参数
-  anonymous: false,
-  twoside: false,
   fonts: (:),
   info: (:),
   // 其他参数
@@ -31,12 +29,7 @@
   }
 
   context {
-    pagebreak(
-      weak: true,
-      to: if twoside {
-        "odd"
-      },
-    )
+    twoside-pagebreak
     counter(page).update(0)
 
     set text(weight: "bold", font: fonts.仿宋)
@@ -88,4 +81,5 @@
       ],
     )
   }
+  twoside-emptypage
 }

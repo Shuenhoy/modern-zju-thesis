@@ -17,6 +17,8 @@
 #import "../utils/fakebold.typ": *
 #import "../utils/indent-first-par.typ": *
 #import "../utils/supplement.typ": *
+#import "../utils/twoside.typ": show-twoside-pagebreak
+
 
 #import "@preview/i-figured:0.2.4"
 
@@ -92,7 +94,7 @@
   submit-date: datetime.today(),
 )
 
-#let undergraduate-cs(config) = {
+#let undergraduate-cs(config, twoside: true) = {
   (
     pages: (
       cover: undergraduate-cover(info: info + config.info),
@@ -106,6 +108,7 @@
     style: doc => {
       set document(title: info.title.join())
       show: undergraduate-cs-set-style
+      show: show-twoside-pagebreak.with(twoside: twoside)
       doc
     },
   )

@@ -1,6 +1,6 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
-
+#import "../utils/twoside.typ": twoside-pagebreak
 
 #let template-individual(
   twoside: false,
@@ -11,12 +11,7 @@
 ) = {
 
   context {
-    pagebreak(
-      weak: true,
-      to: if twoside {
-        "odd"
-      },
-    )
+    twoside-pagebreak
     set text(font: 字体.仿宋)
 
 
