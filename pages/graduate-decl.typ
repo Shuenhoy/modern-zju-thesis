@@ -3,7 +3,6 @@
 #import "../utils/twoside.typ": *
 
 #let graduate-decl(
-  twoside: false,
   outlined: false,
   row-gutter: 11.5pt,
 ) = {

@@ -3,16 +3,12 @@
 #import "../utils/twoside.typ": *
 
 #let graduate-title-zh(
-  anonymous: false,
-  twoside: false,
-  fonts: (:),
   info: (:),
   // 其他参数
   stroke-width: 0.5pt,
   row-gutter: 11.5pt,
   degree: "硕士",
 ) = {
-  fonts = 字体 + fonts
 
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)

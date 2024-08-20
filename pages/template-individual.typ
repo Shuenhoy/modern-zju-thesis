@@ -3,7 +3,6 @@
 #import "../utils/twoside.typ": twoside-pagebreak
 
 #let template-individual(
-  twoside: false,
   outlined: false,
   titlelevel: 2,
   pagetitle,

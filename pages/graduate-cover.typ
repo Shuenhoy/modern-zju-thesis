@@ -3,15 +3,11 @@
 #import "../utils/twoside.typ": *
 
 #let graduate-cover(
-  anonymous: false,
-  twoside: false,
-  fonts: (:),
   info: (:),
   // 其他参数
   stoke-width: 0.5pt,
   row-gutter: 11.5pt
 ) = {
-  fonts = 字体 + fonts
 
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
@@ -57,7 +53,7 @@
     image("../assets/zju-name-graduate.png", width: page.width * 0.3)
     v(-30pt)
 
-    text(size: 字号.小一, font: fonts.宋体)[#(info.degree)学位论文<no-header>]
+    text(size: 字号.小一, font: 字体.宋体)[#(info.degree)学位论文<no-header>]
 
     image("../assets/zju-emblem.svg", width: page.width * 0.15)
 

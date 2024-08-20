@@ -4,14 +4,12 @@
 
 
 #let undergraduate-cover(
-  fonts: (:),
   info: (:),
   // 其他参数
   stoke-width: 0.5pt,
   row-gutter: 11.5pt,
   anonymous-info-keys: ("grade", "student-id", "author", "supervisor"),
 ) = {
-  fonts = 字体 + fonts
   info = (
     title: ("毕业论文/设计", "题目"),
     grade: "20XX",
@@ -32,7 +30,7 @@
     twoside-pagebreak
     counter(page).update(0)
 
-    set text(weight: "bold", font: fonts.仿宋)
+    set text(weight: "bold", font: 字体.仿宋)
 
     align(right)[
       涉密论文 $square$ #h(1em) 公开论文 $square$ #h(8em)
@@ -42,10 +40,10 @@
 
 
     v(22pt)
-    pad(image("../assets/zju-name.svg", width: page.width * 0.5), left: 0.4cm)
+    image("../assets/zju-name.svg", width: page.width * 0.5)
     v(2pt)
 
-    text(size: 字号.小一, font: fonts.黑体, spacing: 50%)[本 科 生 毕 业 论 文<no-header>]
+    text(size: 字号.小一, font: 字体.黑体, spacing: 50%)[本 科 生 毕 业 论 文<no-header>]
 
     image("../assets/zju-emblem.svg", width: page.width * 0.17)
 
