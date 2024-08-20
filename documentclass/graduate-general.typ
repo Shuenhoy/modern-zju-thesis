@@ -87,7 +87,7 @@
         }
       },
     ),
-    footer: footer(center: numbering => numbering),
+    footer: twoside-numbering-footer,
   )
   set par(leading: 1.3em, first-line-indent: 2em)
 
