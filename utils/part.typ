@@ -53,7 +53,6 @@
   show figure.where(kind: "part"): it => {
     twoside-pagebreak
     counter(heading).update(0)
-    counter(page).update(0)
     if it.numbering != none {
       [
         #v(0.1fr)
@@ -68,6 +67,8 @@
     }
 
     twoside-emptypage
+    counter(page).update(0)
+
   }
   s
 }
