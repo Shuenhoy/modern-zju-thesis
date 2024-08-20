@@ -1,6 +1,7 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
 #import "./template-individual.typ": template-individual
+#import "../utils/twoside.typ": *
 
 #let undergraduate-eval(scores: none) = {
   template-individual("本科生毕业论文（设计）考核", outlined: true)[
@@ -47,4 +48,5 @@
       年#h(2em)月#h(2em)日
     ]
   ]
+  twoside-emptypage
 }

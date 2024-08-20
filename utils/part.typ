@@ -1,5 +1,5 @@
 #import "./fonts.typ": 字号, 字体
-
+#import "./twoside.typ": *
 #let part = figure.with(
   kind: "part",
   // same as heading
@@ -51,7 +51,7 @@
 
   // emulate element function by creating show rule
   show figure.where(kind: "part"): it => {
-    pagebreak()
+    twoside-pagebreak
     counter(heading).update(0)
     counter(page).update(0)
     if it.numbering != none {
@@ -67,7 +67,7 @@
       ]
     }
 
-    pagebreak()
+    twoside-emptypage
   }
   s
 }

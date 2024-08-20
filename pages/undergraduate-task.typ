@@ -1,5 +1,6 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
+#import "../utils/twoside.typ": *
 #import "./template-individual.typ": template-individual
 
 #let undergraduate-task() = {
@@ -25,4 +26,5 @@
       年#h(2em)月#h(2em)日
     ]
   ]
+  twoside-emptypage
 }
