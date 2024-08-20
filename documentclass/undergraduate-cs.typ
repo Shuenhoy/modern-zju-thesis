@@ -17,7 +17,7 @@
 #import "../utils/fakebold.typ": *
 #import "../utils/indent-first-par.typ": *
 #import "../utils/supplement.typ": *
-#import "../utils/twoside.typ": show-twoside-pagebreak
+#import "../utils/twoside.typ": *
 
 
 #import "@preview/i-figured:0.2.4"
@@ -55,7 +55,7 @@
     }
   })
   show heading.where(level: 1): x => {
-    pagebreak()
+    twoside-pagebreak
     v(12pt)
     align(center, x)
     v(6pt)

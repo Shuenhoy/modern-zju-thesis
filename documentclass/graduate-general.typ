@@ -15,7 +15,7 @@
 #import "../utils/fakebold.typ": *
 #import "../utils/indent-first-par.typ": *
 #import "../utils/supplement.typ": *
-#import "../utils/twoside.typ": show-twoside-pagebreak
+#import "../utils/twoside.typ": *
 
 #import "@preview/i-figured:0.2.4"
 
@@ -94,7 +94,13 @@
 
   set heading(numbering: "1.1")
 
-  show heading.where(level: 2): set text(size: 字号.小三)
+  show heading.where(level: 1): set text(size: 字号.小三)
+  show heading.where(level: 1): x => {
+    twoside-pagebreak
+    v(12pt)
+    x
+    v(6pt)
+  }
   show heading.where(level: 2): set text(size: 字号.四号)
   show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.四号)
