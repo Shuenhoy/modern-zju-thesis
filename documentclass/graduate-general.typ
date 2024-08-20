@@ -67,17 +67,24 @@
     header: header(
       left: [浙江大学#(degree)学位论文],
       right: context {
-        let selector = selector(heading.where(level: 1)).after(here())
-        let level = counter(selector)
-        let headings = query(selector)
+        let headings_after = query(selector(heading.where(level: 1)).after(here()))
+        let headings_before = query(selector(heading.where(level: 1)).before(here()))
 
-        if headings.len() == 0 {
+
+        if headings_after.len() == 0 {
           return
         }
 
-        let heading = headings.first()
+        let heading = headings_after.first()
+        if heading.location().page() > here().page() {
+          if headings_before.len() == 0 {
+            return
+          }
+          headings_before.last().body
+        } else {
 
-        heading.body
+          heading.body
+        }
       },
     ),
     footer: footer(center: numbering => numbering),
