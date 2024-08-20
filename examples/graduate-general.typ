@@ -1,18 +1,16 @@
 #import "../lib.typ": *
 
-#let info = (
-  info: (
-    title: ("毕业论文/设计题目", ""),
-    title-en: ("Graduation Thesis Title", ""),
-    grade: "2014级",
-    student-id: "学号",
-    author: "姓名",
-    department: "学院",
-    major: "专业",
-    degree: "博士",
-    supervisor: "指导教师",
-    submit-date: "递交日期",
-  ),
+#let info = graduate-general-default-info + (
+  title: ("毕业论文/设计题目", ""),
+  title-en: ("Graduation Thesis Title", ""),
+  grade: "2014级",
+  student-id: "学号",
+  author: "姓名",
+  department: "学院",
+  major: "专业",
+  degree: "博士",
+  supervisor: "指导教师",
+  submit-date: "递交日期",
 )
 
 #show bibliography: none
@@ -20,7 +18,7 @@
 
 
 
-#let doc = graduate-general(info, twoside: true)
+#let doc = graduate-general(info: info, twoside: true)
 #show: doc.style
 #bibliography("ref.bib")
 

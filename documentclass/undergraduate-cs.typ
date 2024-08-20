@@ -81,7 +81,7 @@
   doc
 }
 
-#let info = (
+#let undergraduate-cs-default-info = (
   title: ("毕业论文/设计题目",),
   grade: "20XX",
   student-id: "1234567890",
@@ -94,10 +94,10 @@
   submit-date: datetime.today(),
 )
 
-#let undergraduate-cs(config, twoside: true) = {
+#let undergraduate-cs(info: undergraduate-cs-default-info, twoside: true) = {
   (
     pages: (
-      cover: undergraduate-cover(info: info + config.info),
+      cover: undergraduate-cover(info: info),
       promise: undergraduate-promise(),
       outline: main-outline(target: chapters-and-headings),
       task: undergraduate-task(),

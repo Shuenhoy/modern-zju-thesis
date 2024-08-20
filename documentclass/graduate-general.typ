@@ -32,7 +32,7 @@
   s
 }
 
-#let default-info = (
+#let graduate-general-default-info = (
   title: ("毕业论文/设计题目", ""),
   title-en: ("Graduation Project/Design Title", ""),
   grade: "20XX",
@@ -124,8 +124,7 @@
 }
 
 
-#let graduate-general(config, twoside: false) = {
-  let info = default-info + config.info
+#let graduate-general(info: graduate-general-default-info, twoside: false) = {
   (
     pages: (
       cover: graduate-cover(info: info),
