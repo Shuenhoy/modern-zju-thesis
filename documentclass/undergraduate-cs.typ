@@ -57,6 +57,8 @@
 
 
   // Headings
+  show heading: i-figured.reset-counters
+
   set heading(numbering: (..numbers) => {
     let level = numbers.pos().len()
     if (level == 1) {
@@ -78,7 +80,6 @@
 
 
   // Reference
-  show heading: i-figured.reset-counters
   show: show-set-supplement
   show figure: i-figured.show-figure
   show math.equation.where(block: true): i-figured.show-equation

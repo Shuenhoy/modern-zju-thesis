@@ -91,6 +91,8 @@
 
 
   // Headings
+  show heading: i-figured.reset-counters
+
   set heading(numbering: "1.1")
   show heading.where(level: 1): set text(size: 字号.小三)
   show heading.where(level: 1): x => {
@@ -106,7 +108,6 @@
 
 
   // Reference
-  show heading: i-figured.reset-counters
   show: show-set-supplement
   show figure: i-figured.show-figure
   show math.equation.where(block: true): i-figured.show-equation
