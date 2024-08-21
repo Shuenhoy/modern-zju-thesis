@@ -20,7 +20,7 @@
 #import "../utils/twoside.typ": *
 
 
-#import "@preview/i-figured:0.2.4"
+#import "../dependency/i-figured.typ"
 
 
 #let undergraduate-cs-set-style(doc) = {

@@ -39,6 +39,8 @@
 #individual("Abstract")[]
 
 #doc.pages.outline
+#doc.pages.figure-outline
+#doc.pages.table-outline
 
 #set page(numbering: "1")
 #counter(page).update(1)

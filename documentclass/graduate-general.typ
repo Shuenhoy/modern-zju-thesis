@@ -5,7 +5,7 @@
 
 
 #import "../pages/template-individual.typ": template-individual
-#import "../pages/outline.typ": main-outline
+#import "../pages/outline.typ": main-outline, figure-outline, table-outline
 
 
 
@@ -17,7 +17,7 @@
 #import "../utils/supplement.typ": *
 #import "../utils/twoside.typ": *
 
-#import "@preview/i-figured:0.2.4"
+#import "../dependency/i-figured.typ"
 
 #let show-outline-indent(s) = {
 
@@ -111,7 +111,6 @@
 
   show figure: i-figured.show-figure
   show: show-cn-fakebold
-  show: show-outline-indent
   show math.equation.where(block: true): i-figured.show-equation
   set underline(offset: 0.2em)
   show figure.where(kind: table): set figure.caption(position: top)
@@ -131,7 +130,11 @@
       title-zh: graduate-title-zh(info: info),
       title-en: graduate-title-en(info: info),
       decl: graduate-decl(),
-      outline: main-outline(outlined: true, titlelevel: 1),
+      outline: [
+        #show: show-outline-indent
+        #main-outline(outlined: true, titlelevel: 1)],
+      figure-outline: figure-outline(outlined: true, titlelevel: 1),
+      table-outline: table-outline(outlined: true, titlelevel: 1),
       individual: template-individual.with(outlined: true, titlelevel: 1),
     ),
     style: doc => {
