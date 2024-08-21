@@ -91,6 +91,8 @@ $<eq:sample>
 == 又一个Section<sec:1>
 @chap:1
 @sec:1
+=== 又一个Subsection<subsec:1>
+@subsec:1
 
 “就是——”她走近两步，放低了声音，极秘密似的切切的说，“一个人死了
 之后，究竟有没有魂灵的？”

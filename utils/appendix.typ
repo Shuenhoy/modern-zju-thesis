@@ -1,7 +1,7 @@
 #let appendix(level: 2, body) = {
   counter(heading).update(0)
 
-  set heading(
+  show heading: set heading(
     numbering: (..numbers) => {
       let clevel = numbers.pos().len()
       if (clevel <= level) {
