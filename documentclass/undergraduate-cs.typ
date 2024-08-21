@@ -15,7 +15,7 @@
 #import "../utils/indent-first-par.typ": indent-first-par
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
-
+#import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
 
 #import "../dependency/i-figured.typ"
@@ -121,6 +121,8 @@
     ),
     style: doc => {
       set document(title: info.title.join())
+      show bibliography: none
+
       undergraduate-cs-set-style(doc, twoside: twoside)
     },
   )

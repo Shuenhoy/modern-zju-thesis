@@ -12,20 +12,13 @@
   submit-date: "递交日期",
 )
 
-#show bibliography: none
-
-
-
 
 #let doc = undergraduate-cs(info: info, twoside: true)
 #show: doc.style
 
-
-
 #doc.pages.cover
 
-#set page(numbering: "I")
-
+#show: frontmatter
 
 #doc.pages.decl
 
@@ -37,7 +30,8 @@
 
 #doc.pages.outline
 
-#set page(numbering: "1")
+#show: mainmatter
+
 #part[毕业论文]
 #include "common-body.typ"
 

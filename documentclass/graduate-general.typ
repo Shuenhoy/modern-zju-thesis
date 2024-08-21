@@ -13,6 +13,7 @@
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
 #import "../utils/bilingual-bibliography.typ": show-bilingual-bibliography
+#import "../utils/structure.typ": frontmatter, mainmatter
 
 #import "../dependency/i-figured.typ"
 

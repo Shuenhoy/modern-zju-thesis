@@ -30,8 +30,7 @@
 
 #doc.pages.decl
 
-#set page(numbering: "I")
-#counter(page).update(1)
+#show: frontmatter
 
 #let individual = doc.pages.individual
 #individual("致 谢")[]
@@ -42,8 +41,7 @@
 #doc.pages.figure-outline
 #doc.pages.table-outline
 
-#set page(numbering: "1")
-#counter(page).update(1)
+#show: mainmatter
 
 #include "common-body.typ"
 
