@@ -73,6 +73,7 @@
 #(doc.pages.eval)(scores: (8, 15, 5, 60))
 
 #part[开题报告]<part2>
+#doc.pages.proposal-cover
 
 = 文献综述
 @zjugradthesisrules

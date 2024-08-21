@@ -4,6 +4,7 @@
 #import "../pages/outline.typ": main-outline
 #import "../pages/undergraduate-task.typ": undergraduate-task
 #import "../pages/undergraduate-eval.typ": undergraduate-eval
+#import "../pages/undergraduate-cs-proposal-cover.typ": undergraduate-proposal-cover
 #import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
 
 #import "../utils/fonts.typ": *
@@ -113,6 +114,7 @@
       task: undergraduate-task(),
       individual: template-individual,
       eval: undergraduate-eval,
+      proposal-cover: undergraduate-proposal-cover(info: info),
       proposal-eval: undergraduate-proposal-eval(),
     ),
     style: doc => {
