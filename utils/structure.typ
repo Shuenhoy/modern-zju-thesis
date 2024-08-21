@@ -6,5 +6,6 @@
 
 #let mainmatter(s) = {
   set page(numbering: "1")
+  counter(page).update(1)
   s
 }
