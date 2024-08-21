@@ -4,7 +4,7 @@
 #import "./template-individual.typ": template-individual
 
 #let undergraduate-proposal-task(info: (:), s) = {
-  template-individual(none, outlined: true)[
+  template-individual(none, outlined: false)[
     #set text(size: 字号.小四)
     #strong[
       一、题目：#info.title.join()<mzt:no-header-footer>\

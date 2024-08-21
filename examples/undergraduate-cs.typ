@@ -17,7 +17,7 @@
 
 
 
-#let doc = undergraduate-cs(info: info)
+#let doc = undergraduate-cs(info: info, twoside: true)
 #show: doc.style
 
 
@@ -39,7 +39,6 @@
 
 #set page(numbering: "1")
 #part[毕业论文]
-
 #include "common-body.typ"
 
 #bibliography("ref.bib", style: "gb-7714-2015-numeric")
@@ -78,6 +77,8 @@
   内容
 ]
 
+
+#counter(page).update(0)
 = 文献综述
 
 @zjugradthesisrules
