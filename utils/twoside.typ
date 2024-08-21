@@ -15,7 +15,7 @@
 
   show metadata.where(value: <mzt:twoside-emptypage>): [
     #if twoside {
-      [ #pagebreak()#[#v(100%)]<no-header> ]
+      [ #pagebreak()#[#v(100%)]<mzt:no-header-footer> ]
     }
   ]
 

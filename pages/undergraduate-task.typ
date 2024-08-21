@@ -6,7 +6,7 @@
 #let undergraduate-task() = {
   template-individual("本科生毕业论文（设计）任务书", outlined: true)[
     #set text(weight: "bold", size: 字号.小四)
-    一、题目：<no-header>\
+    一、题目：<mzt:no-header-footer>\
     二、指导教师对毕业论文（设计）的进度安排及任务要求：
 
     #v(50mm)

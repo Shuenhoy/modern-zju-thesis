@@ -17,7 +17,7 @@
 
       #align(center)[
         #set text(size: 字号.小二)
-        浙江大学研究生学位论文独创性声明<no-header>
+        浙江大学研究生学位论文独创性声明<mzt:no-header-footer>
       ]
       #v(2em)
 
@@ -37,7 +37,7 @@
 
       #align(center)[
         #set text(size: 字号.小二)
-        学位论文版权使用授权书<no-header>
+        学位论文版权使用授权书<mzt:no-header-footer>
       ]
       #v(2em)
 

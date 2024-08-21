@@ -6,7 +6,7 @@
 #let undergraduate-eval(scores: none) = {
   template-individual("本科生毕业论文（设计）考核", outlined: true)[
     #set text(weight: "bold", size: 字号.小四)
-    一、指导教师对毕业论文（设计）的评语：<no-header>\
+    一、指导教师对毕业论文（设计）的评语：<mzt:no-header-footer>\
 
     #v(50mm)
     #align(right)[

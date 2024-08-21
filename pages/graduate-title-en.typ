@@ -53,7 +53,7 @@
     )
     v(-40pt)
 
-    [#image("../assets/zju-emblem.svg", width: page.width * 0.15)<no-header>]
+    [#image("../assets/zju-emblem.svg", width: page.width * 0.15)<mzt:no-header-footer>]
 
 
     block(

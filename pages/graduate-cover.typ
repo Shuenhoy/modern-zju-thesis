@@ -53,7 +53,7 @@
     image("../assets/zju-name-graduate.png", width: page.width * 0.3)
     v(-30pt)
 
-    text(size: 字号.小一, font: 字体.宋体)[#(info.degree)学位论文<no-header>]
+    text(size: 字号.小一, font: 字体.宋体)[#(info.degree)学位论文<mzt:no-header-footer>]
 
     image("../assets/zju-emblem.svg", width: page.width * 0.15)
 

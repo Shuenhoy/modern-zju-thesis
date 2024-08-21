@@ -58,7 +58,7 @@
         #v(0.1fr)
         #set align(center)
         #set text(font: 字体.黑体, size: 48pt)
-        #strong(it.counter.display(it.numbering))<no-header>
+        #strong(it.counter.display(it.numbering))<mzt:no-header-footer>
 
         #set text(font: 字体.仿宋, size: 字号.小初)
         #strong(it.body)
