@@ -11,6 +11,7 @@
 #import "../utils/indent-first-par.typ": indent-first-par
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
+#import "../utils/near-chapter.typ": near-chapter
 
 #import "../dependency/i-figured.typ"
 
@@ -72,26 +73,7 @@
     footer-descent: 35pt,
     header: header(
       left: [浙江大学#(degree)学位论文],
-      right: context {
-        let headings_after = query(selector(heading.where(level: 1)).after(here()))
-        let headings_before = query(selector(heading.where(level: 1)).before(here()))
-
-
-        if headings_after.len() == 0 {
-          return
-        }
-
-        let heading = headings_after.first()
-        if heading.location().page() > here().page() {
-          if headings_before.len() == 0 {
-            return
-          }
-          headings_before.last().body
-        } else {
-
-          heading.body
-        }
-      },
+      right: near-chapter,
     ),
     footer: twoside-numbering-footer,
   )
