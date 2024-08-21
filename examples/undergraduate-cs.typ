@@ -19,7 +19,6 @@
 
 #let doc = undergraduate-cs(info: info)
 #show: doc.style
-#bibliography("ref.bib")
 
 
 
@@ -43,6 +42,7 @@
 
 #include "common-body.typ"
 
+#bibliography("ref.bib", style: "gb-7714-2015-numeric")
 #individual("参考文献", outlined: true)[
   #part-bib
 ]

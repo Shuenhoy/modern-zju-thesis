@@ -12,6 +12,7 @@
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
+#import "../utils/bilingual-bibliography.typ": show-bilingual-bibliography
 
 #import "../dependency/i-figured.typ"
 
@@ -108,6 +109,7 @@
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
 
+  show: show-bilingual-bibliography
   doc
 }
 

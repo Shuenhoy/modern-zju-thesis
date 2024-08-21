@@ -48,7 +48,7 @@
 #include "common-body.typ"
 
 #individual("参考文献", outlined: true)[
-  #bibliography("ref.bib", title: none)
+  #bibliography("ref.bib", style: "gb-7714-2015-numeric", title: none)
 ]
 
 #individual("附录", outlined: true)[

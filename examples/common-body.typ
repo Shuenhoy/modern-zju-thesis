@@ -33,7 +33,7 @@ $
   A = overbrace((a + b + c) + underbrace(i(d + e + f),"虚数"),"复数")
 $<eq:sample>
 
-如@lst:code-sample 所示，这是一段代码 @zjuthesis。
+如@lst:code-sample 所示，这是一段代码 @zjuthesis，@floater2005surface，@WANG2022102149，@chCurl。
 
 #figure(
   ```
