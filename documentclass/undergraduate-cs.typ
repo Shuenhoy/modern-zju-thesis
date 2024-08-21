@@ -6,24 +6,21 @@
 #import "../pages/undergraduate-eval.typ": undergraduate-eval
 #import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
 
-
-#import "../utils/part.typ": *
 #import "../utils/fonts.typ": *
-#import "../utils/appendix.typ": *
-
-#import "../utils/fonts.typ": 字号, 字体
-#import "../utils/part.typ": *
+#import "../utils/part.typ": show-part, show-outline-with-part, part-and-headings, part, part-bib
 #import "../utils/header.typ": header, footer
-#import "../utils/fakebold.typ": *
-#import "../utils/indent-first-par.typ": *
-#import "../utils/supplement.typ": *
-#import "../utils/twoside.typ": *
+#import "../utils/fakebold.typ": show-cn-fakebold
+#import "../utils/indent-first-par.typ": indent-first-par
+#import "../utils/supplement.typ": show-set-supplement
+#import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 
+#import "../utils/appendix.typ": appendix
 
 #import "../dependency/i-figured.typ"
 
 
-#let undergraduate-cs-set-style(doc) = {
+#let undergraduate-cs-set-style(doc, twoside: true) = {
+  // Page geometry
   set page(
     paper: "a4",
     margin: (
@@ -31,6 +28,11 @@
       bottom: 2.54cm + 12pt + 30pt,
       top: 2.54cm + 12pt + 4mm,
     ),
+  )
+  show: show-twoside-pagebreak.with(twoside: twoside)
+
+  // Header and footer
+  set page(
     header-ascent: 4mm,
     footer-descent: 35pt,
     header: header(
@@ -43,9 +45,16 @@
     ),
     footer: twoside-numbering-footer,
   )
+
+  // Paragraph and text
   set par(leading: 1.3em, first-line-indent: 2em)
+  show: indent-first-par
+  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
+  show: show-cn-fakebold
+  set underline(offset: 0.2em)
 
 
+  // Headings
   set heading(numbering: (..numbers) => {
     let level = numbers.pos().len()
     if (level == 1) {
@@ -64,20 +73,20 @@
   show heading.where(level: 2): set text(size: 字号.三号)
   show heading.where(level: 3): set text(size: 字号.小三)
   show heading.where(level: 4): set text(size: 字号.四号)
-  show: indent-first-par
+
+
+  // Reference
   show heading: i-figured.reset-counters
   show: show-set-supplement
-
   show figure: i-figured.show-figure
-  show: show-cn-fakebold
-  show: show-part
-  show: show-outline-with-part
   show math.equation.where(block: true): i-figured.show-equation
-  set underline(offset: 0.2em)
   show figure.where(kind: table): set figure.caption(position: top)
 
+  // Part
+  show: show-part
+  show: show-outline-with-part
 
-  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
+
   doc
 }
 
@@ -94,12 +103,13 @@
   submit-date: datetime.today(),
 )
 
-#let undergraduate-cs(info: undergraduate-cs-default-info, twoside: true) = {
+#let undergraduate-cs(info: (:), twoside: true) = {
+  let info = undergraduate-cs-default-info + info
   (
     pages: (
       cover: undergraduate-cover(info: info),
       promise: undergraduate-promise(),
-      outline: main-outline(target: chapters-and-headings),
+      outline: main-outline(target: part-and-headings),
       task: undergraduate-task(),
       individual: template-individual,
       eval: undergraduate-eval,
@@ -107,9 +117,7 @@
     ),
     style: doc => {
       set document(title: info.title.join())
-      show: undergraduate-cs-set-style
-      show: show-twoside-pagebreak.with(twoside: twoside)
-      doc
+      undergraduate-cs-set-style(doc, twoside: twoside)
     },
   )
 }

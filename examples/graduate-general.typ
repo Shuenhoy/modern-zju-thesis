@@ -1,6 +1,7 @@
-#import "../lib.typ": *
+#import "../lib.typ": graduate-general, appendix
+#import graduate-general: *
 
-#let info = graduate-general-default-info + (
+#let info = (
   title: ("毕业论文/设计题目", ""),
   title-en: ("Graduation Thesis Title", ""),
   grade: "2014级",
@@ -13,14 +14,13 @@
   submit-date: "递交日期",
 )
 
-#show bibliography: none
 
 
 
 
 #let doc = graduate-general(info: info, twoside: true)
 #show: doc.style
-#bibliography("ref.bib")
+
 
 
 
@@ -48,7 +48,7 @@
 #include "common-body.typ"
 
 #individual("参考文献", outlined: true)[
-  #part-bib
+  #bibliography("ref.bib", title: none)
 ]
 
 #individual("附录", outlined: true)[

@@ -111,4 +111,4 @@
   })
 }
 
-#let chapters-and-headings = figure.where(kind: "part", outlined: true).or(heading.where(outlined: true))
+#let part-and-headings = figure.where(kind: "part", outlined: true).or(heading.where(outlined: true))

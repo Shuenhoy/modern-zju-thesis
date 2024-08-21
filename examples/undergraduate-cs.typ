@@ -1,6 +1,7 @@
-#import "../lib.typ": *
+#import "../lib.typ": undergraduate-cs
+#import undergraduate-cs: *
 
-#let info = undergraduate-cs-default-info + (
+#let info = (
   title: ("毕业论文/设计题目",),
   grade: "2014级",
   student-id: "学号",
