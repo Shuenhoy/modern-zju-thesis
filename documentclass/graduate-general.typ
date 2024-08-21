@@ -14,6 +14,8 @@
 #import "../utils/near-chapter.typ": near-chapter
 #import "../utils/bilingual-bibliography.typ": show-bilingual-bibliography
 #import "../utils/structure.typ": frontmatter, mainmatter
+#import "../utils/appendix.typ": appendix
+
 
 #import "../dependency/i-figured.typ"
 

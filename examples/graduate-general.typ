@@ -1,4 +1,4 @@
-#import "../lib.typ": graduate-general, appendix
+#import "../lib.typ": graduate-general
 #import graduate-general: *
 
 #let info = (
@@ -14,14 +14,8 @@
   submit-date: "递交日期",
 )
 
-
-
-
-
 #let doc = graduate-general(info: info, twoside: true)
 #show: doc.style
-
-
 
 
 #doc.pages.cover
