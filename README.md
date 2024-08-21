@@ -16,7 +16,7 @@
 3. 在`main.typ`填入下列内容，亦可从本仓库目录 `examples` 下得到稍复杂的样例，和本科生模板样例。
 
 ```typ
-#import "./templates/modern-zju-thesis/lib.typ":  graduate-general, appendix
+#import "./templates/modern-zju-thesis/lib.typ":  graduate-general
 #import graduate-general: *
 
 #let info = (
