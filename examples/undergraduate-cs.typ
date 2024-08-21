@@ -28,7 +28,7 @@
 #set page(numbering: "I")
 
 
-#doc.pages.promise
+#doc.pages.decl
 
 #let individual = doc.pages.individual
 

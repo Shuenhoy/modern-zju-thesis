@@ -3,7 +3,7 @@
 #import "../utils/indent-first-par.typ": fake-par
 #import "./template-individual.typ": template-individual
 
-#let undergraduate-promise(
+#let undergraduate-decl(
   row-gutter: 11.5pt,
 ) = {
   template-individual("浙江大学本科生毕业论文（设计）承诺书")[

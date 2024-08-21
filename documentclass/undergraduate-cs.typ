@@ -1,5 +1,5 @@
 #import "../pages/undergraduate-cs-cover.typ": undergraduate-cover
-#import "../pages/undergraduate-promise.typ": undergraduate-promise
+#import "../pages/undergraduate-decl.typ": undergraduate-decl
 #import "../pages/template-individual.typ": template-individual
 #import "../pages/outline.typ": main-outline
 #import "../pages/undergraduate-task.typ": undergraduate-task
@@ -108,7 +108,7 @@
   (
     pages: (
       cover: undergraduate-cover(info: info),
-      promise: undergraduate-promise(),
+      decl: undergraduate-decl(),
       outline: main-outline(target: part-and-headings),
       task: undergraduate-task(),
       individual: template-individual,
