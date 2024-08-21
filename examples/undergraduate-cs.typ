@@ -39,7 +39,7 @@
 #doc.pages.outline
 
 #set page(numbering: "1")
-#part[毕业论文]<part1>
+#part[毕业论文]
 
 #include "common-body.typ"
 
@@ -69,13 +69,17 @@
 
 ]
 
-#doc.pages.task
-#(doc.pages.eval)(scores: (8, 15, 5, 60))
+#(doc.pages.task)()[任务]
+#(doc.pages.eval)(scores: (8, 15, 5, 60))[评价]
 
-#part[开题报告]<part2>
+#part[开题报告]
 #doc.pages.proposal-cover
+#(doc.pages.proposal-task)[
+  内容
+]
 
 = 文献综述
+
 @zjugradthesisrules
 
 == 参考文献
@@ -88,4 +92,4 @@
 = 外文原文
 
 
-#doc.pages.proposal-eval
+#(doc.pages.proposal-eval)(scores-supervisor: (8, 15, 5))[评价]

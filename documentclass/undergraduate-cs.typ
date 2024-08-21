@@ -5,6 +5,7 @@
 #import "../pages/undergraduate-task.typ": undergraduate-task
 #import "../pages/undergraduate-eval.typ": undergraduate-eval
 #import "../pages/undergraduate-proposal-cover.typ": undergraduate-proposal-cover
+#import "../pages/undergraduate-proposal-task.typ": undergraduate-proposal-task
 #import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
 
 #import "../utils/fonts.typ": *
@@ -111,11 +112,12 @@
       cover: undergraduate-cover(info: info),
       decl: undergraduate-decl(),
       outline: main-outline(target: part-and-headings),
-      task: undergraduate-task(),
+      task: undergraduate-task.with(info: info),
       individual: template-individual,
       eval: undergraduate-eval,
       proposal-cover: undergraduate-proposal-cover(info: info),
-      proposal-eval: undergraduate-proposal-eval(),
+      proposal-task: undergraduate-proposal-task.with(info: info),
+      proposal-eval: undergraduate-proposal-eval,
     ),
     style: doc => {
       set document(title: info.title.join())
