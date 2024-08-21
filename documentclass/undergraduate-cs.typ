@@ -49,7 +49,7 @@
   )
 
   // Paragraph and text
-  set par(leading: 1.3em, first-line-indent: 2em)
+  set par(leading: 1.3em, first-line-indent: 2em, justify: true)
   show: indent-first-par
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
   show: show-cn-fakebold
