@@ -63,7 +63,7 @@
   set page(
     paper: "a4",
     margin: (
-      x: 3.18cm,
+      x: 2.5cm,
       bottom: 2.54cm + 12pt + 30pt,
       top: 2.54cm + 12pt + 4mm,
     ),
@@ -102,8 +102,8 @@
     v(6pt)
   }
   show heading.where(level: 2): set text(size: 字号.四号)
-  show heading.where(level: 3): set text(size: 字号.四号)
-  show heading.where(level: 4): set text(size: 字号.四号)
+  show heading.where(level: 3): set text(size: 字号.小四)
+  show heading.where(level: 4): set text(size: 字号.小四)
   show heading: set block(above: 1.5em, below: 1.5em)
 
 
