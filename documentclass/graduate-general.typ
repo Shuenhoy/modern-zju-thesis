@@ -129,7 +129,7 @@
       outline: show-outline-indent(main-outline(outlined: true, titlelevel: 1)),
       figure-outline: figure-outline(outlined: true, titlelevel: 1),
       table-outline: table-outline(outlined: true, titlelevel: 1),
-      individual: template-individual.with(outlined: true, titlelevel: 1),
+      individual: template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四)),
     ),
     style: doc => {
       set document(title: info.title.join())

@@ -5,6 +5,7 @@
 #let template-individual(
   outlined: false,
   titlelevel: 2,
+  bodytext-settings: (size: 字号.四号),
   pagetitle,
   s,
 ) = {
@@ -24,7 +25,7 @@
 
     block(width: 100%)[
       #set par(justify: true)
-      #set text(size: 字号.四号)
+      #set text(..bodytext-settings)
       #s
     ]
 
