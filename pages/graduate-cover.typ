@@ -92,18 +92,14 @@
           "所在学院：", info.department,
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
-      ],
-    )
-
-    block(
-      width: 50%,
-      [
-        #set text(size: 字号.小三, weight: "bold")
-        #grid(
-          columns: (0.5fr, 0.3fr),
-          align: (start, center),
-          "论文提交日期", info.submit-date,
-        )
+        #align(right)[
+          #set text(size: 字号.小三, weight: "bold")
+          #grid(
+            columns: (auto, 10.5em),
+            align: (start, center),
+            "论文提交日期", info.submit-date,
+          )
+        ]
       ],
     )
   }
