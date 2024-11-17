@@ -1,9 +1,11 @@
 #import "../utils/fonts.typ": 字号, 字体
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": twoside-pagebreak
+#import "../utils/indent-first-par.typ": fake-par
 
 #let template-individual(
   outlined: false,
+  indent-first-par: true,
   titlelevel: 2,
   bodytext-settings: (size: 字号.四号),
   pagetitle,
@@ -26,6 +28,9 @@
     block(width: 100%)[
       #set par(justify: true)
       #set text(..bodytext-settings)
+      #if indent-first-par {
+        fake-par
+      }
       #s
     ]
 
