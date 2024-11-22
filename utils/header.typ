@@ -15,7 +15,15 @@
       stack(
         spacing: spacing,
         grid(
-          columns: (1fr, 1fr, 1fr),
+          columns: (
+            1fr,
+            if center == none {
+              0.01fr
+            } else {
+              1fr
+            },
+            1fr,
+          ),
           align: (alignment.left, alignment.center, alignment.right),
           left, center, right,
         ),
