@@ -22,12 +22,12 @@
   show metadata.where(value: <mzt:twoside-numbering-footer>): [
     #if twoside {
       footer(
-        left: numbering => locate(loc => if calc.even(loc.page()) {
+        left: numbering => if calc.even(here().page()) {
           numbering
-        }),
-        right: numbering => locate(loc => if not calc.even(loc.page()) {
+        },
+        right: numbering => if not calc.even(here().page()) {
           numbering
-        }),
+        },
       )
     } else {
       footer(center: numbering => numbering)
