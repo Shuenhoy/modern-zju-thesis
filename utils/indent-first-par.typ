@@ -5,7 +5,11 @@
 #let indent-first-par(s) = {
   let indent-next-par(s) = {
     s
-    fake-par
+    context {
+      if query(metadata.where(value: <mzt:continue-par>)).filter(el => el.location().position() == here().position()) == () {
+        fake-par
+      }
+    }
   }
   show heading: indent-next-par
   show list: indent-next-par
@@ -14,3 +18,4 @@
   show math.equation.where(block: true): indent-next-par
   s
 }
+#let continue-par = metadata(<mzt:continue-par>)
