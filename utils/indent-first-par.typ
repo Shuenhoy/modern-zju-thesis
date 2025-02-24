@@ -6,7 +6,10 @@
   let indent-next-par(s) = {
     s
     context {
-      if query(metadata.where(value: <mzt:continue-par>)).filter(el => el.location().position() == here().position()) == () {
+      if (
+        query(metadata.where(value: <mzt:continue-par>)).filter(el => el.location().position() == here().position())
+          == ()
+      ) {
         fake-par
       }
     }

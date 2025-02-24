@@ -28,7 +28,6 @@
   )
 
 
-
   show grid.cell.where(x: 1): it => {
     // 后续的操作是对 string 进行的。
     let ittext = to-string(it)

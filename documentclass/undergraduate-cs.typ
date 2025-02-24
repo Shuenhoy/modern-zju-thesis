@@ -59,14 +59,16 @@
   // Headings
   show heading: i-figured.reset-counters
 
-  set heading(numbering: (..numbers) => {
-    let level = numbers.pos().len()
-    if (level == 1) {
-      return numbering("一、", numbers.pos().at(level - 1))
-    } else {
-      return numbering("1.1  ", ..numbers.pos().slice(1))
-    }
-  })
+  set heading(
+    numbering: (..numbers) => {
+      let level = numbers.pos().len()
+      if (level == 1) {
+        return numbering("一、", numbers.pos().at(level - 1))
+      } else {
+        return numbering("1.1  ", ..numbers.pos().slice(1))
+      }
+    },
+  )
   show heading.where(level: 1): x => {
     twoside-pagebreak
     v(12pt)

@@ -20,14 +20,22 @@
 
 #let 字体 = (
   宋体: ("Times New Roman", "SimSun"),
-
   黑体: ("Arial", "SimHei"),
   // 楷体
   楷体: ("Times New Roman", "KaiTi"),
   // 仿宋
-  仿宋: ("Times New Roman", "FangSong",),
-
-  等宽: ("Courier New", "Menlo", "IBM Plex Mono", "Source Han Sans HW SC", "Source Han Sans HW", "Noto Sans Mono CJK SC", "SimHei", "Heiti SC", "STHeiti"),
+  仿宋: ("Times New Roman", "FangSong"),
+  等宽: (
+    "Courier New",
+    "Menlo",
+    "IBM Plex Mono",
+    "Source Han Sans HW SC",
+    "Source Han Sans HW",
+    "Noto Sans Mono CJK SC",
+    "SimHei",
+    "Heiti SC",
+    "STHeiti",
+  ),
 )
 
 #let songti(s) = {

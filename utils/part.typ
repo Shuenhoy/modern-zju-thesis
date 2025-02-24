@@ -7,7 +7,7 @@
   // this cannot use auto to translate this automatically as headings can, auto also means something different for figures
   supplement: "Part",
   // empty caption required to be included in outline
-  caption: []
+  caption: [],
 )
 
 #let part-refs = state("part-refs", ())
@@ -68,22 +68,23 @@
 
     twoside-emptypage
     counter(page).update(0)
-
   }
   s
 }
 
 #let show-outline-with-part(s) = {
-
   show outline.entry: it => {
     if it.element.func() == figure {
       // we're configuring chapter printing here, effectively recreating the default show impl with slight tweaks
-      let res = link(it.element.location(),
-      // we must recreate part of the show rule from above once again
-      if it.element.numbering != none {
-        numbering(it.element.numbering, ..it.element.counter.at(it.element.location()))
-      } + [ ] + it.element.body
-    )
+      let res = link(
+        it.element.location(),
+        // we must recreate part of the show rule from above once again
+        if it.element.numbering != none {
+          numbering(it.element.numbering, ..it.element.counter.at(it.element.location()))
+        }
+          + [ ]
+          + it.element.body,
+      )
 
       text(size: 字号.三号, weight: "bold", res)
     } else {

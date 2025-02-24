@@ -36,7 +36,7 @@
 #let footer(
   left: none,
   right: none,
-  center: none
+  center: none,
 ) = context {
   if query(<mzt:no-header-footer>).filter(el => el.location().page() == here().page()) == () {
     let fleft(numbering) = {

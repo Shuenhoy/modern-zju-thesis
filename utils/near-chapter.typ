@@ -14,7 +14,6 @@
     }
     headings_before.last().body
   } else {
-
     heading.body
   }
 }

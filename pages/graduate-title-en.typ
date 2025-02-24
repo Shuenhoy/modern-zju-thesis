@@ -9,7 +9,6 @@
   row-gutter: 11.5pt,
   degree: "硕士",
 ) = {
-
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
@@ -31,9 +30,7 @@
     )
 
 
-
     set align(center)
-
 
 
     v(20pt)
@@ -42,7 +39,7 @@
       [
         #set text(size: 16pt, weight: "bold")
         #grid(
-          columns: (1fr),
+          columns: 1fr,
           align: (center),
           stroke: (bottom: stroke-width),
           info.title-en.first(),
@@ -67,7 +64,6 @@
           "Author's signature:", [],
           "Supervisor's signature:", [],
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-
         )
       ],
     )
@@ -107,5 +103,4 @@
     )
   }
   twoside-emptypage
-
 }

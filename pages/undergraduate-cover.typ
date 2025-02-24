@@ -11,15 +11,18 @@
   anonymous-info-keys: ("grade", "student-id", "author", "supervisor"),
 ) = {
   info = (
-    title: ("毕业论文/设计", "题目"),
-    grade: "20XX",
-    student-id: "1234567890",
-    author: "张三",
-    department: "某学院",
-    major: "某专业",
-    supervisor: ("李四", "教授"),
-    submit-date: datetime.today(),
-  ) + info
+    (
+      title: ("毕业论文/设计", "题目"),
+      grade: "20XX",
+      student-id: "1234567890",
+      author: "张三",
+      department: "某学院",
+      major: "某专业",
+      supervisor: ("李四", "教授"),
+      submit-date: datetime.today(),
+    )
+      + info
+  )
 
 
   if type(info.submit-date) == datetime {

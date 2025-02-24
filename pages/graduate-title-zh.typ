@@ -9,7 +9,6 @@
   row-gutter: 11.5pt,
   degree: "硕士",
 ) = {
-
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
@@ -31,9 +30,7 @@
     )
 
 
-
     set align(center)
-
 
 
     v(20pt)
@@ -42,7 +39,7 @@
       [
         #set text(size: 字号.小二, weight: "bold")
         #grid(
-          columns: (1fr),
+          columns: 1fr,
           align: (center),
           stroke: (bottom: stroke-width),
           info.title.first(),
@@ -68,7 +65,6 @@
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
           "指导教师签名：", [],
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-
         )
       ],
     )
@@ -80,18 +76,14 @@
           columns: (auto, 1fr),
           align: (end, center),
 
-          "论文评阅人1：", info.reviewer.at(0) ,
+          "论文评阅人1：", info.reviewer.at(0),
           ..info.reviewer.enumerate(start: 0).slice(1).map(v => ([评阅人#(v.at(0)+1)：], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
 
 
-
-
-          "答辩委员会主席 ：", info.committe.at(0) ,
+          "答辩委员会主席 ：", info.committe.at(0),
           ..info.committe.enumerate(start: 0).slice(1).map(v => ([委员#(v.at(0))：], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-
-
         )
         #align(right)[
           #grid(

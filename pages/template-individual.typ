@@ -11,7 +11,6 @@
   pagetitle,
   s,
 ) = {
-
   context {
     twoside-pagebreak
     set text(font: 字体.仿宋)

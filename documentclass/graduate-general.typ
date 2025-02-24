@@ -20,9 +20,7 @@
 #import "../dependency/i-figured.typ"
 
 #let show-outline-indent(s) = {
-
   show outline.entry: it => {
-
     if it.level == 1 {
       text(weight: "bold", it)
     } else {
