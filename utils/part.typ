@@ -35,9 +35,9 @@
     }
 
 
-    locate(loc => {
-      "[" + get_ref_id(loc) + "]"
-    })
+    context {
+      "[" + get_ref_id(here()) + "]"
+    }
   }
   s
 }
@@ -96,20 +96,20 @@
 }
 
 #let part-bib = {
-  locate(loc => {
-    //https://github.com/typst/typst/issues/1097
+  //https://github.com/typst/typst/issues/1097
 
-    let ref-counter = counter("part-refs")
-    ref-counter.update(1)
-    show regex("^\[(\d+)\]\s"): it => [
-      [#ref-counter.display()]
-    ]
-    for target in part-refs.at(loc) {
+  let ref-counter = counter("part-refs")
+  ref-counter.update(1)
+  show regex("^\[(\d+)\]\s"): it => [
+    [#context ref-counter.display()]
+  ]
+  context {
+    for target in part-refs.at(here()) {
       block(cite(target, form: "full"))
       ref-counter.step()
     }
     part-refs.update(())
-  })
+  }
 }
 
 #let part-and-headings = figure.where(kind: "part", outlined: true).or(heading.where(outlined: true))

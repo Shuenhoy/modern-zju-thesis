@@ -38,12 +38,16 @@
     header-ascent: 4mm,
     footer-descent: 35pt,
     header: header(
-      left: locate(loc => if not calc.even(loc.page()) {
-        "浙江大学本科生毕业论文"
-      }),
-      right: locate(loc => if calc.even(loc.page()) {
-        document.title
-      }),
+      left: context {
+        if not calc.even(here().page()) {
+          "浙江大学本科生毕业论文"
+        }
+      },
+      right: context {
+        if calc.even(here().page()) {
+          document.title
+        }
+      },
     ),
     footer: twoside-numbering-footer,
   )
