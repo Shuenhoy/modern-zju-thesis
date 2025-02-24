@@ -85,11 +85,11 @@
           + [ ]
           + it.element.body,
       )
+      set par(first-line-indent: 0em)
 
       text(size: 字号.三号, weight: "bold", res)
     } else {
-      // we're doing indenting here
-      h(1.5em * (it.level - 1)) + it
+      it
     }
   }
   s

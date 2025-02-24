@@ -19,14 +19,8 @@
 
 #import "../dependency/i-figured.typ"
 
-#let show-outline-indent(s) = {
-  show outline.entry: it => {
-    if it.level == 1 {
-      text(weight: "bold", it)
-    } else {
-      h(1em * (it.level - 1)) + it
-    }
-  }
+#let show-outline(s) = {
+  show outline.entry.where(level: 1): set text(weight: "bold")
   s
 }
 
@@ -124,7 +118,7 @@
       title-zh: graduate-title-zh(info: info),
       title-en: graduate-title-en(info: info),
       decl: graduate-decl(),
-      outline: show-outline-indent(main-outline(outlined: true, titlelevel: 1)),
+      outline: show-outline(main-outline(outlined: true, titlelevel: 1)),
       figure-outline: figure-outline(outlined: true, titlelevel: 1),
       table-outline: table-outline(outlined: true, titlelevel: 1),
       individual: template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四)),
