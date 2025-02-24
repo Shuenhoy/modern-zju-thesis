@@ -57,7 +57,6 @@
             )
           }
         )
-
       )
       开题报告审核负责人（签名/签章）#box(width: 5em, stroke: (bottom: 0.5pt))\
       年#h(2em)月#h(2em)日

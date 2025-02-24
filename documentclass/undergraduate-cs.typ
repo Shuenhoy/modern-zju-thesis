@@ -12,7 +12,6 @@
 #import "../utils/part.typ": show-part, show-outline-with-part, part-and-headings, part, part-bib
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": show-cn-fakebold
-#import "../utils/indent-first-par.typ": indent-first-par
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/structure.typ": frontmatter, mainmatter
@@ -38,19 +37,22 @@
     header-ascent: 4mm,
     footer-descent: 35pt,
     header: header(
-      left: locate(loc => if not calc.even(loc.page()) {
-        "浙江大学本科生毕业论文"
-      }),
-      right: locate(loc => if calc.even(loc.page()) {
-        document.title
-      }),
+      left: context {
+        if not calc.even(here().page()) {
+          "浙江大学本科生毕业论文"
+        }
+      },
+      right: context {
+        if calc.even(here().page()) {
+          document.title
+        }
+      },
     ),
     footer: twoside-numbering-footer,
   )
 
   // Paragraph and text
-  set par(leading: 1.3em, first-line-indent: 2em, justify: true)
-  show: indent-first-par
+  set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
   show: show-cn-fakebold
   set underline(offset: 0.2em)
@@ -59,14 +61,16 @@
   // Headings
   show heading: i-figured.reset-counters
 
-  set heading(numbering: (..numbers) => {
-    let level = numbers.pos().len()
-    if (level == 1) {
-      return numbering("一、", numbers.pos().at(level - 1))
-    } else {
-      return numbering("1.1  ", ..numbers.pos().slice(1))
-    }
-  })
+  set heading(
+    numbering: (..numbers) => {
+      let level = numbers.pos().len()
+      if (level == 1) {
+        return numbering("一、", numbers.pos().at(level - 1))
+      } else {
+        return numbering("1.1  ", ..numbers.pos().slice(1))
+      }
+    },
+  )
   show heading.where(level: 1): x => {
     twoside-pagebreak
     v(12pt)

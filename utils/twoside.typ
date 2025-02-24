@@ -31,7 +31,6 @@
       )
     } else {
       footer(center: numbering => numbering)
-
     }
   ]
   s

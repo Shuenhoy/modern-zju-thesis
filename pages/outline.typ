@@ -9,7 +9,6 @@
   ..args,
 ) = {
   template-individual(outlined: outlined, titlelevel: titlelevel, title, outline(depth: 3, title: none, ..args))
-
 }
 
 #let figure-outline(

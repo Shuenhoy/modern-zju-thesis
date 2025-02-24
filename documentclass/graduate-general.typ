@@ -8,7 +8,6 @@
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": show-cn-fakebold
-#import "../utils/indent-first-par.typ": indent-first-par
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
@@ -19,16 +18,8 @@
 
 #import "../dependency/i-figured.typ"
 
-#let show-outline-indent(s) = {
-
-  show outline.entry: it => {
-
-    if it.level == 1 {
-      text(weight: "bold", it)
-    } else {
-      h(1em * (it.level - 1)) + it
-    }
-  }
+#let show-outline(s) = {
+  show outline.entry.where(level: 1): set text(weight: "bold")
   s
 }
 
@@ -83,8 +74,7 @@
   )
 
   // Paragraph and text
-  set par(leading: 1.3em, first-line-indent: 2em, justify: true)
-  show: indent-first-par
+  set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
   show: show-cn-fakebold
   set underline(offset: 0.2em)
@@ -126,7 +116,7 @@
       title-zh: graduate-title-zh(info: info),
       title-en: graduate-title-en(info: info),
       decl: graduate-decl(),
-      outline: show-outline-indent(main-outline(outlined: true, titlelevel: 1)),
+      outline: show-outline(main-outline(outlined: true, titlelevel: 1)),
       figure-outline: figure-outline(outlined: true, titlelevel: 1),
       table-outline: table-outline(outlined: true, titlelevel: 1),
       individual: template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四)),

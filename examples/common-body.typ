@@ -11,7 +11,6 @@
   image("../assets/zju-emblem.svg", width: 40%),
   caption: [浙江大学 LOGO],
 ) <zju-logo>
-
 如@tbl:sample 所示，这是一张自动调节列宽的表格。
 
 #figure(

@@ -6,9 +6,8 @@
   info: (:),
   // 其他参数
   stoke-width: 0.5pt,
-  row-gutter: 11.5pt
+  row-gutter: 11.5pt,
 ) = {
-
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
@@ -49,7 +48,6 @@
     ]
 
 
-
     image("../assets/zju-name-graduate.png", width: page.width * 0.3)
     v(-30pt)
 
@@ -71,7 +69,6 @@
           "英文论文题目：", text(size: 16pt, info.title-en.first()),
           ..info.title-en.slice(1).map(v => (none, text(size: 16pt, v))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-
         )
       ],
     )
@@ -85,7 +82,7 @@
           columns: (auto, 1fr),
           align: (start, center),
 
-          "申请人姓名：", info.author ,
+          "申请人姓名：", info.author,
           "指导教师：", info.supervisor,
           "专业名称：", info.grade + info.major,
           "研究方向：", info.field,

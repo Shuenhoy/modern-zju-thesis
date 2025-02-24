@@ -6,7 +6,6 @@
   outlined: false,
   row-gutter: 11.5pt,
 ) = {
-
   context {
     twoside-pagebreak
     set text(font: 字体.宋体)
