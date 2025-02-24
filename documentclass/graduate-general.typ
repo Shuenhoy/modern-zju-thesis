@@ -8,7 +8,6 @@
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": show-cn-fakebold
-#import "../utils/indent-first-par.typ": indent-first-par
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
@@ -75,8 +74,7 @@
   )
 
   // Paragraph and text
-  set par(leading: 1.3em, first-line-indent: 2em, justify: true)
-  show: indent-first-par
+  set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
   show: show-cn-fakebold
   set underline(offset: 0.2em)
