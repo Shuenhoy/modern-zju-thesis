@@ -19,12 +19,36 @@
 )
 
 #let 字体 = (
-  宋体: ("Times New Roman", "SimSun"),
-  黑体: ("Arial", "SimHei"),
+  宋体: (
+    (
+      name: "Times New Roman",
+      covers: "latin-in-cjk",
+    ),
+    "SimSun",
+  ),
+  黑体: (
+    (
+      name: "Arial",
+      covers: "latin-in-cjk",
+    ),
+    "SimHei",
+  ),
   // 楷体
-  楷体: ("Times New Roman", "KaiTi"),
+  楷体: (
+    (
+      name: "Times New Roman",
+      covers: "latin-in-cjk",
+    ),
+    "KaiTi",
+  ),
   // 仿宋
-  仿宋: ("Times New Roman", "FangSong"),
+  仿宋: (
+    (
+      name: "Times New Roman",
+      covers: "latin-in-cjk",
+    ),
+    "FangSong",
+  ),
   等宽: (
     "Courier New",
     "Menlo",
