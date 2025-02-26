@@ -33,7 +33,11 @@
 )
 
 
-#let doc = graduate-general(info: info, twoside: true)
+#let doc = graduate-general(
+  info: info,
+  twoside: true,
+  bibsource: read("ref.bib"),
+)
 #show: doc.style
 
 #doc.pages.cover
@@ -58,9 +62,7 @@
 = Hello
 == World
 
-#individual("参考文献", outlined: true)[
-  #bibliography("ref.bib", style: "gb-7714-2015-numeric", title: none)
-]
+#doc.pages.bibliography
 
 #individual("附录", outlined: true)[
   #appendix(level: 1)[

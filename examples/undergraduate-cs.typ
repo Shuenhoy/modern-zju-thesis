@@ -13,7 +13,12 @@
 )
 
 
-#let doc = undergraduate-cs(info: info, twoside: true)
+#let doc = undergraduate-cs(
+  info: info,
+  twoside: true,
+  bibsource: read("ref.bib"),
+  bibmode: "citext",
+)
 #show: doc.style
 
 #doc.pages.cover
@@ -35,15 +40,14 @@
 #part[毕业论文]
 #include "common-body.typ"
 
-#bibliography("ref.bib", style: "gb-7714-2015-numeric")
-#individual("参考文献", outlined: true)[
-  #part-bib
-]
+#doc.pages.bibliography
 
 #individual("附录", outlined: true)[
   #appendix[
     === 一个附录 <app1>
+    这里是附录。
     @app1
+    @WANG2022102149
     === 另一个附录
 
   ]
@@ -73,16 +77,23 @@
 
 
 #counter(page).update(0)
+#(doc.components.new-bib)()
+
 = 文献综述
+
+这里是文献综述。
 
 @zjugradthesisrules
 
 == 参考文献
-#part-bib
+#doc.components.bibliography
 
 = 开题报告
+#(doc.components.new-bib)()
+
 == 参考文献
-#part-bib
+#doc.components.bibliography
+
 = 外文翻译
 = 外文原文
 

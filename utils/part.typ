@@ -42,12 +42,8 @@
   s
 }
 
-#let new-part-ref() = {
-  part-ref.update()
-}
-
-#let show-part(s) = {
-  show: show-part-ref
+#let show-part(s, enable-ref: true) = {
+  show: x => if enable-ref { show-part-ref(x) } else { x }
 
   // emulate element function by creating show rule
   show figure.where(kind: "part"): it => {
@@ -108,7 +104,6 @@
       block(cite(target, form: "full"))
       ref-counter.step()
     }
-    part-refs.update(())
   }
 }
 

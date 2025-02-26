@@ -14,7 +14,12 @@
   submit-date: "递交日期",
 )
 
-#let doc = graduate-general(info: info, twoside: true)
+#let doc = graduate-general(
+  info: info,
+  twoside: true,
+  bibsource: read("ref.bib"),
+  bibmode: "citext",
+)
 #show: doc.style
 
 
@@ -35,6 +40,7 @@
 #individual("摘 要")[]
 #individual("Abstract")[]
 
+
 #doc.pages.outline
 #doc.pages.figure-outline
 #doc.pages.table-outline
@@ -43,9 +49,8 @@
 
 #include "common-body.typ"
 
-#individual("参考文献", outlined: true)[
-  #bibliography("ref.bib", style: "gb-7714-2015-numeric", title: none)
-]
+#doc.pages.bibliography
+
 
 #individual("附录", outlined: true)[
   #appendix(level: 1)[

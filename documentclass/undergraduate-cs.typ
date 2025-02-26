@@ -2,6 +2,7 @@
 #import "../pages/undergraduate-decl.typ": undergraduate-decl
 #import "../pages/template-individual.typ": template-individual
 #import "../pages/outline.typ": main-outline
+#import "../pages/bibliography.typ": bibliography-page
 #import "../pages/undergraduate-task.typ": undergraduate-task
 #import "../pages/undergraduate-eval.typ": undergraduate-eval
 #import "../pages/undergraduate-proposal-cover.typ": undergraduate-proposal-cover
@@ -10,6 +11,7 @@
 
 #import "../utils/fonts.typ": *
 #import "../utils/part.typ": show-part, show-outline-with-part, part-and-headings, part, part-bib
+#import "../utils/bib-provider.typ": bib-provider
 #import "../utils/header.typ": header, footer
 #import "../utils/fakebold.typ": show-cn-fakebold
 #import "../utils/supplement.typ": show-set-supplement
@@ -20,7 +22,7 @@
 #import "../dependency/i-figured.typ"
 
 
-#let undergraduate-cs-set-style(doc, twoside: true) = {
+#let undergraduate-cs-set-style(doc, twoside: true, bibmode: "part") = {
   // Page geometry
   set page(
     paper: "a4",
@@ -90,7 +92,7 @@
   show figure.where(kind: table): set figure.caption(position: top)
 
   // Part
-  show: show-part
+  show: show-part.with(enable-ref: bibmode == "partbib")
   show: show-outline-with-part
 
 
@@ -110,8 +112,17 @@
   submit-date: datetime.today(),
 )
 
-#let undergraduate-cs(info: (:), twoside: true) = {
+#let undergraduate-cs(
+  info: (:),
+  twoside: true,
+  bibsource: "",
+  bibmode: "citext",
+) = {
+  assert(bibmode == "citext" or bibmode == "partbib")
+
   let info = undergraduate-cs-default-info + info
+  let bib = bib-provider(bibsource, mode: bibmode)
+
   (
     pages: (
       cover: undergraduate-cover(info: info),
@@ -120,15 +131,22 @@
       task: undergraduate-task.with(info: info),
       individual: template-individual,
       eval: undergraduate-eval,
+      bibliography: bibliography-page(bib: bib.bibcontent, individual: template-individual),
       proposal-cover: undergraduate-proposal-cover(info: info),
       proposal-task: undergraduate-proposal-task.with(info: info),
       proposal-eval: undergraduate-proposal-eval,
     ),
+    components: (
+      bibliography: bib.bibcontent,
+      new-bib: bib.new-bib,
+    ),
     style: doc => {
       set document(title: info.title.join())
-      show bibliography: none
 
-      undergraduate-cs-set-style(doc, twoside: twoside)
+      let doc = undergraduate-cs-set-style(doc, twoside: twoside, bibmode: bibmode)
+      show: bib.bibshow
+
+      bib.hiddenbib + doc
     },
   )
 }

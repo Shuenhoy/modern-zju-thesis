@@ -2,6 +2,7 @@
 #import "../pages/graduate-title-zh.typ": graduate-title-zh
 #import "../pages/graduate-title-en.typ": graduate-title-en
 #import "../pages/graduate-decl.typ": graduate-decl
+#import "../pages/bibliography.typ": bibliography-page
 #import "../pages/template-individual.typ": template-individual
 #import "../pages/outline.typ": main-outline, figure-outline, table-outline
 
@@ -11,7 +12,7 @@
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
-#import "../utils/bilingual-bibliography.typ": show-bilingual-bibliography
+#import "../utils/bib-provider.typ": bib-provider
 #import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
 
@@ -103,13 +104,21 @@
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
 
-  show: show-bilingual-bibliography
   doc
 }
 
 
-#let graduate-general(info: (:), twoside: false) = {
+#let graduate-general(
+  info: (:),
+  twoside: false,
+  bibsource: "",
+  bibmode: "citext",
+) = {
+  assert(bibmode == "citext" or bibmode == "bilingual")
   let info = graduate-general-default-info + info
+  let individual = template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四))
+
+  let bib = bib-provider(bibsource, mode: bibmode)
   (
     pages: (
       cover: graduate-cover(info: info),
@@ -119,11 +128,15 @@
       outline: show-outline(main-outline(outlined: true, titlelevel: 1)),
       figure-outline: figure-outline(outlined: true, titlelevel: 1),
       table-outline: table-outline(outlined: true, titlelevel: 1),
-      individual: template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四)),
+      individual: individual,
+      bibliography: bibliography-page(bib: bib.bibcontent, individual: individual),
     ),
     style: doc => {
       set document(title: info.title.join())
-      graduate-general-set-style(doc, degree: info.degree, twoside: twoside)
+      let doc = graduate-general-set-style(doc, degree: info.degree, twoside: twoside)
+
+      show: bib.bibshow
+      bib.hiddenbib + doc
     },
   )
 }

@@ -1,0 +1,12 @@
+[package]
+name = "citext"
+version = "0.2.0"
+compiler = "0.13.0"
+entrypoint = "lib.typ"
+authors = ["Shuenhoy"]
+license = "MIT"
+description = "Use citation.js for CSL-M and citep"
+
+repository = "https://github.com/Shuenhoy/citext"
+
+keywords = ["javascript", "citation"]
