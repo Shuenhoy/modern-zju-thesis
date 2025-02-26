@@ -92,10 +92,14 @@
 
 4. 编译 `typst compile main.typ` 或 `typst compile --font-dir fonts main.typ`
 
+## `bibmode`
+目前 `modern-zju-thesis` 支持三种模式 `citext`(默认) `partbib`(仅适用于本科模板) 和 `bilingual`(仅适用于研究生模板)。
+其中 `citext` 为推荐的模式，使用 https://github.com/Shuenhoy/citext 替代了 Typst 自身的引用功能，实现了双语参考文献等功能，但因使用 QuickJS/WASM，单次编译可能较慢，请充分利用 `typst watch` 或 `tinymist preview` 等增量编译。之后，`citext`预计将作为唯一支持的模式存在。
+
 ## 已知问题
-* 本科模板不支持双语参考文献（英文文献未能显示“et al.”而是“等”）。
-* 本科模板仅能以 `@name` 的形式引用参考文献，而不能使用 `cite(<name>)` 的形式，否则分部分参考文献编号会有错误。
-* Prose citations (即 LaTeX 的 `\citep`，例如 `Alec et al. [5]`) 格式不正确。
+* (不使用 `citext` 时) 本科模板不支持双语参考文献（英文文献未能显示“et al.”而是“等”）。
+* (不使用 `citext` 时) 本科模板仅能以 `@name` 的形式引用参考文献，而不能使用 `cite(<name>)` 的形式，否则分部分参考文献编号会有错误。
+* (不使用 `citext` 时) Prose citations (即 LaTeX 的 `\citep`，例如 `Alec et al. [5]`) 格式不正确。
 * 本模板的部分样式可能与 `zjuthesis` 不同，有待根据学校官方文件分辨哪部分不同是需要处理的。
 * 目前仅包含计算机学院本科（论文）与研究生通用模板。
 
