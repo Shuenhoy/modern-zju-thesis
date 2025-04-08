@@ -3,6 +3,6 @@
 #let bibliography-page(bib: auto, individual: auto) = {
   individual(
     "参考文献",
-    bib,
+     bib,
   )
 }

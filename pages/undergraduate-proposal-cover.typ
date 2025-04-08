@@ -43,7 +43,7 @@
     image("../assets/zju-name.svg", width: page.width * 0.5)
     v(2pt)
 
-    text(size: 字号.小一, font: 字体.黑体, spacing: 100%)[本 科 生 毕 业 论 文<mzt:no-header-footer>]
+    text(size: 字号.小一, font: 字体.黑体, spacing: 200%)[本 科 生 毕 业 论 文<mzt:no-header-footer>]
 
     v(24pt)
     text(size: 字号.小一, font: 字体.黑体)[文献综述和开题报告]
@@ -60,7 +60,7 @@
         #grid(
           columns: (0.5fr, 1fr),
           align: (start, center),
-          rows: 1em,
+          rows: 1.5em,
           stroke: (x, y) => (
             bottom: if x == 1 {
               stoke-width
@@ -69,14 +69,11 @@
             },
           ),
           row-gutter: row-gutter,
-          "题目", info.title.first(),
-          ..info.title.slice(1).map(v => (none, v)).flatten(),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-          "姓名与学号", info.author + " " + info.student-id,
+          "学生姓名", info.author,
+          "学生学号", info.student-id,
           "指导教师", info.supervisor,
-          "年级与专业", info.grade + info.major,
+          "年级与专业", info.grade-major,
           "所在学院", info.department,
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
       ],
     )
