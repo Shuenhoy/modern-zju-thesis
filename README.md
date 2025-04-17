@@ -104,6 +104,8 @@
 * 本模板的部分样式可能与 `zjuthesis` 不同，有待根据学校官方文件分辨哪部分不同是需要处理的。
 * 目前仅包含计算机学院本科（论文）与研究生通用模板。
 
+## 友情链接
+* https://github.com/memset0/ZJU-Project-Report-Template
 
 ## 致谢
 * https://github.com/TheNetAdmin/zjuthesis
