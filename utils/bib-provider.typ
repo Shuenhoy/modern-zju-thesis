@@ -1,5 +1,5 @@
 
-#let bib-provider(bibsource, mode: "") = {
+#let bib-provider(bibsource, mode: "", options: (:)) = {
   let typstbib = bibliography(bytes(bibsource), style: "gb-7714-2015-numeric", title: none)
   let hiddenbib = [
     #show bibliography: none // to provide hint in the editor
@@ -19,7 +19,7 @@
     let bib = init-citation(bibsource)
 
     (
-      bibcontent: extbib(bib),
+      bibcontent: extbib(bib, ..options),
       bibshow: show-extcite.with(bib: bib, gen-id: true),
       hiddenbib: hiddenbib,
       new-bib: new-citext-session,
