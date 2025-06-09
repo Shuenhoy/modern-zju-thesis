@@ -40,7 +40,11 @@
 #part[毕业论文]
 #include "common-body.typ"
 
-#doc.pages.bibliography
+#[
+  #set par(leading: 0.55em)
+  #set text(size: 字号.小四, font: 字体.宋体)
+  #doc.pages.bibliography
+]
 
 #individual("附录", outlined: true)[
   #appendix[
@@ -85,17 +89,24 @@
 
 @zjugradthesisrules
 
-== 参考文献
-#doc.components.bibliography
+#[
+  #set par(leading: 0.55em)
+  #set text(size: 字号.小四, font: 字体.宋体)
+  #doc.components.bibliography
+]
 
 = 开题报告
 #(doc.components.new-bib)()
 
 == 参考文献
-#doc.components.bibliography
+#[
+  #set par(leading: 0.55em)
+  #set text(size: 字号.小四, font: 字体.宋体)
+  #doc.components.bibliography
+]
 
 = 外文翻译
 = 外文原文
 
 
-#(doc.pages.proposal-eval)(scores-supervisor: (8, 15, 5))[评价]
+#(doc.pages.proposal-eval)(scores-supervisor: (8, 15, 5))[导师评价][专家评价]
