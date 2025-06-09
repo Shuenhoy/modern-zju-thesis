@@ -66,23 +66,20 @@
   set heading(
     numbering: (..numbers) => {
       let level = numbers.pos().len()
-      if (level == 1) {
-        return numbering("一、", numbers.pos().at(level - 1))
-      } else {
-        return numbering("1.1  ", ..numbers.pos().slice(1))
-      }
+      return numbering("1.1  ", ..numbers.pos())
     },
   )
   show heading.where(level: 1): x => {
     twoside-pagebreak
     v(12pt)
-    align(center, x)
+    x
     v(6pt)
   }
 
-  show heading.where(level: 2): set text(size: 字号.三号)
-  show heading.where(level: 3): set text(size: 字号.小三)
+  show heading.where(level: 2): set text(size: 字号.小三)
+  show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.四号)
+  show heading: set block(above: 1.5em, below: 1.5em)
 
 
   // Reference
@@ -121,7 +118,7 @@
   assert(bibmode == "citext" or bibmode == "partbib")
 
   let info = undergraduate-cs-default-info + info
-  let bib = bib-provider(bibsource, mode: bibmode)
+  let bib = bib-provider(bibsource, mode: bibmode, options: (row-gutter: 0.5em))
 
   (
     pages: (
@@ -137,7 +134,8 @@
       proposal-eval: undergraduate-proposal-eval,
     ),
     components: (
-      bibliography: bib.bibcontent,
+      bibliography: [
+        #bib.bibcontent],
       new-bib: bib.new-bib,
     ),
     style: doc => {
