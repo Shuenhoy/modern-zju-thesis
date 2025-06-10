@@ -40,11 +40,8 @@
 #part[毕业论文]
 #include "common-body.typ"
 
-#[
-  #set par(leading: 0.55em)
-  #set text(size: 字号.小四, font: 字体.宋体)
-  #doc.pages.bibliography
-]
+#doc.pages.bibliography
+
 
 #individual("附录", outlined: true)[
   #appendix[
@@ -99,11 +96,7 @@
 #(doc.components.new-bib)()
 
 == 参考文献
-#[
-  #set par(leading: 0.55em)
-  #set text(size: 字号.小四, font: 字体.宋体)
-  #doc.components.bibliography
-]
+#doc.components.bibliography
 
 = 外文翻译
 = 外文原文

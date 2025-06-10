@@ -119,6 +119,12 @@
   let individual = template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四))
 
   let bib = bib-provider(bibsource, mode: bibmode)
+  let bibcontent = [
+    #set par(leading: 0.55em)
+    #set text(size: 字号.小四, font: 字体.宋体)
+
+    #bib.bibcontent
+  ]
   (
     pages: (
       cover: graduate-cover(info: info),
@@ -129,7 +135,7 @@
       figure-outline: figure-outline(outlined: true, titlelevel: 1),
       table-outline: table-outline(outlined: true, titlelevel: 1),
       individual: individual,
-      bibliography: bibliography-page(bib: bib.bibcontent, individual: individual),
+      bibliography: bibliography-page(bib: bibcontent, individual: individual),
     ),
     style: doc => {
       set document(title: info.title.join())

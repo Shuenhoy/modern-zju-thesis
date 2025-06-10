@@ -120,6 +120,12 @@
   let info = undergraduate-cs-default-info + info
   let bib = bib-provider(bibsource, mode: bibmode, options: (row-gutter: 0.5em))
 
+  let bibcontent = [
+    #set par(leading: 0.55em)
+    #set text(size: 字号.小四, font: 字体.宋体)
+    #bib.bibcontent
+  ]
+
   (
     pages: (
       cover: undergraduate-cover(info: info),
@@ -128,7 +134,7 @@
       task: undergraduate-task.with(info: info),
       individual: template-individual,
       eval: undergraduate-eval,
-      bibliography: bibliography-page(bib: bib.bibcontent, individual: template-individual),
+      bibliography: bibliography-page(bib: bibcontent, individual: template-individual),
       proposal-cover: undergraduate-proposal-cover(info: info),
       proposal-task: undergraduate-proposal-task.with(info: info),
       proposal-eval: undergraduate-proposal-eval,

@@ -86,6 +86,10 @@ $<eq:sample>
 #lorem(120)
 
 #lorem(130)
+== AA
+== BB
+#lorem(10)
+
 = 另一个Chapter<chap:1>
 == 又一个Section<sec:1>
 @chap:1
