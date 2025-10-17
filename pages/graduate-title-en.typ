@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字号, 字体
+#import "../utils/fonts.typ": 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": *
 
@@ -75,13 +75,13 @@
           columns: (auto, 1fr),
           align: (end, center),
 
-          ..info.reviewer-en.enumerate(start: 0).map(v => ([Thesis reviewer #(v.at(0)+1):], v.at(1))).flatten(),
+          ..info.reviewer-en.enumerate(start: 0).map(v => ([Thesis reviewer #(v.at(0) + 1):], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
         #grid(
           columns: (auto, 1fr),
           align: (end, center),
-          "       Chair:", info.committe-en.at(0),
+          [#h(2em)Chair:], info.committe-en.at(0),
         )
         #v(-1em)
         #align(left)[#h(-3em)#text(size: 字号.五号)[(Committee of oral defence)]]
