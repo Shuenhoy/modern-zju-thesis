@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字号, 字体
+#import "../utils/fonts.typ": 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": *
 
@@ -65,14 +65,25 @@
           align: (start, center),
           "中文论文题目：", info.title.first(),
           ..info.title.slice(1).map(v => (none, v)).flatten(),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+        )
+      ],
+    )
+    if (info.title.len() <= 2 or info.title-en.len() <= 2) {
+      v(20pt)
+    }
+    block(
+      width: 80%,
+      [
+        #set text(size: 字号.小二, weight: "bold")
+        #grid(
+          columns: (auto, 1fr),
+          align: (start, center),
           "英文论文题目：", text(size: 16pt, info.title-en.first()),
           ..info.title-en.slice(1).map(v => (none, text(size: 16pt, v))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
       ],
     )
-
 
     block(
       width: 60%,
