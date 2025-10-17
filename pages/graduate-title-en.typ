@@ -76,8 +76,12 @@
           align: (end, center),
 
           ..info.reviewer-en.enumerate(start: 0).map(v => ([Thesis reviewer #(v.at(0) + 1):], v.at(1))).flatten(),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
+        #if (info.title-en.len() <= 2) {
+          v(20pt)
+        } else {
+          v(10pt)
+        }
         #grid(
           columns: (auto, 1fr),
           align: (end, center),

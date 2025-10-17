@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字号, 字体
+#import "../utils/fonts.typ": 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": *
 
@@ -12,6 +12,7 @@
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
+
 
   context {
     twoside-pagebreak
@@ -48,7 +49,7 @@
         )
       ],
     )
-    v(-40pt)
+    v(-50pt)
 
     [#image("../assets/zju-emblem.svg", width: page.width * 0.15)<mzt:no-header-footer>]
 
@@ -64,10 +65,12 @@
           "论文作者签名：", [],
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
           "指导教师签名：", [],
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
       ],
     )
+    if info.title.len() <= 2 {
+      v(20pt)
+    }
     block(
       width: 70%,
       [
@@ -77,9 +80,8 @@
           align: (end, center),
 
           "论文评阅人1：", info.reviewer.at(0),
-          ..info.reviewer.enumerate(start: 0).slice(1).map(v => ([评阅人#(v.at(0)+1)：], v.at(1))).flatten(),
+          ..info.reviewer.enumerate(start: 0).slice(1).map(v => ([评阅人#(v.at(0) + 1)：], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-
 
           "答辩委员会主席 ：", info.committe.at(0),
           ..info.committe.enumerate(start: 0).slice(1).map(v => ([委员#(v.at(0))：], v.at(1))).flatten(),
