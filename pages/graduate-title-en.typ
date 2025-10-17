@@ -79,12 +79,12 @@
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
         #grid(
-          columns: (auto, 15em),
+          columns: (auto, 1fr),
           align: (end, center),
-          "Chair:", info.committe-en.at(0),
+          "       Chair:", info.committe-en.at(0),
         )
         #v(-1em)
-        #align(left)[#h(-1em)#text(size: 字号.五号)[(Committee of oral defence)]]
+        #align(left)[#h(-3em)#text(size: 字号.五号)[(Committee of oral defence)]]
         #grid(
           columns: (auto, 1fr),
           align: (end, center),
