@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字号, 字体
+#import "../utils/fonts.typ": 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": *
 
@@ -52,6 +52,13 @@
 
     v(20pt)
 
+    let numspacing = if info.title.len() <= 2 {
+      2
+    } else if info.title.len() == 3 {
+      1
+    } else {
+      0
+    }
 
     block(
       width: 70%,
@@ -70,8 +77,13 @@
           ),
           row-gutter: row-gutter,
           "题目", info.title.first(),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          ..info.title.slice(1).map(v => (none, v)).flatten(),
+          ..range(0, numspacing)
+            .map(_ => (
+              grid.cell(stroke: none)[],
+              grid.cell(stroke: none)[],
+            ))
+            .flatten(),
           "学生姓名", info.author,
           "学生学号", info.student-id,
           "指导教师", info.supervisor,
