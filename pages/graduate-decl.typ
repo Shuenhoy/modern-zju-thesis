@@ -9,7 +9,8 @@
   context {
     twoside-pagebreak
     set text(font: 字体.宋体)
-    let zju = underline[#text(font: 字体.楷体, weight: "bold")[浙江大学]]
+    let offset=0.7em
+    let zju = underline(extent: offset)[#h(offset) #text(font: 字体.楷体, weight: "bold")[浙江大学]#h(offset)]
     block(width: 100%)[
       #set par(justify: true)
       #set text(size: 字号.小四)
@@ -54,7 +55,7 @@
           row-gutter: row-gutter,
           [ 学位论文作者签名： ], [], [ 导师签名： ], [],
           [], [], [], [],
-          [ 签字日期： ], [ 年#h(2em)月#h(2em)日], [ 签字日期： ], [年#h(2em)月#h(2em)日],
+          [ 签字日期： ], [ 年#h(2em)月#h(2em)日#h(2em)], [ 签字日期： ], [年#h(2em)月#h(2em)日],
         )
       ]
 
