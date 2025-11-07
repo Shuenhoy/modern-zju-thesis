@@ -10,9 +10,9 @@
 #import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
 
 #import "../utils/fonts.typ": *
-#import "../utils/part.typ": show-part, show-outline-with-part, part-and-headings, part, part-bib
+#import "../utils/part.typ": part, part-and-headings, part-bib, show-outline-with-part, show-part
 #import "../utils/bib-provider.typ": bib-provider
-#import "../utils/header.typ": header, footer
+#import "../utils/header.typ": footer, header
 #import "../utils/fakebold.typ": show-cn-fakebold
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
@@ -55,7 +55,7 @@
 
   // Paragraph and text
   set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
-  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
+  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   show: show-cn-fakebold
   set underline(offset: 0.2em)
 

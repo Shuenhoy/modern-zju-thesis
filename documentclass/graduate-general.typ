@@ -4,10 +4,10 @@
 #import "../pages/graduate-decl.typ": graduate-decl
 #import "../pages/bibliography.typ": bibliography-page
 #import "../pages/template-individual.typ": template-individual
-#import "../pages/outline.typ": main-outline, figure-outline, table-outline
+#import "../pages/outline.typ": figure-outline, main-outline, table-outline
 
 #import "../utils/fonts.typ": *
-#import "../utils/header.typ": header, footer
+#import "../utils/header.typ": footer, header
 #import "../utils/fakebold.typ": show-cn-fakebold
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
@@ -76,7 +76,7 @@
 
   // Paragraph and text
   set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
-  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh")
+  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   show: show-cn-fakebold
   set underline(offset: 0.2em)
 
