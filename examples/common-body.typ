@@ -1,4 +1,4 @@
-#import "../lib.typ": fonts
+#import "../lib.typ": flex-caption, fonts
 
 #import fonts: *
 
@@ -13,10 +13,7 @@
 ) <zju-logo>
 如@tbl:sample 所示，这是一张自动调节列宽的表格。
 
-#figure(
-  image("../assets/zju-emblem.svg", width: 40%),
-  caption: [#lorem(100)一个很长的caption11。],
-)<zju-2>
+
 #figure(
   table(
     columns: (auto, 1fr),
@@ -38,6 +35,10 @@ $<eq:sample>
 
 如@lst:code-sample 所示，这是一段代码 @zjuthesis，@floater2005surface，@WANG2022102149，@chCurl。
 
+#figure(
+  image("../assets/zju-emblem.svg", width: 40%),
+  caption: flex-caption(long: [#lorem(100)一个很长的caption11。 @chCurl], short: "长Caption"),
+)<zju-2>
 #figure(
   ```
   #include <stdio.h>

@@ -18,6 +18,8 @@
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
+#import "../utils/flex-caption.typ": show-flex-caption
+
 
 #import "../dependency/i-figured.typ"
 
@@ -92,6 +94,7 @@
   show: show-part.with(enable-ref: bibmode == "partbib")
   show: show-outline-with-part
 
+  show: show-flex-caption
 
   doc
 }

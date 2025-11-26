@@ -6,3 +6,5 @@
 
 #import "utils/appendix.typ": appendix
 #import "utils/structure.typ": frontmatter, mainmatter
+
+#import "utils/flex-caption.typ": flex-caption

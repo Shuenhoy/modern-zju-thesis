@@ -15,7 +15,7 @@
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
-
+#import "../utils/flex-caption.typ": show-flex-caption
 
 #import "../dependency/i-figured.typ"
 
@@ -103,6 +103,9 @@
   show figure: i-figured.show-figure
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
+
+  show: show-flex-caption
+
 
   doc
 }
