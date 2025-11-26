@@ -1,4 +1,4 @@
-#import "../lib.typ": flex-caption, fonts
+#import "../lib.typ": flex-caption, fonts, mulcite
 
 #import fonts: *
 
@@ -33,7 +33,7 @@ $
   A = overbrace((a + b + c) + underbrace(i(d + e + f), "虚数"), "复数")
 $<eq:sample>
 
-如@lst:code-sample 所示，这是一段代码 @zjuthesis，@floater2005surface，@WANG2022102149，@chCurl。
+如@lst:code-sample 所示，这是一段代码 @zjuthesis，@floater2005surface，@WANG2022102149，@chCurl。这是连续引用测试 #mulcite(<zjuthesis>, <floater2005surface>, <WANG2022102149>, <chCurl>)。
 
 #figure(
   image("../assets/zju-emblem.svg", width: 40%),

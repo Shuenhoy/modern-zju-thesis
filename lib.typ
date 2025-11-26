@@ -8,3 +8,4 @@
 #import "utils/structure.typ": frontmatter, mainmatter
 
 #import "utils/flex-caption.typ": flex-caption
+#import "utils/citext/lib.typ": mulcite
