@@ -87,7 +87,7 @@
           ..info.committe.enumerate(start: 0).slice(1).map(v => ([委员#(v.at(0))：], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
-        #align(right)[
+        #align(center)[
           #grid(
             columns: (auto, 10em),
             align: (start, center),
