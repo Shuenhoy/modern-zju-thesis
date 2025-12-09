@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字体, 字号
+#import "../utils/fonts.typ": songti, 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": *
 
@@ -7,12 +7,20 @@
   // 其他参数
   stoke-width: 0.5pt,
   row-gutter: 11.5pt,
+  zju-emblem-scaling: 0.15,
+  size-settings: (
+    title: 字号.小二,
+    zh-content: 字号.小二,
+    en-content: 16pt,
+  ),
 ) = {
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
   }
   twoside-pagebreak
 
+  let zh-title = text.with(size: size-settings.zh-content)
+  let en-title = text.with(size: size-settings.en-content)
   context {
     counter(page).update(0)
     v(-40pt)
@@ -53,7 +61,7 @@
 
     text(size: 字号.小一, font: 字体.宋体)[#(info.degree)学位论文<mzt:no-header-footer>]
 
-    image("../assets/zju-emblem.svg", width: page.width * 0.15)
+    image("../assets/zju-emblem.svg", width: page.width * zju-emblem-scaling)
 
     v(20pt)
     block(
@@ -63,8 +71,9 @@
         #grid(
           columns: (auto, 1fr),
           align: (start, center),
-          "中文论文题目：", info.title.first(),
-          ..info.title.slice(1).map(v => (none, v)).flatten(),
+          text(font: 字体.宋体, size: size-settings.title)[中文论文题目：],
+          zh-title(info.title.first()),
+          ..info.title.slice(1).map(v => (none, zh-title(v))).flatten(),
         )
       ],
     )
@@ -78,8 +87,16 @@
         #grid(
           columns: (auto, 1fr),
           align: (start, center),
-          "英文论文题目：", text(size: 16pt, info.title-en.first()),
-          ..info.title-en.slice(1).map(v => (none, text(size: 16pt, v))).flatten(),
+          text(font: 字体.宋体, size: size-settings.title)[英文论文题目：],
+          en-title(info.title-en.first()),
+          ..info
+            .title-en
+            .slice(1)
+            .map(v => (
+              none,
+              en-title(v),
+            ))
+            .flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
       ],
@@ -93,11 +110,11 @@
           columns: (auto, 1fr),
           align: (start, center),
 
-          "申请人姓名：", info.author,
-          "指导教师：", info.supervisor,
-          "专业名称：", info.grade + info.major,
-          "研究方向：", info.field,
-          "所在学院：", info.department,
+          songti("申请人姓名："), info.author,
+          songti("指导教师："), info.supervisor,
+          songti("专业名称："), info.grade + info.major,
+          songti("研究方向："), info.field,
+          songti("所在学院："), info.department,
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
         #align(right)[
@@ -105,7 +122,7 @@
           #grid(
             columns: (auto, 10.5em),
             align: (start, center),
-            "论文提交日期", info.submit-date,
+            songti("论文提交日期"), songti(info.submit-date),
           )
         ]
       ],
