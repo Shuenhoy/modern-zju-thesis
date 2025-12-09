@@ -55,6 +55,7 @@
 
   // Header and footer
   set page(
+    numbering: "1",
     header-ascent: 0.8cm,
     footer-descent: 0.8cm,
     header: header(
@@ -62,8 +63,47 @@
       right: near-chapter,
       size: 10.5pt,
     ),
-    footer: twoside-numbering-footer,
+    footer: context {
+      set text(size: 10.5pt)
+      align(center)[
+        #counter(page).display("1")
+      ]
+    },
   )
+
+
+  // Paragraph and text
+  set par(leading: 20pt, first-line-indent: (amount: 2em, all: true), justify: true)
+  set text(font: 字体.仿宋_GB2312, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
+  show: show-cn-fakebold
+  set underline(offset: 0.2em)
+
+  // Headings
+  // 图 1.1, 2.1 for each subsection
+  show heading: i-figured.reset-counters
+  set heading(numbering: "1.1")
+  show heading.where(level: 1): it => {
+    let chap-num = context {
+      counter(heading).display("1")
+    }
+    twoside-pagebreak
+    align(
+      center,
+      text(size: 字号.小二, weight: "bold")[
+        第 #chap-num 章 #it.body
+      ],
+    )
+  }
+  show heading.where(level: 2): set text(size: 字号.小三)
+  show heading.where(level: 3): set text(size: 字号.四号)
+  show heading: set block(above: 1.5em, below: 1.5em)
+
+  // Reference
+  show: show-set-supplement
+  show figure: i-figured.show-figure
+  show math.equation.where(block: true): i-figured.show-equation
+  show figure.where(kind: table): set figure.caption(position: top)
+  show: show-flex-caption
   doc
 }
 #let graduate-st(

@@ -14,8 +14,17 @@
 
 #let doc = graduate-st(info: info, twoside: true, bibsource: read("ref.bib"), bibmode: "citext")
 
+// TODO: 页码、标题编号
 #show: doc.style
 
-= 第一章
+= 啊
 
-#lorem(1000)
+== 发的
+
+#let content = "啊" * 1000
+
+#content
+
+= 草
+
+= 草
