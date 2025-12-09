@@ -19,6 +19,35 @@
 
 #import "../dependency/i-figured.typ"
 
+#let show-outline(s) = {
+  show outline.entry.where(level: 1): it => {
+    let h = it.element
+    let toc-page = here().page()
+
+    // hide table of contents entry
+    if h.location().page() == toc-page {
+      return none
+    }
+
+    // hide caption for non-numbered headings
+    if h.numbering == none {
+      return it
+    }
+
+    let nums = counter(heading).at(h.location())
+    let chap = nums.first()
+
+    link(
+      h.location(),
+      it.indented(
+        [第 #chap 章],
+        it.inner(),
+      ),
+    )
+  }
+  s
+}
+
 #let graduate-st-default-info = (
   title: ("小二号仿宋字体 加粗", ""),
   title-en: ("小二号 Times New Roman 字体 加粗", ""),
@@ -112,12 +141,47 @@
   bibsource: "",
   bibmode: "citext",
 ) = {
+  assert(bibmode == "citext" or bibmode == "bilingual")
   let info = graduate-st-default-info + info
+  let individual = template-individual.with(
+    outlined: true,
+    titlelevel: 1,
+    bodytext-settings: (size: 字号.小四),
+    titletext-settings: (size: 字号.小二, font: 字体.仿宋_GB2312),
+  )
+  let bib = bib-provider(bibsource, mode: bibmode)
+  let bibcontent = [
+    #set par(leading: 0.55em)
+    #set text(size: 字号.小四, font: 字体.仿宋_GB2312)
+  ]
   (
+    pages: (
+      cover: graduate-cover(info: info),
+      title-zh: graduate-title-zh(info: info),
+      title-en: graduate-title-en(info: info),
+      decl: graduate-decl(),
+      outline: {
+        set outline(indent: 2.0em)
+        set par(leading: 0.5em)
+
+        show-outline(main-outline(outlined: true, titlelevel: 1))
+      },
+      figure-outline: {
+        set par(leading: 0.5em)
+        figure-outline(outlined: true, titlelevel: 1)
+      },
+      table-outline: {
+        set par(leading: 0.5em)
+        table-outline(outlined: true, titlelevel: 1)
+      },
+      individual: individual,
+      bibliography: bibliography-page(bib: bibcontent, individual: individual),
+    ),
     style: doc => {
       set document(title: info.title.join())
       let doc = graduate-st-set-style(doc, info.degree, twoside)
-      doc
+      show: bib.bibshow
+      bib.hiddenbib + doc
     },
   )
 }
