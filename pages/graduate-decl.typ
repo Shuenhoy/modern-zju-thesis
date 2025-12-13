@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字号, 字体
+#import "../utils/fonts.typ": 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": *
 
@@ -9,7 +9,7 @@
   context {
     twoside-pagebreak
     set text(font: 字体.宋体)
-    let offset=0.7em
+    let offset = 0.7em
     let zju = underline(extent: offset)[#h(offset) #text(font: 字体.楷体, weight: "bold")[浙江大学]#h(offset)]
     block(width: 100%)[
       #set par(justify: true)

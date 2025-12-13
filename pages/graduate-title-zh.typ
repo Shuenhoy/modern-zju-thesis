@@ -8,6 +8,8 @@
   stroke-width: 0.5pt,
   row-gutter: 11.5pt,
   degree: "硕士",
+  zju-emblem-scaling: 0.15,
+  title-settings: (font: 字体.宋体, twoline: true),
 ) = {
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
@@ -15,6 +17,7 @@
 
 
   context {
+    set text(font: 字体.宋体)
     twoside-pagebreak
     counter(page).update(0)
     v(-40pt)
@@ -30,29 +33,38 @@
       ),
     )
 
-
     set align(center)
 
-
     v(20pt)
+
     block(
       width: 80%,
       [
-        #set text(size: 字号.小二, weight: "bold")
-        #grid(
-          columns: 1fr,
-          align: (center),
-          stroke: (bottom: stroke-width),
-          info.title.first(),
-          ..info.title.slice(1),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-        )
+        #set text(size: 字号.小二, font: title-settings.font, weight: "bold")
+        #if title-settings.twoline {
+          grid(
+            columns: 1fr,
+            align: (center),
+            stroke: (bottom: stroke-width),
+            info.title.first(),
+            ..info.title.slice(1),
+            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          )
+        } else {
+          grid(
+            columns: 1fr,
+            align: (center),
+            stroke: (bottom: stroke-width),
+            info.title.join(""),
+            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          )
+        }
       ],
     )
     v(-50pt)
 
-    [#image("../assets/zju-emblem.svg", width: page.width * 0.15)<mzt:no-header-footer>]
-
+    [#image("../assets/zju-emblem.svg", width: page.width * zju-emblem-scaling)<mzt:no-header-footer>]
+    v(1em)
 
     block(
       width: 60%,
