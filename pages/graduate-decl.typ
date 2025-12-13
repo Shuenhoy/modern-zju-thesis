@@ -25,7 +25,7 @@
       #v(2em)
       #align(center)[
         #table(
-          columns: (0.5fr, 0.4fr, 0.5fr, auto),
+          columns: (0.7fr, 0.4fr, 0.5fr, auto),
           align: (start, center),
           stroke: none,
           row-gutter: row-gutter,
@@ -49,7 +49,7 @@
 
       #align(center)[
         #table(
-          columns: (0.5fr, auto, 0.5fr, auto),
+          columns: (0.7fr, auto, 0.5fr, auto),
           align: (start, center),
           stroke: none,
           row-gutter: row-gutter,
