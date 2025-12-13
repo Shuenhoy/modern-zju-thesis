@@ -42,6 +42,7 @@
   degree: "硕士",
   field: "某方向",
   supervisor: "李四",
+  co-supervisor: none,
   submit-date: datetime.today(),
   defense-date: ("二一九三年六月", "September 2193"),
 )

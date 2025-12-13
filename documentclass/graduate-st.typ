@@ -20,31 +20,7 @@
 #import "../dependency/i-figured.typ"
 
 #let show-outline(s) = {
-  show outline.entry.where(level: 1): it => {
-    let h = it.element
-    let toc-page = here().page()
-
-    // hide table of contents entry
-    if h.location().page() == toc-page {
-      return none
-    }
-
-    // hide caption for non-numbered headings
-    if h.numbering == none {
-      return it
-    }
-
-    let nums = counter(heading).at(h.location())
-    let chap = nums.first()
-
-    link(
-      h.location(),
-      it.indented(
-        [第 #chap 章],
-        it.inner(),
-      ),
-    )
-  }
+  show outline.entry.where(level: 1): set text(weight: "bold")
   s
 }
 
@@ -55,10 +31,10 @@
   student-id: "1234567890",
   clc: "TP311.5",
   unitcode: "10335",
-  reviewer: ("", "", "", "", ""),
-  committe: ("主席", "委员", "委员", "委员", "委员", "委员"),
-  reviewer-en: ("", "", "", "", ""),
-  committe-en: ("Chair", "Committeeman", "Committeeman", "Committeeman", "Committeeman", "Committeeman"),
+  reviewer: ("姓名、职称、单位，下同", "隐名评阅学位论文省略", "", "", ""),
+  committe: ("姓名、职称、单位", "", "", "", "", ""),
+  reviewer-en: ("姓名、职称、单位，下同", "隐名评阅学位论文省略", "", "", ""),
+  committe-en: ("姓名、职称、单位", "", "", "", "", ""),
   secret-level: "无",
   author: "张三",
   department: "某学院",
@@ -92,12 +68,7 @@
       right: near-chapter,
       size: 10.5pt,
     ),
-    footer: context {
-      set text(size: 10.5pt)
-      align(center)[
-        #counter(page).display("1")
-      ]
-    },
+    footer: twoside-numbering-footer,
   )
 
 
@@ -135,6 +106,7 @@
   show: show-flex-caption
   doc
 }
+
 #let graduate-st(
   info: (:),
   twoside: false,
@@ -156,24 +128,25 @@
   ]
   (
     pages: (
-      cover: graduate-cover(info: info),
-      title-zh: graduate-title-zh(info: info),
-      title-en: graduate-title-en(info: info),
+      cover: graduate-cover(
+        info: info,
+        size-settings: (
+          title: 字号.三号,
+          zh-content: 字号.小二,
+          en-content: 字号.小二,
+        ),
+        personal-detail-items: ("申请人姓名", "指导教师", "合作导师", "专业学位类别", "专业学位领域", "所在学院"),
+      ),
+      title-zh: graduate-title-zh(
+        info: info,
+        title-settings: (font: 字体.仿宋_GB2312, twoline: false),
+        zju-emblem-scaling: 0.13,
+      ),
+      title-en: graduate-title-en(info: info, title-twoline: false, zju-emblem-scaling: 0.13),
       decl: graduate-decl(),
-      outline: {
-        set outline(indent: 2.0em)
-        set par(leading: 0.5em)
-
-        show-outline(main-outline(outlined: true, titlelevel: 1))
-      },
-      figure-outline: {
-        set par(leading: 0.5em)
-        figure-outline(outlined: true, titlelevel: 1)
-      },
-      table-outline: {
-        set par(leading: 0.5em)
-        table-outline(outlined: true, titlelevel: 1)
-      },
+      outline: show-outline(main-outline(outlined: true, titlelevel: 1)),
+      figure-outline: figure-outline(outlined: true, titlelevel: 1),
+      table-outline: table-outline(outlined: true, titlelevel: 1),
       individual: individual,
       bibliography: bibliography-page(bib: bibcontent, individual: individual),
     ),

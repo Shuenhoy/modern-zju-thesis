@@ -4,7 +4,7 @@
 
 #let graduate-cover(
   info: (:),
-  // 其他参数
+  personal-detail-items: ("申请人姓名", "指导教师", "专业名称", "研究方向", "所在学院"),
   stoke-width: 0.5pt,
   row-gutter: 11.5pt,
   zju-emblem-scaling: 0.15,
@@ -102,6 +102,18 @@
       ],
     )
 
+    let personal-detail-items-map = (
+      "申请人姓名": (songti("申请人姓名："), info.author),
+      "指导教师": (songti("指导教师："), info.supervisor),
+      "合作导师": (songti("合作导师："), info.co-supervisor),
+      "专业名称": (songti("专业名称："), info.grade + info.major),
+      "专业学位类别": (songti("专业学位类别："), info.major),
+      "研究方向": (songti("研究方向："), info.field),
+      "专业学位领域": (songti("专业学位领域："), info.field),
+      "所在学院": (songti("所在学院："), info.department),
+      "校内导师": (songti("校内导师："), info.supervisor),
+      "校外导师": (songti("校外导师："), info.co-supervisor),
+    )
     block(
       width: 60%,
       [
@@ -109,12 +121,10 @@
         #grid(
           columns: (auto, 1fr),
           align: (start, center),
-
-          songti("申请人姓名："), info.author,
-          songti("指导教师："), info.supervisor,
-          songti("专业名称："), info.grade + info.major,
-          songti("研究方向："), info.field,
-          songti("所在学院："), info.department,
+          ..personal-detail-items
+            .filter(item => item in personal-detail-items-map and personal-detail-items-map.at(item).at(1) != none)
+            .map(item => personal-detail-items-map.at(item))
+            .flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
         #align(right)[
