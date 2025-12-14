@@ -17,7 +17,6 @@
 
 
   context {
-    set text(font: 字体.宋体)
     twoside-pagebreak
     counter(page).update(0)
     v(-40pt)

@@ -15,7 +15,8 @@
 
 #let doc = graduate-st(info: info, twoside: false, bibsource: read("ref.bib"), bibmode: "citext")
 
-// TODO: 页码、标题编号
+// TODO: 页码matter、标题编号，页眉带章节，outline
+// TODO: 询问格式和模板的出入
 #show: doc.style
 
 #doc.pages.cover
@@ -23,9 +24,11 @@
 #doc.pages.title-en
 #doc.pages.decl
 
-#show: frontmatter
 
 #let individual = doc.pages.individual
+
+#show: abstractmatter
+
 #individual("摘 要")[
   摘要摘要
 
@@ -38,11 +41,20 @@
 ]
 
 
+#show: frontmatter
 #doc.pages.outline
 #doc.pages.figure-outline
 #doc.pages.table-outline
 
 #show: mainmatter
+
+= 一级标题
+
+#lorem(1000)
+
+== 二级标题
+
+=== 三级标题
 
 
 #individual("致 谢")[

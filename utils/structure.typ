@@ -1,3 +1,9 @@
+#let abstractmatter(s) = {
+  set page(numbering: "i")
+  counter(page).update(1)
+  s
+}
+
 #let frontmatter(s) = {
   set page(numbering: "I")
   counter(page).update(1)

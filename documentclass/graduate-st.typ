@@ -13,14 +13,38 @@
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
 #import "../utils/bib-provider.typ": bib-provider
-#import "../utils/structure.typ": frontmatter, mainmatter
+#import "../utils/structure.typ": abstractmatter, frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
 #import "../utils/flex-caption.typ": show-flex-caption
 
 #import "../dependency/i-figured.typ"
 
 #let show-outline(s) = {
-  show outline.entry.where(level: 1): set text(weight: "bold")
+  show outline.entry.where(level: 1): it => {
+    let h = it.element
+    let toc-page = here().page()
+
+    // hide table of contents entry
+    if h.location().page() == toc-page {
+      return none
+    }
+
+    // hide caption for non-numbered headings
+    if h.numbering == none {
+      return it
+    }
+
+    let nums = counter(heading).at(h.location())
+    let chap = nums.first()
+
+    link(
+      h.location(),
+      it.indented(
+        [第 #chap 章],
+        it.inner(),
+      ),
+    )
+  }
   s
 }
 
@@ -130,12 +154,16 @@
     pages: (
       cover: graduate-cover(
         info: info,
-        size-settings: (
-          title: 字号.三号,
-          zh-content: 字号.小二,
-          en-content: 字号.小二,
+        title-settings: (
+          label-font: 字体.仿宋_GB2312,
+          label-size: 字号.三号,
+          zh-content-size: 字号.小二,
+          en-content-size: 字号.小二,
         ),
-        personal-detail-items: ("申请人姓名", "指导教师", "合作导师", "专业学位类别", "专业学位领域", "所在学院"),
+        personal-detail-settings: (
+          items: ("申请人姓名", "指导教师", "合作导师", "专业学位类别", "专业学位领域", "所在学院"),
+          label-font: 字体.仿宋_GB2312,
+        ),
       ),
       title-zh: graduate-title-zh(
         info: info,
@@ -144,9 +172,19 @@
       ),
       title-en: graduate-title-en(info: info, title-twoline: false, zju-emblem-scaling: 0.13),
       decl: graduate-decl(),
-      outline: show-outline(main-outline(outlined: true, titlelevel: 1)),
-      figure-outline: figure-outline(outlined: true, titlelevel: 1),
-      table-outline: table-outline(outlined: true, titlelevel: 1),
+      outline: {
+        set outline(indent: 1em)
+        set par(leading: 1em)
+        show-outline(main-outline(outlined: true, titlelevel: 1))
+      },
+      figure-outline: {
+        set par(leading: 1em)
+        figure-outline(outlined: true, titlelevel: 1)
+      },
+      table-outline: {
+        set par(leading: 1em)
+        table-outline(outlined: true, titlelevel: 1)
+      },
       individual: individual,
       bibliography: bibliography-page(bib: bibcontent, individual: individual),
     ),
