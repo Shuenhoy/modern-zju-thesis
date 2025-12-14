@@ -12,7 +12,7 @@
     * `main.typ`
     * `ref.bib`
 
-2. 安装所需字体：`FangSong` `Kaiti` `SimHei` `SimKai` `TimesNewRoman`。 亦可通过本仓库目录 `scripts/get-fonts.sh` 将该字体下载至 `fonts` 路径。若采用后者，则需要在 Typst 的命令中添加 `--font-path <path-to-fonts-dir>` 选项来指定字体目录。
+2. 安装所需字体：`FangSong` `Kaiti` `SimHei` `SimKai` `TimesNewRoman`。 亦可通过本仓库目录 `scripts/get-fonts.sh` 将该字体下载至 `fonts` 路径。若采用后者，则需要在 Typst 的命令中添加 `--font-path <path-to-fonts-dir>` 选项来指定字体目录；若还使用 VSCode 的 Tinymist 插件，可以在工作区 `.vscode/settings.json` 中添加配置 `"tinymist.fontPaths": ["${workspaceFolder}/fonts"]`。
 
 3. 在`main.typ`填入下列内容，亦可从本仓库目录 `examples` 下得到稍复杂的样例，和本科生模板样例。
 
