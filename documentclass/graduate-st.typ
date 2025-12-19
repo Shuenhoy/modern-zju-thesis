@@ -155,20 +155,22 @@
       cover: graduate-cover(
         info: info,
         title-settings: (
-          label-font: 字体.仿宋_GB2312,
+          label-font: 字体.宋体,
           label-size: 字号.三号,
           zh-content-size: 字号.小二,
           en-content-size: 字号.小二,
         ),
         personal-detail-settings: (
           items: ("申请人姓名", "指导教师", "合作导师", "专业学位类别", "专业学位领域", "所在学院"),
-          label-font: 字体.仿宋_GB2312,
+          label-font: 字体.宋体,
         ),
+        submit-date-font: 字体.宋体,
       ),
       title-zh: graduate-title-zh(
         info: info,
         title-settings: (font: 字体.仿宋_GB2312, twoline: false),
         zju-emblem-scaling: 0.13,
+        other-font: 字体.宋体,
       ),
       title-en: graduate-title-en(info: info, title-twoline: false, zju-emblem-scaling: 0.13),
       decl: graduate-decl(),

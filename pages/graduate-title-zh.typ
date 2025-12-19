@@ -10,6 +10,7 @@
   degree: "硕士",
   zju-emblem-scaling: 0.15,
   title-settings: (font: 字体.宋体, twoline: true),
+  other-font: 字体.仿宋,
 ) = {
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
@@ -65,6 +66,7 @@
     [#image("../assets/zju-emblem.svg", width: page.width * zju-emblem-scaling)<mzt:no-header-footer>]
     v(1em)
 
+    set text(font: other-font)
     block(
       width: 60%,
       [
