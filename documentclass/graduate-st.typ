@@ -177,15 +177,18 @@
       outline: {
         set outline(indent: 1em)
         set par(leading: 1em)
-        show-outline(main-outline(outlined: true, titlelevel: 1))
+        show-outline(main-outline(outlined: true, titlelevel: 1, titletext-settings: (
+          font: 字体.仿宋_GB2312,
+          size: 字号.小二,
+        )))
       },
       figure-outline: {
         set par(leading: 1em)
-        figure-outline(outlined: true, titlelevel: 1)
+        figure-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋_GB2312, size: 字号.小二))
       },
       table-outline: {
         set par(leading: 1em)
-        table-outline(outlined: true, titlelevel: 1)
+        table-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋_GB2312, size: 字号.小二))
       },
       individual: individual,
       bibliography: bibliography-page(bib: bibcontent, individual: individual),
