@@ -105,10 +105,12 @@
       left: [浙江大学#(degree)学位论文],
       right: context {
         let chapter-heading = near-chapter()
-        if chapter-heading.numbering != none {
-          [第 #counter(heading).at(chapter-heading.location()).first() 章 #chapter-heading.body]
-        } else {
-          chapter-heading.body
+        if chapter-heading != none {
+          if chapter-heading.numbering != none {
+            [第 #counter(heading).at(chapter-heading.location()).first() 章 #chapter-heading.body]
+          } else {
+            chapter-heading.body
+          }
         }
       },
     ),
@@ -142,6 +144,7 @@
   }
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
+  show heading.where(level: 4): set text(size: 字号.小四)
   show heading: set block(above: 1.2em, below: 1.2em)
 
   // Reference
