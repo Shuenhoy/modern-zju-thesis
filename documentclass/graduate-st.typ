@@ -125,9 +125,6 @@
   set underline(offset: 0.2em)
 
   // Headings
-  // 图 1.1, 2.1 for each subsection
-  show heading: i-figured.reset-counters
-  set heading(numbering: "1.1")
   show heading.where(level: 1): it => {
     let chap-num = context {
       counter(heading).display("1")
@@ -136,12 +133,15 @@
     align(
       center,
     )[
-      #block(above: 1.5em, below: 1.5em)[
+      #block(below: 1.5em)[
         #text(size: 字号.小二, weight: "bold")[
           第 #chap-num 章 #it.body
         ]]
     ]
   }
+  set heading(numbering: "1.1")
+  // 图 1.1, 2.1 for each subsection
+  show heading: i-figured.reset-counters
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.小四)
