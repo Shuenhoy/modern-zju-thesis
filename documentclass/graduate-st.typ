@@ -122,7 +122,7 @@
 
   // Paragraph and text
   set par(leading: 20pt, first-line-indent: (amount: 2em, all: true), justify: true)
-  set text(font: 字体.仿宋_GB2312, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
+  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   show: show-cn-fakebold
   set underline(offset: 0.2em)
 
@@ -167,12 +167,12 @@
     outlined: true,
     titlelevel: 1,
     bodytext-settings: (size: 字号.小四),
-    titletext-settings: (size: 字号.小二, font: 字体.仿宋_GB2312),
+    titletext-settings: (size: 字号.小二, font: 字体.仿宋),
   )
   let bib = bib-provider(bibsource, mode: bibmode)
   let bibcontent = [
     #set par(leading: 0.55em)
-    #set text(size: 字号.小四, font: 字体.仿宋_GB2312)
+    #set text(size: 字号.小四, font: 字体.仿宋)
     #bib.bibcontent
   ]
   (
@@ -193,7 +193,7 @@
       ),
       title-zh: graduate-title-zh(
         info: info,
-        title-settings: (font: 字体.仿宋_GB2312, twoline: false),
+        title-settings: (font: 字体.仿宋, twoline: false),
         zju-emblem-scaling: 0.13,
         other-font: 字体.宋体,
       ),
@@ -203,17 +203,17 @@
         set outline(indent: 1em)
         set par(leading: 1em)
         show-outline(main-outline(outlined: true, titlelevel: 1, titletext-settings: (
-          font: 字体.仿宋_GB2312,
+          font: 字体.仿宋,
           size: 字号.小二,
         )))
       },
       figure-outline: {
         set par(leading: 1em)
-        figure-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋_GB2312, size: 字号.小二))
+        figure-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋, size: 字号.小二))
       },
       table-outline: {
         set par(leading: 1em)
-        table-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋_GB2312, size: 字号.小二))
+        table-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋, size: 字号.小二))
       },
       individual: individual,
       bibliography: bibliography-page(bib: bibcontent, individual: individual),

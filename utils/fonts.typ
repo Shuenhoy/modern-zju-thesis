@@ -49,14 +49,6 @@
     ),
     "FangSong",
   ),
-  // 仿宋_GB2312
-  仿宋_GB2312: (
-    (
-      name: "Times New Roman",
-      covers: "latin-in-cjk",
-    ),
-    "FangSong_GB2312",
-  ),
   等宽: (
     "Courier New",
     "Menlo",
