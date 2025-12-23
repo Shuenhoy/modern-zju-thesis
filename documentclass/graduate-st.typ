@@ -12,13 +12,30 @@
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
-#import "../utils/bib-provider.typ": bib-provider
-#import "../utils/structure.typ": abstractmatter, frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
+#import "../utils/bib-provider.typ": bib-provider
 #import "../utils/flex-caption.typ": show-flex-caption
 
 #import "../dependency/i-figured.typ"
 
+#let abstractmatter(s) = {
+  set page(numbering: "i")
+  set par(spacing: 20pt)
+  counter(page).update(1)
+  s
+}
+
+#let frontmatter(s) = {
+  set page(numbering: "I")
+  counter(page).update(1)
+  s
+}
+
+#let mainmatter(s) = {
+  set page(numbering: "1")
+  counter(page).update(1)
+  s
+}
 #let show-outline(s) = {
   show outline.entry.where(level: 1): it => {
     let h = it.element
@@ -89,7 +106,14 @@
     footer-descent: 0.8cm,
     header: header(
       left: [浙江大学#(degree)学位论文],
-      right: near-chapter,
+      right: context {
+        let (number, title) = near-chapter(with-numbering: true)
+        if number >= 1 {
+          [第 #number 章 #title]
+        } else {
+          [#title]
+        }
+      },
       size: 10.5pt,
     ),
     footer: twoside-numbering-footer,
@@ -149,6 +173,7 @@
   let bibcontent = [
     #set par(leading: 0.55em)
     #set text(size: 字号.小四, font: 字体.仿宋_GB2312)
+    #bib.bibcontent
   ]
   (
     pages: (

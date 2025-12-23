@@ -70,7 +70,7 @@
     footer-descent: 35pt,
     header: header(
       left: [浙江大学#(degree)学位论文],
-      right: near-chapter,
+      right: context near-chapter(),
     ),
     footer: twoside-numbering-footer,
   )
