@@ -37,15 +37,11 @@
   counter(page).update(1)
   s
 }
+
 #let show-outline(s) = {
   show outline.entry.where(level: 1): it => {
     let h = it.element
     let toc-page = here().page()
-
-    // hide table of contents entry
-    if h.location().page() == toc-page {
-      return none
-    }
 
     // hide caption for non-numbered headings
     if h.numbering == none {
@@ -173,7 +169,7 @@
   )
   let bib = bib-provider(bibsource, mode: bibmode)
   let bibcontent = [
-    #set par(leading: 0.55em)
+    #set par(leading: 10pt)
     #set text(size: 字号.小四, font: 字体.仿宋)
     #bib.bibcontent
   ]
@@ -204,9 +200,8 @@
       decl: graduate-decl(),
       outline: {
         set outline(indent: 1em)
-        set par(leading: 1em)
         show-outline(main-outline(
-          outlined: true,
+          outlined: false,
           titlelevel: 1,
           titletext-settings: (
             font: 字体.仿宋,
@@ -215,24 +210,18 @@
           bodytext-settings: (size: 字号.小四),
         ))
       },
-      figure-outline: {
-        set par(leading: 1em)
-        figure-outline(
-          outlined: true,
-          titlelevel: 1,
-          bodytext-settings: (size: 字号.小四),
-          titletext-settings: (font: 字体.仿宋, size: 字号.小二),
-        )
-      },
-      table-outline: {
-        set par(leading: 1em)
-        table-outline(
-          outlined: true,
-          titlelevel: 1,
-          titletext-settings: (font: 字体.仿宋, size: 字号.小二),
-          bodytext-settings: (size: 字号.小四),
-        )
-      },
+      figure-outline: figure-outline(
+        outlined: true,
+        titlelevel: 1,
+        bodytext-settings: (size: 字号.小四),
+        titletext-settings: (font: 字体.仿宋, size: 字号.小二),
+      ),
+      table-outline: table-outline(
+        outlined: true,
+        titlelevel: 1,
+        titletext-settings: (font: 字体.仿宋, size: 字号.小二),
+        bodytext-settings: (size: 字号.小四),
+      ),
       individual: individual,
       bibliography: bibliography-page(bib: bibcontent, individual: individual),
     ),
