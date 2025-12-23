@@ -20,7 +20,7 @@
 
 #let abstractmatter(s) = {
   set page(numbering: "i")
-  set par(spacing: 20pt)
+  set par(spacing: 11pt)
   counter(page).update(1)
   s
 }
@@ -33,6 +33,7 @@
 
 #let mainmatter(s) = {
   set page(numbering: "1")
+  set par(spacing: 11pt)
   counter(page).update(1)
   s
 }
@@ -114,14 +115,13 @@
           [#title]
         }
       },
-      size: 10.5pt,
     ),
     footer: twoside-numbering-footer,
   )
 
 
   // Paragraph and text
-  set par(leading: 20pt, first-line-indent: (amount: 2em, all: true), justify: true)
+  set par(leading: 11pt, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   show: show-cn-fakebold
   set underline(offset: 0.2em)
@@ -137,14 +137,16 @@
     twoside-pagebreak
     align(
       center,
-      text(size: 字号.小二, weight: "bold")[
-        第 #chap-num 章 #it.body
-      ],
-    )
+    )[
+      #block(above: 1.5em, below: 1.5em)[
+        #text(size: 字号.小二, weight: "bold")[
+          第 #chap-num 章 #it.body
+        ]]
+    ]
   }
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
-  show heading: set block(above: 1.5em, below: 1.5em)
+  show heading: set block(above: 1.2em, below: 1.2em)
 
   // Reference
   show: show-set-supplement
@@ -190,6 +192,7 @@
           label-font: 字体.宋体,
         ),
         submit-date-font: 字体.宋体,
+        zju-emblem-scaling: 0.13,
       ),
       title-zh: graduate-title-zh(
         info: info,
@@ -202,18 +205,33 @@
       outline: {
         set outline(indent: 1em)
         set par(leading: 1em)
-        show-outline(main-outline(outlined: true, titlelevel: 1, titletext-settings: (
-          font: 字体.仿宋,
-          size: 字号.小二,
-        )))
+        show-outline(main-outline(
+          outlined: true,
+          titlelevel: 1,
+          titletext-settings: (
+            font: 字体.仿宋,
+            size: 字号.小二,
+          ),
+          bodytext-settings: (size: 字号.小四),
+        ))
       },
       figure-outline: {
         set par(leading: 1em)
-        figure-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋, size: 字号.小二))
+        figure-outline(
+          outlined: true,
+          titlelevel: 1,
+          bodytext-settings: (size: 字号.小四),
+          titletext-settings: (font: 字体.仿宋, size: 字号.小二),
+        )
       },
       table-outline: {
         set par(leading: 1em)
-        table-outline(outlined: true, titlelevel: 1, titletext-settings: (font: 字体.仿宋, size: 字号.小二))
+        table-outline(
+          outlined: true,
+          titlelevel: 1,
+          titletext-settings: (font: 字体.仿宋, size: 字号.小二),
+          bodytext-settings: (size: 字号.小四),
+        )
       },
       individual: individual,
       bibliography: bibliography-page(bib: bibcontent, individual: individual),

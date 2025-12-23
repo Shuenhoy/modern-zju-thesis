@@ -6,6 +6,7 @@
   title: "目录",
   titlelevel: 2,
   outlined: false,
+  bodytext-settings: (size: 字号.四号, font: 字体.仿宋),
   titletext-settings: (
     size: 字号.小三,
     font: 字体.仿宋,
@@ -15,6 +16,7 @@
   template-individual(
     outlined: outlined,
     titlelevel: titlelevel,
+    bodytext-settings: bodytext-settings,
     titletext-settings: titletext-settings,
     title,
     outline(depth: 3, title: none, ..args),
@@ -25,6 +27,7 @@
   title: "图目录",
   titlelevel: 2,
   outlined: false,
+  bodytext-settings: (size: 字号.四号, font: 字体.仿宋),
   titletext-settings: (
     size: 字号.小三,
     font: 字体.仿宋,
@@ -34,6 +37,7 @@
   template-individual(
     outlined: outlined,
     titlelevel: titlelevel,
+    bodytext-settings: bodytext-settings,
     titletext-settings: titletext-settings,
     title,
     i-figured.outline(depth: 3, title: none, target-kind: image, ..args),
@@ -44,6 +48,7 @@
   title: "表目录",
   titlelevel: 2,
   outlined: false,
+  bodytext-settings: (size: 字号.四号, font: 字体.仿宋),
   titletext-settings: (
     size: 字号.小三,
     font: 字体.仿宋,
@@ -53,6 +58,7 @@
   template-individual(
     outlined: outlined,
     titlelevel: titlelevel,
+    bodytext-settings: bodytext-settings,
     titletext-settings: titletext-settings,
     title,
     i-figured.outline(depth: 3, title: none, target-kind: table, ..args),

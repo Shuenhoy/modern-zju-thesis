@@ -1,3 +1,4 @@
 *.pdf
 /fonts
 .vscode/
+.DS_Store

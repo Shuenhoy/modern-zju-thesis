@@ -2,8 +2,8 @@
 #import graduate-st: *
 
 #let info = (
-  title: ("小二号仿宋字体", "加粗"),
-  title-en: ("小二号 Times New Roman", "加粗"),
+  title: ("中文论文题目", "加粗"),
+  title-en: ("English Paper Title", "Bold"),
   author: "申请人姓名",
   supervisor: "指导教师姓名",
   co-supervisor: "合作导师姓名",
@@ -34,7 +34,7 @@
   *关键词：*关键词，关键词
 ]
 #individual("Abstract")[
-  #lorem(100)
+  #lorem(10)
 
   *Keywords:* Keywords, Keywords
 ]
