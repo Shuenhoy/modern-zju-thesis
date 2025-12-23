@@ -104,11 +104,11 @@
     header: header(
       left: [浙江大学#(degree)学位论文],
       right: context {
-        let (number, title) = near-chapter(with-numbering: true)
-        if number >= 1 {
-          [第 #number 章 #title]
+        let chapter-heading = near-chapter()
+        if chapter-heading.numbering != none {
+          [第 #counter(heading).at(chapter-heading.location()).first() 章 #chapter-heading.body]
         } else {
-          [#title]
+          chapter-heading.body
         }
       },
     ),

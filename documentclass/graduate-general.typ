@@ -70,7 +70,12 @@
     footer-descent: 35pt,
     header: header(
       left: [浙江大学#(degree)学位论文],
-      right: context near-chapter(),
+      right: context {
+        let chapter-heading = near-chapter()
+        if chapter-heading != none and chapter-heading.body != none {
+          chapter-heading.body
+        }
+      },
     ),
     footer: twoside-numbering-footer,
   )
