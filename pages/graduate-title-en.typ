@@ -54,7 +54,7 @@
             columns: 1fr,
             align: (center),
             stroke: (bottom: stroke-width),
-            info.title-en.join(""),
+            info.title-en.join(" "),
             grid.cell(stroke: none)[], grid.cell(stroke: none)[],
           )
         }
