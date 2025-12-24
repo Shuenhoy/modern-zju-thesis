@@ -1,5 +1,5 @@
 
-#let bib-provider(bibsource, mode: "", options: (:)) = {
+#let bib-provider(bibsource, mode: "", title-case: false, options: (:)) = {
   let typstbib = bibliography(bytes(bibsource), style: "gb-7714-2015-numeric", title: none)
   let hiddenbib = [
     #show bibliography: none // to provide hint in the editor
@@ -16,7 +16,7 @@
     )
   } else if (mode == "citext") {
     import "./citext/lib.typ": *
-    let bib = init-citation(bibsource)
+    let bib = init-citation(bibsource, title-case: title-case)
 
     (
       bibcontent: extbib(bib, ..options),
