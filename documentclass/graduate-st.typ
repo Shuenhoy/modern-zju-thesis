@@ -121,6 +121,7 @@
   // Paragraph and text
   set par(leading: 11pt, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
+  set text(costs: (widow: 0%, orphan: 0%))
   show: show-cn-fakebold
   set underline(offset: 0.2em)
 
@@ -145,7 +146,7 @@
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.小四)
-  show heading: set block(above: 1.2em, below: 1.2em)
+  show heading: set block(above: 1.2em, below: 1.2em, sticky: false)
 
   // Reference
   show: show-set-supplement
