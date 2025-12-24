@@ -99,8 +99,8 @@
   // Header and footer
   set page(
     numbering: "1",
-    header-ascent: 0.8cm,
-    footer-descent: 0.8cm,
+    header-ascent: 0.4cm,
+    footer-descent: 0.4cm,
     header: header(
       left: [浙江大学#(degree)学位论文],
       right: context {
@@ -119,7 +119,7 @@
 
 
   // Paragraph and text
-  set par(leading: 11pt, first-line-indent: (amount: 2em, all: true), justify: true)
+  set par(leading: 13pt, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   set text(costs: (widow: 0%, orphan: 0%))
   show: show-cn-fakebold
