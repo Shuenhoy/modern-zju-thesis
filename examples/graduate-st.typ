@@ -1,4 +1,4 @@
-#import "../lib.typ": flex-caption, graduate-st
+#import "../lib.typ": graduate-st
 #import graduate-st: *
 
 #let info = (
