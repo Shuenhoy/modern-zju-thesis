@@ -91,7 +91,8 @@
     paper: "a4",
     margin: (
       x: 3.2cm,
-      y: 3.8cm,
+      top: 3.8cm + 1em,
+      bottom: 3.8cm,
     ),
   )
   show: show-twoside-pagebreak.with(twoside: twoside)
@@ -99,7 +100,7 @@
   // Header and footer
   set page(
     numbering: "1",
-    header-ascent: 0.4cm,
+    header-ascent: 0.4cm + 1em,
     footer-descent: 0.4cm,
     header: header(
       left: [浙江大学#(degree)学位论文],
