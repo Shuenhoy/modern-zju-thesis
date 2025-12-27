@@ -8,6 +8,9 @@
   stroke-width: 0.5pt,
   row-gutter: 11.5pt,
   degree: "硕士",
+  zju-emblem-scaling: 0.15,
+  title-settings: (font: 字体.宋体, twoline: true),
+  other-font: 字体.仿宋,
 ) = {
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
@@ -30,30 +33,40 @@
       ),
     )
 
-
     set align(center)
 
-
     v(20pt)
+
     block(
       width: 80%,
       [
-        #set text(size: 字号.小二, weight: "bold")
-        #grid(
-          columns: 1fr,
-          align: (center),
-          stroke: (bottom: stroke-width),
-          info.title.first(),
-          ..info.title.slice(1),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-        )
+        #set text(size: 字号.小二, font: title-settings.font, weight: "bold")
+        #if title-settings.twoline {
+          grid(
+            columns: 1fr,
+            align: (center),
+            stroke: (bottom: stroke-width),
+            info.title.first(),
+            ..info.title.slice(1),
+            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          )
+        } else {
+          grid(
+            columns: 1fr,
+            align: (center),
+            stroke: (bottom: stroke-width),
+            info.title.join(""),
+            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          )
+        }
       ],
     )
     v(-50pt)
 
-    [#image("../assets/zju-emblem.svg", width: page.width * 0.15)<mzt:no-header-footer>]
+    [#image("../assets/zju-emblem.svg", width: page.width * zju-emblem-scaling)<mzt:no-header-footer>]
+    v(1em)
 
-
+    set text(font: other-font)
     block(
       width: 60%,
       [
@@ -87,7 +100,7 @@
           ..info.committe.enumerate(start: 0).slice(1).map(v => ([委员#(v.at(0))：], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
-        #align(right)[
+        #align(center)[
           #grid(
             columns: (auto, 10em),
             align: (start, center),

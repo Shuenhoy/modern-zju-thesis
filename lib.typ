@@ -1,5 +1,6 @@
 #import "documentclass/undergraduate-cs.typ"
 #import "documentclass/graduate-general.typ"
+#import "documentclass/graduate-st.typ"
 
 #import "utils/fonts.typ"
 #import "utils/part.typ"

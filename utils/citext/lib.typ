@@ -6,6 +6,7 @@
 
 
 #let gb-t-7714-2015-numeric-bilingual = read("gb-t-7714-2015-numeric-bilingual.csl")
+#let gb-t-7714-2015-numeric-bilingual-title-case = read("gb-t-7714-2015-numeric-bilingual-title-case.csl")
 #let locales-zh-CN = read("locales-zh-CN.xml")
 
 #let simple-split(bs) = {
@@ -14,11 +15,22 @@
   // make a dict with key as key and value as x
 }
 
-#let init-citation(bib, csl: gb-t-7714-2015-numeric-bilingual, locales: locales-zh-CN, mode: "lazy") = {
+#let init-citation(bib, csl: gb-t-7714-2015-numeric-bilingual, locales: locales-zh-CN, mode: "lazy", title-case: false) = {
   let ctx = ctxjs.new-context(
     load: (
       ctxjs.load.load-module-bytecode(cite-src),
-      ctxjs.load.call-module-function("citext", "initConfig", (gb-t-7714-2015-numeric-bilingual, locales-zh-CN)),
+      ctxjs.load.call-module-function(
+        "citext",
+        "initConfig",
+        (
+          if title-case {
+            gb-t-7714-2015-numeric-bilingual-title-case
+          } else {
+            gb-t-7714-2015-numeric-bilingual
+          },
+          locales-zh-CN
+        )
+      ),
     ),
   )
 

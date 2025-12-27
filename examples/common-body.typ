@@ -11,8 +11,8 @@
   image("../assets/zju-emblem.svg", width: 40%),
   caption: [浙江大学 LOGO],
 ) <zju-logo>
-如@tbl:sample 所示，这是一张自动调节列宽的表格。
 
+如@tbl:sample 所示，这是一张自动调节列宽的表格。
 
 #figure(
   table(
@@ -32,6 +32,7 @@
 $
   A = overbrace((a + b + c) + underbrace(i(d + e + f), "虚数"), "复数")
 $<eq:sample>
+
 
 如@lst:code-sample 所示，这是一段代码 @zjuthesis，@floater2005surface，@WANG2022102149，@chCurl。这是连续引用测试 #mulcite(<zjuthesis>, <floater2005surface>, <WANG2022102149>, <chCurl>)。
 
