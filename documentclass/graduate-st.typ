@@ -33,7 +33,6 @@
 
 #let mainmatter(s) = {
   set page(numbering: "1")
-  set par(spacing: 11pt)
   counter(page).update(1)
   s
 }
