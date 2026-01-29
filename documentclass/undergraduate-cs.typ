@@ -10,7 +10,7 @@
 #import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
 
 #import "../utils/fonts.typ": *
-#import "../utils/part.typ": part, part-and-headings, part-bib, show-outline-with-part, show-part
+#import "../utils/part.typ": part, part-and-headings, show-outline-with-part, show-part
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/header.typ": footer, header
 #import "../utils/fakebold.typ": show-cn-fakebold
@@ -24,7 +24,7 @@
 #import "../dependency/i-figured.typ"
 
 
-#let undergraduate-cs-set-style(doc, twoside: true, bibmode: "part") = {
+#let undergraduate-cs-set-style(doc, twoside: true, bibmode: "citext") = {
   // Page geometry
   set page(
     paper: "a4",
@@ -91,7 +91,7 @@
   show figure.where(kind: table): set figure.caption(position: top)
 
   // Part
-  show: show-part.with(enable-ref: bibmode == "partbib")
+  show: show-part
   show: show-outline-with-part
 
   show: show-flex-caption
@@ -118,7 +118,7 @@
   bibsource: "",
   bibmode: "citext",
 ) = {
-  assert(bibmode == "citext" or bibmode == "partbib")
+  assert(bibmode == "citext")
 
   let info = undergraduate-cs-default-info + info
   let bib = bib-provider(bibsource, mode: bibmode, options: (row-gutter: 0.5em))
