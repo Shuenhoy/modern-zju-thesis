@@ -6,7 +6,7 @@
 
   show ref: it => {
     let el = it.element
-    if el == none or el.func() != heading {
+    if el == none or el.func() != heading or el.supplement == [附录] {
       return it
     }
     let heading-levels = counter(heading).at(el.location())
