@@ -6,14 +6,7 @@
     #typstbib
   ]
   if mode == "bilingual" {
-    import "./bilingual-bibliography.typ": show-bilingual-bibliography
-
-    (
-      bibcontent: typstbib,
-      bibshow: show-bilingual-bibliography,
-      hiddenbib: none,
-      new-bib: () => (),
-    )
+    assert(false, "The 'bilingual' mode is deprecated. Please use the 'citext' mode instead.")
   } else if (mode == "citext") {
     import "./citext/lib.typ": *
     let bib = init-citation(bibsource)
@@ -25,12 +18,6 @@
       new-bib: new-citext-session,
     )
   } else if (mode == "partbib") {
-    import "./part.typ": *
-    (
-      bibcontent: part-bib,
-      bibshow: x => x,
-      hiddenbib: hiddenbib,
-      new-bib: () => part-refs.update(()),
-    )
+    assert(false, "The 'partbib' mode is deprecated. Please use the 'citext' mode instead.")
   }
 }
