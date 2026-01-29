@@ -171,7 +171,8 @@
     bodytext-settings: (size: 字号.小四),
     titletext-settings: (size: 字号.小二, font: 字体.仿宋),
   )
-  let bib = bib-provider(bibsource, mode: bibmode, title-case: true)
+  let csl = read("../assets/gb-t-7714-2015-numeric-bilingual-title-case.csl")
+  let bib = bib-provider(bibsource, mode: bibmode, csl: csl)
   let bibcontent = [
     #set par(leading: 10pt)
     #set text(size: 字号.小四, font: 字体.仿宋)

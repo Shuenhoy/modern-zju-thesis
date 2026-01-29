@@ -47,7 +47,7 @@
 
 #show: mainmatter
 
-#include "common-body.typ"
+#include "./common/body.typ"
 
 #doc.pages.bibliography
 
