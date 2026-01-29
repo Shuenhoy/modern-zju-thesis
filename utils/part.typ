@@ -10,40 +10,8 @@
   caption: [],
 )
 
-#let part-refs = state("part-refs", ())
 
-#let show-part-ref(s) = {
-  show ref: it => {
-    if it.element != none {
-      // Citing a document element like a figure, not a bib key
-      // So don't update refs
-      it
-      return
-    }
-    part-refs.update(old => {
-      if it.target not in old {
-        old.push(it.target)
-      }
-      old
-    })
-
-    //I think the following is how the reference index should be obtained correctly.
-
-    let get_ref_id(loc) = {
-      //str(part-refs.at(loc).len())
-      str(part-refs.at(loc).position(x => (x == it.target)) + 1)
-    }
-
-
-    context {
-      "[" + get_ref_id(here()) + "]"
-    }
-  }
-  s
-}
-
-#let show-part(s, enable-ref: true) = {
-  show: x => if enable-ref { show-part-ref(x) } else { x }
+#let show-part(s) = {
 
   // emulate element function by creating show rule
   show figure.where(kind: "part"): it => {
