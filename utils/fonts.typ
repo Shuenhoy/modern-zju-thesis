@@ -18,6 +18,15 @@
   小七: 5pt,
 )
 
+#let fakebold-fonts = (
+  "simsun",
+  "simhei",
+  "kaiti",
+  "fangsong",
+  "zhuque fangsong (technical preview)",
+  "ar pl ukai",
+)
+
 #let fonts-canonical = (
   宋体: (
     (
@@ -48,15 +57,7 @@
     "FangSong",
   ),
   等宽: (
-    "Courier New",
-    "Menlo",
-    "IBM Plex Mono",
-    "Source Han Sans HW SC",
-    "Source Han Sans HW",
     "Noto Sans Mono CJK SC",
-    "SimHei",
-    "Heiti SC",
-    "STHeiti",
   ),
 )
 

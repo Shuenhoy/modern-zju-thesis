@@ -1,20 +1,53 @@
 // Orignal source: https://github.com/csimide/cuti
 #import "./fonts.typ"
 
-#let fakebold(base-weight: none, s, ..params) = {
-  set text(weight: base-weight) if base-weight != none
+#let debug-fakebold = sys.inputs.at("mzt-debug-fakebold", default: "false") == "true"
+
+#let fakebold(stroke: auto, base-weight: none, s, ..params) = {
+  let t-weight = if base-weight == auto { weight } else { base-weight }
+  assert(
+    t-weight in (auto, none) or type(t-weight) in (str, int),
+    message: "`base-weight`/`weight` should be `auto`, `none`, `int` or `str` type.",
+  )
+  assert(
+    stroke == auto or type(stroke) in (std.stroke, length),
+    message: "`stroke` shoule be `auto`, `length` or `stroke` type.",
+  )
+
+  set text(weight: t-weight) if type(t-weight) in (str, int)
+  set text(weight: "regular") if t-weight == none
   set text(..params) if params != ()
+
   context {
-    set text(stroke: 0.02857 * 4 / 3 * text.size + text.fill)
-    s
+    let t-stroke = if stroke == auto {
+      0.02857em * 4 / 3 + text.fill
+    } else if type(stroke) == length {
+      stroke + text.fill
+    } else {
+      stroke
+    }
+
+    if debug-fakebold {
+      set text(stroke: t-stroke + color.red)
+      s
+    } else {
+      set text(stroke: t-stroke)
+      s
+    }
   }
 }
 
 #let regex-fakebold(reg-exp: ".", base-weight: none, s, ..params) = {
-  show regex(reg-exp): it => {
-    fakebold(base-weight: base-weight, it, ..params)
+  context {
+    if text.font.last() in fonts.fakebold-fonts {
+      show regex(reg-exp): it => {
+        fakebold(base-weight: base-weight, it, ..params)
+      }
+      s
+    } else {
+      s
+    }
   }
-  s
 }
 
 #let regex-emph(reg-exp: ".", base-weight: none, s, ..params) = {
