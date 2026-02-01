@@ -98,7 +98,7 @@
 )
 
 
-#let 字体 = if experimental-modern-fonts == "true" {
+#let 字体 = if experimental-modern-fonts {
   fonts-modern
 } else {
   fonts-canonical
