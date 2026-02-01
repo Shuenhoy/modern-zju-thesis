@@ -199,7 +199,7 @@
         info: info,
         zju-emblem-scaling: 0.13,
       ),
-      title-en: graduate-title-en(info: info, title-twoline: false, zju-emblem-scaling: 0.13),
+      title-en: graduate-title-en(info: info, zju-emblem-scaling: 0.13),
       decl: graduate-decl(),
       outline: {
         set outline(indent: 1em)
