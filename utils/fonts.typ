@@ -1,3 +1,5 @@
+#import "./global-options.typ": experimental-modern-fonts
+
 #let 字号 = (
   初号: 42pt,
   小初: 36pt,
@@ -95,7 +97,6 @@
   ),
 )
 
-#let experimental-modern-fonts = sys.inputs.at("mzt-experimental-modern-fonts", default: "false")
 
 #let 字体 = if experimental-modern-fonts == "true" {
   fonts-modern

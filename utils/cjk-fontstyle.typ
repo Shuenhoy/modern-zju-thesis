@@ -1,7 +1,6 @@
 // Orignal source: https://github.com/csimide/cuti
 #import "./fonts.typ"
-
-#let debug-fakebold = sys.inputs.at("mzt-debug-fakebold", default: "false") == "true"
+#import "./global-options.typ": debug-fakebold
 
 #let fakebold(stroke: auto, base-weight: none, s, ..params) = {
   let t-weight = if base-weight == auto { weight } else { base-weight }
@@ -28,7 +27,7 @@
     }
 
     if debug-fakebold {
-      set text(stroke: t-stroke + color.red)
+      set text(stroke: 0.02857em * 4 / 3 + color.red)
       s
     } else {
       set text(stroke: t-stroke)
