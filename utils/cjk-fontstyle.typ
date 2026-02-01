@@ -1,6 +1,6 @@
 // Orignal source: https://github.com/csimide/cuti
 #import "./fonts.typ"
-#import "./global-options.typ": debug-fakebold
+#import "./global-options.typ": debug-fakebold, experimental-finetune-cjk-baseline
 
 #let fakebold(stroke: auto, base-weight: none, s, ..params) = {
   let t-weight = if base-weight == auto { weight } else { base-weight }
@@ -64,7 +64,16 @@
   show text.where(style: "italic").or(emph): it => {
     regex-emph(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
   }
-  s
+
+  if experimental-finetune-cjk-baseline {
+    show regex(reg-exp): it => {
+      set text(baseline: 0.07em)
+      it
+    }
+    s
+  } else {
+    s
+  }
 }
 
 #let cn-fontstyle(s, ..params) = {
