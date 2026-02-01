@@ -13,7 +13,7 @@
 #import "../utils/part.typ": part, part-and-headings, show-outline-with-part, show-part
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/header.typ": footer, header
-#import "../utils/fakebold.typ": show-cn-fakebold
+#import "../utils/cjk-fontstyle.typ": show-cn-fontstyle
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/structure.typ": frontmatter, mainmatter
@@ -58,7 +58,7 @@
   // Paragraph and text
   set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
-  show: show-cn-fakebold
+  show: show-cn-fontstyle
   set underline(offset: 0.2em)
 
 

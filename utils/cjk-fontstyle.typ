@@ -1,4 +1,5 @@
 // Orignal source: https://github.com/csimide/cuti
+#import "./fonts.typ"
 
 #let fakebold(base-weight: none, s, ..params) = {
   set text(weight: base-weight) if base-weight != none
@@ -16,17 +17,28 @@
   s
 }
 
-#let show-fakebold(reg-exp: ".", base-weight: none, s, ..params) = {
-  show text.where(weight: "bold").or(strong): it => {
-    regex-fakebold(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
+#let regex-emph(reg-exp: ".", base-weight: none, s, ..params) = {
+  show regex(reg-exp): it => {
+    set text(font: fonts.字体.楷体)
+    it
   }
   s
 }
 
-#let cn-fakebold(s, ..params) = {
+#let show-cjk-fontstyle(reg-exp: ".", base-weight: none, s, ..params) = {
+  show text.where(weight: "bold").or(strong): it => {
+    regex-fakebold(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
+  }
+  show text.where(style: "italic").or(emph): it => {
+    regex-emph(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
+  }
+  s
+}
+
+#let cn-fontstyle(s, ..params) = {
   regex-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]+", base-weight: "regular", s, ..params)
 }
 
-#let show-cn-fakebold(s, ..params) = {
-  show-fakebold(reg-exp: "[\p{script=Han}！-･〇-〰—]+", base-weight: "regular", s, ..params)
+#let show-cn-fontstyle(s, ..params) = {
+  show-cjk-fontstyle(reg-exp: "[\p{script=Han}！-･〇-〰—]+", base-weight: "regular", s, ..params)
 }
