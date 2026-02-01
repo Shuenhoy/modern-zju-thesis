@@ -197,9 +197,7 @@
       ),
       title-zh: graduate-title-zh(
         info: info,
-        title-settings: (font: 字体.仿宋, twoline: false),
         zju-emblem-scaling: 0.13,
-        other-font: 字体.宋体,
       ),
       title-en: graduate-title-en(info: info, title-twoline: false, zju-emblem-scaling: 0.13),
       decl: graduate-decl(),

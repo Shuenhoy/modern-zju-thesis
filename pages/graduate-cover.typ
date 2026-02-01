@@ -6,18 +6,18 @@
   info: (:),
   personal-detail-settings: (
     items: ("申请人姓名", "指导教师", "专业名称", "研究方向", "所在学院"),
-    label-font: 字体.仿宋,
+    label-font: 字体.宋体,
   ),
   stoke-width: 0.5pt,
   row-gutter: 11.5pt,
   zju-emblem-scaling: 0.15,
   title-settings: (
-    label-font: 字体.仿宋,
+    label-font: 字体.宋体,
     label-size: 字号.小二,
     zh-content-size: 字号.小二,
     en-content-size: 16pt,
   ),
-  submit-date-font: 字体.仿宋,
+  submit-date-font: 字体.宋体,
 ) = {
   if type(info.submit-date) == datetime {
     info.submit-date = datetime-display(info.submit-date)
@@ -133,12 +133,12 @@
             .flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
-        #align(right)[
-          #set text(size: 字号.小三, weight: "bold")
+        #align(center)[
+          #set text(size: 字号.小三)
           #grid(
             columns: (auto, 10.5em),
             align: (start, center),
-            text("论文提交日期", font: submit-date-font), text(info.submit-date, font: submit-date-font),
+            text("论文提交日期 ", font: submit-date-font, weight: "bold"), info.submit-date,
           )
         ]
       ],
