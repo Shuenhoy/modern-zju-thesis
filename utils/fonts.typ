@@ -18,7 +18,7 @@
   小七: 5pt,
 )
 
-#let 字体 = (
+#let fonts-canonical = (
   宋体: (
     (
       name: "Times New Roman",
@@ -33,7 +33,6 @@
     ),
     "SimHei",
   ),
-  // 楷体
   楷体: (
     (
       name: "Times New Roman",
@@ -41,7 +40,6 @@
     ),
     "KaiTi",
   ),
-  // 仿宋
   仿宋: (
     (
       name: "Times New Roman",
@@ -61,6 +59,48 @@
     "STHeiti",
   ),
 )
+
+#let fonts-modern = (
+  宋体: (
+    (
+      name: "STIX Two Text",
+      covers: "latin-in-cjk",
+    ),
+    "Noto Serif CJK SC",
+  ),
+  黑体: (
+    (
+      name: "Arial",
+      covers: "latin-in-cjk",
+    ),
+    "Noto Sans CJK SC",
+  ),
+  楷体: (
+    (
+      name: "STIX Two Text",
+      covers: "latin-in-cjk",
+    ),
+    "AR PL UKai",
+  ),
+  仿宋: (
+    (
+      name: "STIX Two Text",
+      covers: "latin-in-cjk",
+    ),
+    "Zhuque Fangsong (technical preview)",
+  ),
+  等宽: (
+    "Noto Sans Mono CJK SC",
+  ),
+)
+
+#let experimental-modern-fonts = sys.inputs.at("mzt-experimental-modern-fonts", default: "false")
+
+#let 字体 = if experimental-modern-fonts == "true" {
+  fonts-modern
+} else {
+  fonts-canonical
+}
 
 #let songti(s) = {
   set text(font: 字体.宋体)
