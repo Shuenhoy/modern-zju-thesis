@@ -1,4 +1,4 @@
-#import "../utils/fonts.typ": 字号, 字体
+#import "../utils/fonts.typ": 字体, 字号
 #import "../utils/datetime-display.typ": datetime-display
 #import "../utils/twoside.typ": twoside-pagebreak
 
@@ -6,27 +6,25 @@
   outlined: false,
   indent-first-par: true,
   titlelevel: 2,
+  titletext-settings: (size: 字号.小三, font: 字体.仿宋),
   bodytext-settings: (size: 字号.四号),
   pagetitle,
   s,
 ) = {
   context {
     twoside-pagebreak
-    set text(font: 字体.仿宋)
-
 
     align(
       center,
-      text(size: 字号.三号, weight: "bold")[
-        #show heading: x => x.body
-        #heading(pagetitle, numbering: none, level: titlelevel, outlined: outlined)
+      text(size: titletext-settings.size, weight: "bold")[
+        #show heading: x => text(x.body, ..titletext-settings)
+        #heading(pagetitle, numbering: none, level: 1, outlined: outlined)
         #v(1em)],
     )
 
     block(width: 100%)[
       #set par(justify: true)
       #set text(..bodytext-settings)
-
       #s
     ]
 

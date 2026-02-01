@@ -42,6 +42,7 @@
   degree: "硕士",
   field: "某方向",
   supervisor: "李四",
+  co-supervisor: none,
   submit-date: datetime.today(),
   defense-date: ("二一九三年六月", "September 2193"),
 )
@@ -69,7 +70,12 @@
     footer-descent: 35pt,
     header: header(
       left: [浙江大学#(degree)学位论文],
-      right: near-chapter,
+      right: context {
+        let chapter-heading = near-chapter()
+        if chapter-heading != none and chapter-heading.body != none {
+          chapter-heading.body
+        }
+      },
     ),
     footer: twoside-numbering-footer,
   )

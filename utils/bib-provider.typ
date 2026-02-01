@@ -1,5 +1,6 @@
+#import "./citext/lib.typ": *
 
-#let bib-provider(bibsource, mode: "", options: (:)) = {
+#let bib-provider(bibsource, mode: "", csl: gb-t-7714-2015-numeric-bilingual, options: (:)) = {
   let typstbib = bibliography(bytes(bibsource), style: "gb-7714-2015-numeric", title: none)
   let hiddenbib = [
     #show bibliography: none // to provide hint in the editor
@@ -8,8 +9,7 @@
   if mode == "bilingual" {
     assert(false, "The 'bilingual' mode is deprecated. Please use the 'citext' mode instead.")
   } else if (mode == "citext") {
-    import "./citext/lib.typ": *
-    let bib = init-citation(bibsource)
+    let bib = init-citation(bibsource, csl: csl)
 
     (
       bibcontent: extbib(bib, ..options),

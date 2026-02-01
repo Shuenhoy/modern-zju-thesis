@@ -7,6 +7,8 @@
   // 其他参数
   stroke-width: 0.5pt,
   row-gutter: 11.5pt,
+  title-twoline: true,
+  zju-emblem-scaling: 0.15,
   degree: "硕士",
 ) = {
   if type(info.submit-date) == datetime {
@@ -38,20 +40,30 @@
       width: 80%,
       [
         #set text(size: 16pt, weight: "bold")
-        #grid(
-          columns: 1fr,
-          align: (center),
-          stroke: (bottom: stroke-width),
-          info.title-en.first(),
-          ..info.title-en.slice(1),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-        )
+        #if title-twoline {
+          grid(
+            columns: 1fr,
+            align: (center),
+            stroke: (bottom: stroke-width),
+            info.title-en.first(),
+            ..info.title-en.slice(1),
+            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          )
+        } else {
+          grid(
+            columns: 1fr,
+            align: (center),
+            stroke: (bottom: stroke-width),
+            info.title-en.join(" "),
+            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+          )
+        }
       ],
     )
     v(-40pt)
 
-    [#image("../assets/zju-emblem.svg", width: page.width * 0.15)<mzt:no-header-footer>]
-
+    [#image("../assets/zju-emblem.svg", width: page.width * zju-emblem-scaling)<mzt:no-header-footer>]
+    v(1em)
 
     block(
       width: 60%,
