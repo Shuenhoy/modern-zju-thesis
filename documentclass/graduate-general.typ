@@ -122,12 +122,13 @@
   twoside: false,
   bibsource: "",
   bibmode: "citext",
+  bibcsl: auto,
 ) = {
   assert(bibmode == "citext")
   let info = graduate-general-default-info + info
   let individual = template-individual.with(outlined: true, titlelevel: 1, bodytext-settings: (size: 字号.小四))
 
-  let bib = bib-provider(bibsource, mode: bibmode)
+  let bib = bib-provider(bibsource, mode: bibmode, csl: bibcsl)
   let bibcontent = [
     #set par(leading: 0.55em)
     #set text(size: 字号.小四, font: 字体.宋体)

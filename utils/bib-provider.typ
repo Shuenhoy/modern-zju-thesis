@@ -1,6 +1,10 @@
 #import "./citext/lib.typ": *
+#import "./citext/lib.typ": gb-t-7714-2015-numeric-bilingual
 
 #let bib-provider(bibsource, mode: "", csl: gb-t-7714-2015-numeric-bilingual, options: (:)) = {
+  if csl == auto {
+    csl = gb-t-7714-2015-numeric-bilingual
+  }
   let typstbib = bibliography(bytes(bibsource), style: "gb-7714-2015-numeric", title: none)
   let hiddenbib = [
     #show bibliography: none // to provide hint in the editor
