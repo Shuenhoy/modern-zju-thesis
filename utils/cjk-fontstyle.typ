@@ -1,6 +1,6 @@
 // Orignal source: https://github.com/csimide/cuti
 #import "./fonts.typ"
-#import "./global-options.typ": debug-fakebold, experimental-finetune-cjk-baseline
+#import "./global-options.typ": debug-fakebold, experimental-finetune-cjk-baseline, experimental-modern-fonts
 
 #let fakebold(stroke: auto, base-weight: none, s, ..params) = {
   let t-weight = if base-weight == auto { weight } else { base-weight }
@@ -50,29 +50,28 @@
 }
 
 #let regex-emph(reg-exp: ".", base-weight: none, s, ..params) = {
-  show regex(reg-exp): it => {
-    set text(font: fonts.字体.楷体)
-    it
+  show regex("\p{Hani}"): it => {
+    box[#it#box(place(circle(fill: black, width: 0.12em), dx: -0.55em, dy: 0.2em))]
   }
   s
 }
 
 #let show-cjk-fontstyle(reg-exp: ".", base-weight: none, s, ..params) = {
-  show text.where(weight: "bold").or(strong): it => {
-    regex-fakebold(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
-  }
-  show text.where(style: "italic").or(emph): it => {
-    regex-emph(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
-  }
-
-  if experimental-finetune-cjk-baseline {
-    show regex(reg-exp): it => {
-      set text(baseline: 0.07em)
-      it
+  context {
+    let old-baseline = text.baseline
+    show text.where(weight: "bold").or(strong): it => {
+      regex-fakebold(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
     }
-    s
-  } else {
-    s
+    show text.where(style: "italic").or(emph): it => {
+      regex-emph(reg-exp: reg-exp, base-weight: base-weight, it, ..params)
+    }
+
+    if experimental-finetune-cjk-baseline {
+      show regex(reg-exp): set text(baseline: old-baseline + 0.07em)
+      s
+    } else {
+      s
+    }
   }
 }
 
