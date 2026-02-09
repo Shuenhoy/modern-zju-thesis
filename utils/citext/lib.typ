@@ -261,6 +261,6 @@
     "[" + formatted-groups.join(",") + "]"
   }
 }
-#let mulcite(..keys) = super(mulcite-impl(..keys))
-#let mulcitep(..keys) = [文献~#super(mulcite-impl(..keys))]
-#let mulcitet(..keys) = [文献~#mulcite-impl(..keys)]
+#let mulcite(..keys) = box(super(mulcite-impl(..keys)))
+#let mulcitep(..keys) = [文献~#box(super(mulcite-impl(..keys)))]
+#let mulcitet(..keys) = [文献~#box(mulcite-impl(..keys))]
