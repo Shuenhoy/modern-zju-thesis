@@ -121,7 +121,7 @@
     updatecite(key)
     if gen-id {
       context {
-        link(cite-label(key), super("[" + get-ref-id(key, here()) + "]"))
+        sym.wj + link(cite-label(key), super("[" + get-ref-id(key, here()) + "]"))
       }
     } else {
       it
@@ -162,7 +162,7 @@
 
   show ref.where(label: <citet>): it => {
     show super: it => it.body
-    [#extciteauthor(bib, str(it.target))#cite(it.target)]
+    [#extciteauthor(bib, str(it.target))~#cite(it.target)]
   }
 
   show ref.where(label: <citei>): it => {
@@ -261,6 +261,6 @@
     "[" + formatted-groups.join(",") + "]"
   }
 }
-#let mulcite(..keys) = box(super(mulcite-impl(..keys)))
-#let mulcitep(..keys) = [文献~#box(super(mulcite-impl(..keys)))]
+#let mulcite(..keys) = sym.wj + box(super(mulcite-impl(..keys)))
+#let mulcitep(..keys) = [文献#sym.wj#box(super(mulcite-impl(..keys)))]
 #let mulcitet(..keys) = [文献~#box(mulcite-impl(..keys))]
