@@ -201,7 +201,7 @@
   }
 }
 
-#let mulcite-impl(..keys) = {
+#let mulcite-impl-keys(..keys) = {
   for key in keys.pos() {
     cite-targets.update(old => {
       if key not in old {
@@ -261,6 +261,36 @@
     "[" + formatted-groups.join(",") + "]"
   }
 }
+
+#let mulcite-impl-content(body) = {
+  let t = type(body)
+
+  let keys = body
+    .at("children", default: (body,))
+    .filter(it => it != [ ] and it != parbreak())
+    .map(it => if it.func() == ref {
+      it.target
+    } else if it.func() == cite {
+      it.key
+    } else {
+      panic("expect cite, got " + repr(it))
+    }) // `it.at("supplement", default: none)` can also be extracted.
+
+  for k in keys {
+    assert.eq(type(k), label)
+  }
+
+  mulcite-impl-keys(..keys)
+}
+
+#let mulcite-impl(..keys) = {
+  if keys.pos().len() == 1 and type(keys.pos().at(0)) == content {
+    mulcite-impl-content(keys.pos().at(0))
+  } else {
+    mulcite-impl-keys(..keys)
+  }
+}
+
 #let mulcite(..keys) = sym.wj + box(super(mulcite-impl(..keys)))
 #let mulcitep(..keys) = [文献#sym.wj#box(super(mulcite-impl(..keys)))]
 #let mulcitet(..keys) = [文献~#box(mulcite-impl(..keys))]
