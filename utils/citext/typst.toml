@@ -1,7 +1,7 @@
 [package]
 name = "citext"
-version = "0.2.0"
-compiler = "0.13.0"
+version = "0.3.1"
+compiler = "0.14.2"
 entrypoint = "lib.typ"
 authors = ["Shuenhoy"]
 license = "MIT"

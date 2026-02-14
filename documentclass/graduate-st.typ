@@ -8,7 +8,7 @@
 
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": footer, header
-#import "../utils/fakebold.typ": show-cn-fakebold
+#import "../utils/cjk-fontstyle.typ": show-cn-fontstyle
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": near-chapter
@@ -122,7 +122,7 @@
   set par(leading: 13pt, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   set text(costs: (widow: 0%, orphan: 0%))
-  show: show-cn-fakebold
+  show: show-cn-fontstyle
   set underline(offset: 0.2em)
 
   // Headings
@@ -171,7 +171,8 @@
     bodytext-settings: (size: 字号.小四),
     titletext-settings: (size: 字号.小二, font: 字体.仿宋),
   )
-  let bib = bib-provider(bibsource, mode: bibmode, title-case: true)
+  let csl = read("../assets/gb-t-7714-2015-numeric-bilingual-title-case.csl")
+  let bib = bib-provider(bibsource, mode: bibmode, csl: csl)
   let bibcontent = [
     #set par(leading: 10pt)
     #set text(size: 字号.小四, font: 字体.仿宋)
@@ -196,11 +197,9 @@
       ),
       title-zh: graduate-title-zh(
         info: info,
-        title-settings: (font: 字体.仿宋, twoline: false),
         zju-emblem-scaling: 0.13,
-        other-font: 字体.宋体,
       ),
-      title-en: graduate-title-en(info: info, title-twoline: false, zju-emblem-scaling: 0.13),
+      title-en: graduate-title-en(info: info, zju-emblem-scaling: 0.13),
       decl: graduate-decl(),
       outline: {
         set outline(indent: 1em)

@@ -7,7 +7,6 @@
   // 其他参数
   stroke-width: 0.5pt,
   row-gutter: 11.5pt,
-  title-twoline: true,
   zju-emblem-scaling: 0.15,
   degree: "硕士",
 ) = {
@@ -40,24 +39,14 @@
       width: 80%,
       [
         #set text(size: 16pt, weight: "bold")
-        #if title-twoline {
-          grid(
-            columns: 1fr,
-            align: (center),
-            stroke: (bottom: stroke-width),
-            info.title-en.first(),
-            ..info.title-en.slice(1),
-            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-          )
-        } else {
-          grid(
-            columns: 1fr,
-            align: (center),
-            stroke: (bottom: stroke-width),
-            info.title-en.join(" "),
-            grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-          )
-        }
+        #grid(
+          columns: 1fr,
+          align: (center),
+          stroke: (bottom: stroke-width),
+          ..info.title-en,
+          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
+        )
+
       ],
     )
     v(-40pt)

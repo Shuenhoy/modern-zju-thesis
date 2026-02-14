@@ -10,10 +10,10 @@
 #import "../pages/undergraduate-proposal-eval.typ": undergraduate-proposal-eval
 
 #import "../utils/fonts.typ": *
-#import "../utils/part.typ": part, part-and-headings, part-bib, show-outline-with-part, show-part
+#import "../utils/part.typ": part, part-and-headings, show-outline-with-part, show-part
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/header.typ": footer, header
-#import "../utils/fakebold.typ": show-cn-fakebold
+#import "../utils/cjk-fontstyle.typ": show-cn-fontstyle
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/structure.typ": frontmatter, mainmatter
@@ -24,7 +24,7 @@
 #import "../dependency/i-figured.typ"
 
 
-#let undergraduate-cs-set-style(doc, twoside: true, bibmode: "part") = {
+#let undergraduate-cs-set-style(doc, twoside: true, bibmode: "citext") = {
   // Page geometry
   set page(
     paper: "a4",
@@ -58,7 +58,7 @@
   // Paragraph and text
   set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
-  show: show-cn-fakebold
+  show: show-cn-fontstyle
   set underline(offset: 0.2em)
 
 
@@ -91,7 +91,7 @@
   show figure.where(kind: table): set figure.caption(position: top)
 
   // Part
-  show: show-part.with(enable-ref: bibmode == "partbib")
+  show: show-part
   show: show-outline-with-part
 
   show: show-flex-caption
@@ -118,7 +118,7 @@
   bibsource: "",
   bibmode: "citext",
 ) = {
-  assert(bibmode == "citext" or bibmode == "partbib")
+  assert(bibmode == "citext")
 
   let info = undergraduate-cs-default-info + info
   let bib = bib-provider(bibsource, mode: bibmode, options: (row-gutter: 0.5em))

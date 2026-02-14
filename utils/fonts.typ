@@ -1,3 +1,5 @@
+#import "./global-options.typ": experimental-modern-fonts
+
 #let 字号 = (
   初号: 42pt,
   小初: 36pt,
@@ -18,7 +20,16 @@
   小七: 5pt,
 )
 
-#let 字体 = (
+#let fakebold-fonts = (
+  "simsun",
+  "simhei",
+  "kaiti",
+  "fangsong",
+  "zhuque fangsong (technical preview)",
+  "ar pl ukai",
+)
+
+#let fonts-canonical = (
   宋体: (
     (
       name: "Times New Roman",
@@ -33,7 +44,6 @@
     ),
     "SimHei",
   ),
-  // 楷体
   楷体: (
     (
       name: "Times New Roman",
@@ -41,7 +51,6 @@
     ),
     "KaiTi",
   ),
-  // 仿宋
   仿宋: (
     (
       name: "Times New Roman",
@@ -50,17 +59,50 @@
     "FangSong",
   ),
   等宽: (
-    "Courier New",
-    "Menlo",
-    "IBM Plex Mono",
-    "Source Han Sans HW SC",
-    "Source Han Sans HW",
     "Noto Sans Mono CJK SC",
-    "SimHei",
-    "Heiti SC",
-    "STHeiti",
   ),
 )
+
+#let fonts-modern = (
+  宋体: (
+    (
+      name: "STIX Two Text",
+      covers: "latin-in-cjk",
+    ),
+    "Noto Serif CJK SC",
+  ),
+  黑体: (
+    (
+      name: "Arial",
+      covers: "latin-in-cjk",
+    ),
+    "Noto Sans CJK SC",
+  ),
+  楷体: (
+    (
+      name: "STIX Two Text",
+      covers: "latin-in-cjk",
+    ),
+    "AR PL UKai",
+  ),
+  仿宋: (
+    (
+      name: "STIX Two Text",
+      covers: "latin-in-cjk",
+    ),
+    "Zhuque Fangsong (technical preview)",
+  ),
+  等宽: (
+    "Noto Sans Mono CJK SC",
+  ),
+)
+
+
+#let 字体 = if experimental-modern-fonts {
+  fonts-modern
+} else {
+  fonts-canonical
+}
 
 #let songti(s) = {
   set text(font: 字体.宋体)

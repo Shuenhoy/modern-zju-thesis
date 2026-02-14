@@ -1,5 +1,5 @@
 #import "@preview/ctxjs:0.3.2"
-#import "@preview/mitex:0.2.4": mi
+#import "@preview/mitex:0.2.6": mi
 
 
 #let cite-src = read("./dist/index.bin", encoding: none)
@@ -19,18 +19,7 @@
   let ctx = ctxjs.new-context(
     load: (
       ctxjs.load.load-module-bytecode(cite-src),
-      ctxjs.load.call-module-function(
-        "citext",
-        "initConfig",
-        (
-          if title-case {
-            gb-t-7714-2015-numeric-bilingual-title-case
-          } else {
-            gb-t-7714-2015-numeric-bilingual
-          },
-          locales-zh-CN
-        )
-      ),
+      ctxjs.load.call-module-function("citext", "initConfig", (csl, locales-zh-CN)),
     ),
   )
 
@@ -72,8 +61,11 @@
 
 
 #let extcitefull(bib, id) = {
+  let entry = (bib.get)(id)
   show regex("\$.+?\$"): it => mi(it)
-  (bib.get)(id).at("bibliography")
+  let lang = entry.at("language")
+  set text(lang: lang.slice(0, 2)) // use "en" or "zh"
+  entry.at("bibliography")
 }
 #let citeauthor-one-two-more(authors, ETAL: none, AND: none) = {
   let len = authors.len()
@@ -130,7 +122,7 @@
     updatecite(key)
     if gen-id {
       context {
-        link(cite-label(key), super("[" + get-ref-id(key, here()) + "]"))
+        sym.wj + link(cite-label(key), super("[" + get-ref-id(key, here()) + "]"))
       }
     } else {
       it
@@ -171,7 +163,12 @@
 
   show ref.where(label: <citet>): it => {
     show super: it => it.body
-    [#extciteauthor(bib, str(it.target))#cite(it.target)]
+    [#extciteauthor(bib, str(it.target))~#cite(it.target)]
+  }
+
+  show ref.where(label: <citei>): it => {
+    show super: it => it.body
+    [#cite(it.target)]
   }
 
   show ref.where(label: <citef>): it => {
@@ -205,7 +202,7 @@
   }
 }
 
-#let mulcite(..keys) = {
+#let mulcite-impl-keys(..keys) = {
   for key in keys.pos() {
     cite-targets.update(old => {
       if key not in old {
@@ -262,6 +259,39 @@
       }
     })
 
-    super("[" + formatted-groups.join(",") + "]")
+    "[" + formatted-groups.join(",") + "]"
   }
 }
+
+#let mulcite-impl-content(body) = {
+  let t = type(body)
+
+  let keys = body
+    .at("children", default: (body,))
+    .filter(it => it != [ ] and it != parbreak())
+    .map(it => if it.func() == ref {
+      it.target
+    } else if it.func() == cite {
+      it.key
+    } else {
+      panic("expect cite, got " + repr(it))
+    }) // `it.at("supplement", default: none)` can also be extracted.
+
+  for k in keys {
+    assert.eq(type(k), label)
+  }
+
+  mulcite-impl-keys(..keys)
+}
+
+#let mulcite-impl(..keys) = {
+  if keys.pos().len() == 1 and type(keys.pos().at(0)) == content {
+    mulcite-impl-content(keys.pos().at(0))
+  } else {
+    mulcite-impl-keys(..keys)
+  }
+}
+
+#let mulcite(..keys) = sym.wj + box(super(mulcite-impl(..keys)))
+#let mulcitep(..keys) = [文献#sym.wj#box(super(mulcite-impl(..keys)))]
+#let mulcitet(..keys) = [文献~#box(mulcite-impl(..keys))]

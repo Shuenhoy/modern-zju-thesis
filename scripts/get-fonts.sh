@@ -1,6 +1,12 @@
 mkdir -p fonts
 pushd fonts
 
+
+wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/arial.ttf
+wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/arialbd.ttf
+wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/arialbi.ttf
+wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/ariali.ttf
+
 wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/times.ttf
 wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/timesbd.ttf
 wget -c https://github.com/streetsamurai00mi/ttf-ms-win10/raw/refs/heads/build/timesbi.ttf
