@@ -66,7 +66,7 @@
   set text(lang: lang.slice(0, 2)) // use "en" or "zh"
   entry.at("bibliography")
 }
-#let citeauthor-one-two-more(authors, ETAL: none, AND: none) = {
+#let en-US-citeauthor(authors, ETAL: "等", AND: "和") = {
   let len = authors.len()
   if len > 2 {
     return authors.at(0).family + ETAL
@@ -76,14 +76,23 @@
     return authors.at(0).family
   }
 }
-#let en-US-citeauthor = citeauthor-one-two-more.with(AND: " and ", ETAL: " et al.")
-#let zh-CN-citeauthor = citeauthor-one-two-more.with(AND: "和", ETAL: "等")
+#let zh-CN-citeauthor(authors, ETAL: "等", AND: "和") = {
+  let len = authors.len()
+  if len > 2 {
+    return authors.at(0).family + authors.at(0).given + ETAL
+  } else if len == 2 {
+    return authors.at(0).family + authors.at(0).given + AND + authors.at(1).family + authors.at(1).given
+  } else {
+    return authors.at(0).family + authors.at(0).given
+  }
+}
+
 
 #let extciteauthor(
   bib,
   id,
   mapping: (
-    en-US: zh-CN-citeauthor,
+    en-US: en-US-citeauthor,
     zh-CN: zh-CN-citeauthor,
   ),
 ) = {
