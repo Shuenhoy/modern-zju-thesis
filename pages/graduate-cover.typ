@@ -136,7 +136,7 @@
         #align(center)[
           #set text(size: 字号.小三)
           #grid(
-            columns: (auto, 10.5em),
+            columns: (auto, 10em),
             align: (start, center),
             text("论文提交日期 ", font: submit-date-font, weight: "bold"), info.submit-date,
           )
