@@ -2,6 +2,17 @@
 #import "@preview/mitex:0.2.6": mi
 
 
+#let get-opt(key, default: none) = {
+  if key in sys.inputs.keys() {
+    json(bytes(sys.inputs.at(key)))
+  } else {
+    default
+  }
+}
+
+
+#let skip-notfound = get-opt("citext-skip-notfound", default: false)
+
 #let cite-src = read("./dist/index.bin", encoding: none)
 
 
@@ -27,6 +38,7 @@
 
     (
       get: id => cites.at(id),
+      contains: id => id in cites,
     )
   } else {
     let bibs = simple-split(bib.replace("$", "\\$"))
@@ -44,6 +56,7 @@
           let v = bibs.at(str(id))
           ctxjs.ctx.call-module-function(ctx, "citext", "citeone", (v,)).at(1)
         },
+        contains: id => str(id) in bibs,
       )
     } else if mode == "eager" {
       let cites = bibs
@@ -53,6 +66,7 @@
         .to-dict()
       (
         get: id => cites.at(str(id)),
+        contains: id => str(id) in cites,
       )
     }
   }
@@ -127,6 +141,13 @@
     })
   }
   let numeric-cite(key) = {
+    if not (bib.contains)(key) {
+      if skip-notfound {
+        return underline(stroke: (paint: red, thickness: 2pt, dash: "densely-dotted"), [undefined: \@#str(key)])
+      } else {
+        panic("citation key not found: " + str(key))
+      }
+    }
     updatecite(key)
     if gen-id {
       context {
