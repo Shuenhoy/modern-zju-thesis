@@ -151,6 +151,7 @@
   // Reference
   show: show-set-supplement
   show figure: i-figured.show-figure.with(extra-prefixes: (algorithm: "alg:"))
+  show std.figure.caption: set text(size: 10.5pt)
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
   show figure.where(kind: "algorithm"): set figure.caption(position: top)
