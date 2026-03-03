@@ -42,6 +42,7 @@
     )
     set align(center)
 
+
     [
       #set text(size: 字号.小四, font: 字体.宋体)
 
@@ -69,43 +70,55 @@
     image("../assets/zju-emblem.svg", width: page.width * zju-emblem-scaling)
 
     v(20pt)
-    block(
-      width: 80%,
-      [
-        #set text(size: 字号.小二, weight: "bold")
-        #grid(
-          columns: (auto, 1fr),
-          align: (start, center),
-          text(font: title-settings.label-font, size: title-settings.label-size)[中文论文题目：],
-          zh-title(info.title.first()),
-          ..info.title.slice(1).map(v => (none, zh-title(v))).flatten(),
+
+    // Title
+    // Generate grid cells for title rows (label + first line + subsequent lines)
+    let title-grid-cells = (label, lines, title-render) => {
+      (
+        text(font: title-settings.label-font, size: title-settings.label-size)[#label],
+        title-render(lines.first()),
+        ..lines.slice(1).map(line => (none, title-render(line))).flatten(),
+      )
+    }
+    // Render title grid with specified column layout
+    let title-grid = (columns, label, lines, title-render) => {
+      set text(size: 字号.小二, weight: "bold")
+      grid(
+        columns: columns,
+        align: (start, center),
+        ..title-grid-cells(label, lines, title-render),
+      )
+    }
+    // Measure title grid width for adaptive sizing
+    let title-grid-width = (label, lines, title-render) => {
+      measure(title-grid((auto, auto), label, lines, title-render)).width
+    }
+    let needed-title-width = calc.max(
+      title-grid-width("中文论文题目：", info.title, zh-title),
+      title-grid-width("英文论文题目：", info.title-en, en-title),
+    )
+    let content-width = page.width - page.margin.left - page.margin.right
+    let resolved-title-block-width = (
+      100%
+        * calc.clamp(
+          needed-title-width / content-width + 0.02,
+          0.8,
+          1.0,
         )
-      ],
+    )
+    block(
+      width: resolved-title-block-width,
+      title-grid((auto, 1fr), "中文论文题目：", info.title, zh-title),
     )
     if (info.title.len() <= 2 or info.title-en.len() <= 2) {
       v(20pt)
     }
     block(
-      width: 80%,
-      [
-        #set text(size: 字号.小二, weight: "bold")
-        #grid(
-          columns: (auto, 1fr),
-          align: (start, center),
-          text(font: title-settings.label-font, size: title-settings.label-size)[英文论文题目：],
-          en-title(info.title-en.first()),
-          ..info
-            .title-en
-            .slice(1)
-            .map(v => (
-              none,
-              en-title(v),
-            ))
-            .flatten(),
-          grid.cell(stroke: none)[], grid.cell(stroke: none)[],
-        )
-      ],
+      width: resolved-title-block-width,
+      title-grid((auto, 1fr), "英文论文题目：", info.title-en, en-title),
     )
+
+    v(2em)
 
     let personal-detail-items-map = (
       "申请人姓名": (text("申请人姓名：", font: personal-detail-settings.label-font), info.author),

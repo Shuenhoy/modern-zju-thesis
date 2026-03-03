@@ -3,7 +3,8 @@
 
 #let info = (
   title: ("中文论文题目", "加粗"),
-  title-en: ("English Paper Title", "Bold"),
+  //title-en: ("Very Very Very Long English Title of", "a Very Very Long Research Paper"),
+  title-en: ("English Title", "Bold"),
   author: "申请人姓名",
   supervisor: "指导教师姓名",
   co-supervisor: "合作导师姓名",
