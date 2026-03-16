@@ -7,7 +7,7 @@
       if (clevel <= level) {
         return none
       } else {
-        return numbering("A ", ..numbers.pos().slice(level))
+        return numbering("A.1", ..numbers.pos().slice(level))
       }
     },
     supplement: [附录],
