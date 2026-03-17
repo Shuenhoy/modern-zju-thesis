@@ -90,14 +90,22 @@
     return authors.at(0).family
   }
 }
+
+#let zh-CN-name(author) = {
+  if "given" in author {
+    author.at("family") + author.at("given")
+  } else {
+    author.at("family")
+  }
+}
 #let zh-CN-citeauthor(authors, ETAL: "等", AND: "和") = {
   let len = authors.len()
   if len > 2 {
-    return authors.at(0).family + authors.at(0).given + ETAL
+    return zh-CN-name(authors.at(0)) + ETAL
   } else if len == 2 {
-    return authors.at(0).family + authors.at(0).given + AND + authors.at(1).family + authors.at(1).given
+    return zh-CN-name(authors.at(0)) + AND + zh-CN-name(authors.at(1))
   } else {
-    return authors.at(0).family + authors.at(0).given
+    return zh-CN-name(authors.at(0))
   }
 }
 
@@ -117,6 +125,7 @@
 #let cite-targets = state("cite-targets", ())
 #let cite-session = state("cite-session", 0)
 #let new-citext-session() = {
+  metadata(<citext::end-of-session>)
   cite-targets.update(())
   context {
     cite-session.update(cite-session.get() + 1)
@@ -207,19 +216,29 @@
   show cite.where(form: "full"): it => {
     extcitefull(bib, str(it.key))
   }
-  s
+
+  s + metadata(<citext::end-of-session>)
 }
 
 
 
 #let extbib(bib, column-gutter: 0.65em, row-gutter: 1.2em) = {
   context {
+    let current-session = cite-session.get()
+
+    let end-session-loc = query(metadata.where(value: <citext::end-of-session>))
+      .filter(it => (
+        cite-session.at(it.location()) == current-session
+      ))
+      .first()
+      .location()
+
     grid(
       columns: 2,
       column-gutter: column-gutter,
       row-gutter: row-gutter,
       ..cite-targets
-        .at(here())
+        .at(end-session-loc)
         .enumerate()
         .map(x => {
           let i = x.at(0) + 1
