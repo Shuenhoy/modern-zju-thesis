@@ -200,7 +200,7 @@
     <macro name="secondary-contributors">
         <names variable="translator">
             <name>
-                <name-part name="family" text-case="uppercase" />
+                <name-part name="family" />
             </name>
             <institution />
             <label form="short" prefix=", " />
@@ -210,7 +210,7 @@
     <macro name="container-contributors">
         <names variable="editor">
             <name>
-                <name-part name="family" text-case="uppercase" />
+                <name-part name="family" />
             </name>
             <institution />
             <substitute>
