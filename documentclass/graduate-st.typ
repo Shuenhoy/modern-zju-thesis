@@ -143,6 +143,7 @@
   set heading(numbering: "1.1")
   // 图 1.1, 2.1 for each subsection
   show heading: i-figured.reset-counters.with(extra-kinds: ("algorithm",))
+  set page(header: counter(footnote).update(0))
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.小四)
