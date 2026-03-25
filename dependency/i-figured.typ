@@ -17,6 +17,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+//
+
+#import "../utils/fonts.typ": 字体, 字号
 
 
 
@@ -75,12 +78,13 @@
       kind: _prefix + repr(it.kind),
     )
     show std.figure.caption: it => {
-      set par(first-line-indent: 0em)
+      set par(first-line-indent: 0em, leading: 0.8em)
+      set text(size: 字号.五号, font: 字体.宋体)
       context {
-        box({
+        block(width: 95%, block({
           set align(left)
-          [#box([#it.supplement~#((pd.numbering)(..it.counter.get()))])#it.separator#it.body]
-        })
+          box[#box(strong([#it.supplement~#((pd.numbering)(..it.counter.get()))]))#it.separator#it.body]
+        }))
       }
     }
     if it.has("label") {
