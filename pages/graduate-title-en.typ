@@ -81,7 +81,7 @@
         #if (info.title-en.len() <= 2) {
           v(20pt)
         } else {
-          v(10pt)
+          v(0pt)
         }
         #grid(
           columns: (auto, 1fr),
