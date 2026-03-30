@@ -9,7 +9,7 @@
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": footer, header
 #import "../utils/supplement.typ": show-set-supplement
-#import "../utils/structure.typ": frontmatter
+#import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": numbered-near-chapter
 #import "../utils/appendix.typ": appendix
@@ -25,12 +25,6 @@
   s
 }
 
-
-#let mainmatter(s) = {
-  set page(numbering: "1")
-  counter(page).update(1)
-  s
-}
 
 #let show-outline(s) = {
   show outline.entry.where(level: 1): it => {
@@ -105,7 +99,7 @@
 
 
   show: show-paragraph-text
-
+  set par(leading: 11pt, spacing: 11pt)
 
   // Headings
   show heading.where(level: 1): it => {
