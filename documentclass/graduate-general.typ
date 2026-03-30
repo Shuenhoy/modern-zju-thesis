@@ -98,7 +98,7 @@
     x
     v(6pt)
   }
-  set page(header: counter(footnote).update(0))
+
   show heading.where(level: 2): set text(size: 字号.四号)
   show heading.where(level: 3): set text(size: 字号.小四)
   show heading.where(level: 4): set text(size: 字号.小四)

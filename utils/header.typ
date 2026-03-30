@@ -1,4 +1,4 @@
-#import "./fonts.typ": 字号, 字体
+#import "./fonts.typ": 字体, 字号
 
 #let header(
   stroke: 0.5pt,
@@ -9,6 +9,7 @@
   right: none,
   center: none,
 ) = {
+  counter(footnote).update(0)
   context {
     if query(<mzt:no-header-footer>).filter(el => el.location().page() == here().page()) == () {
       set text(font: font, size: size)
