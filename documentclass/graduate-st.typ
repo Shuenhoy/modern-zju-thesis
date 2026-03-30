@@ -11,7 +11,7 @@
 #import "../utils/cjk-fontstyle.typ": show-cn-fontstyle
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
-#import "../utils/near-chapter.typ": near-chapter
+#import "../utils/near-chapter.typ": numbered-near-chapter
 #import "../utils/appendix.typ": appendix
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/flex-caption.typ": show-flex-caption
@@ -103,16 +103,7 @@
     footer-descent: 0.4cm,
     header: header(
       left: [浙江大学#(degree)学位论文],
-      right: context {
-        let chapter-heading = near-chapter()
-        if chapter-heading != none {
-          if chapter-heading.numbering != none {
-            [第 #counter(heading).at(chapter-heading.location()).first() 章 #chapter-heading.body]
-          } else {
-            chapter-heading.body
-          }
-        }
-      },
+      right: numbered-near-chapter(),
     ),
     footer: twoside-numbering-footer,
   )

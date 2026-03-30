@@ -13,3 +13,17 @@
   }
 }
 
+#let numbered-near-chapter() = {
+  context {
+    let chapter-heading = near-chapter()
+    if chapter-heading != none {
+      if chapter-heading.numbering != none {
+        let heading-levels = counter(heading).at(chapter-heading.location())
+        let body = numbering(chapter-heading.numbering, ..heading-levels)
+        [第 #body #chapter-heading.supplement #chapter-heading.body]
+      } else {
+        chapter-heading.body
+      }
+    }
+  }
+}
