@@ -16,7 +16,7 @@
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/flex-caption.typ": show-flex-caption
 
-#import "../dependency/i-figured.typ"
+#import "../utils/i-figured.typ"
 
 #import "./style/paragraph-text.typ": show-paragraph-text
 
@@ -135,7 +135,6 @@
   // Reference
   show: show-set-supplement
   show figure: i-figured.show-figure.with(extra-prefixes: (algorithm: "alg:"))
-  show std.figure.caption: set text(size: 字号.五号)
   show math.equation.where(block: true): i-figured.show-equation
   show figure.where(kind: table): set figure.caption(position: top)
   show figure.where(kind: "algorithm"): set figure.caption(position: top)

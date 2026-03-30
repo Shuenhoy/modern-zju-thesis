@@ -1,4 +1,4 @@
-#import "../dependency/i-figured.typ"
+#import "../utils/i-figured.typ"
 
 #let appendix(level: 2, body) = {
   counter(heading).update(0)

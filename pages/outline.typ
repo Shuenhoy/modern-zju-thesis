@@ -1,5 +1,5 @@
 #import "./template-individual.typ": template-individual
-#import "../dependency/i-figured.typ"
+#import "../utils/i-figured.typ"
 #import "../utils/fonts.typ": 字体, 字号
 
 #let main-outline(

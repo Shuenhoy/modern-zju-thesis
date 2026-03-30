@@ -17,7 +17,7 @@
 #import "../utils/appendix.typ": appendix
 #import "../utils/flex-caption.typ": show-flex-caption
 
-#import "../dependency/i-figured.typ"
+#import "../utils/i-figured.typ"
 
 #import "./style/paragraph-text.typ": show-paragraph-text
 

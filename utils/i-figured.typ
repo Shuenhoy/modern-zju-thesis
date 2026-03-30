@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 //
 
-#import "../utils/fonts.typ": 字体, 字号
+#import "./fonts.typ": 字体, 字号
 
 
 
