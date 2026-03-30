@@ -8,7 +8,7 @@
 
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": footer, header
-#import "../utils/cjk-fontstyle.typ": show-cn-fontstyle
+
 #import "../utils/supplement.typ": show-set-supplement
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": numbered-near-chapter
@@ -18,6 +18,8 @@
 #import "../utils/flex-caption.typ": show-flex-caption
 
 #import "../dependency/i-figured.typ"
+
+#import "./style/paragraph-text.typ": show-paragraph-text
 
 #let show-outline(s) = {
   show outline.entry.where(level: 1): set text(weight: "bold")
@@ -75,11 +77,7 @@
     footer: twoside-numbering-footer,
   )
 
-  // Paragraph and text
-  set par(leading: 1.3em, first-line-indent: (amount: 2em, all: true), justify: true)
-  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
-  show: show-cn-fontstyle
-  set underline(offset: 0.2em)
+  show: show-paragraph-text
 
 
   // Headings

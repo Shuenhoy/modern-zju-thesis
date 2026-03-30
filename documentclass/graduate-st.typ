@@ -8,8 +8,8 @@
 
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": footer, header
-#import "../utils/cjk-fontstyle.typ": show-cn-fontstyle
 #import "../utils/supplement.typ": show-set-supplement
+#import "../utils/structure.typ": frontmatter
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": numbered-near-chapter
 #import "../utils/appendix.typ": appendix
@@ -18,6 +18,8 @@
 
 #import "../dependency/i-figured.typ"
 
+#import "./style/paragraph-text.typ": show-paragraph-text
+
 #let abstractmatter(s) = {
   set page(numbering: "i")
   set par(spacing: 11pt)
@@ -25,11 +27,6 @@
   s
 }
 
-#let frontmatter(s) = {
-  set page(numbering: "I")
-  counter(page).update(1)
-  s
-}
 
 #let mainmatter(s) = {
   set page(numbering: "1")
@@ -109,12 +106,8 @@
   )
 
 
-  // Paragraph and text
-  set par(leading: 13pt, first-line-indent: (amount: 2em, all: true), justify: true)
-  set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
-  set text(costs: (widow: 0%, orphan: 0%))
-  show: show-cn-fontstyle
-  set underline(offset: 0.2em)
+  show: show-paragraph-text
+
 
   // Headings
   show heading.where(level: 1): it => {
