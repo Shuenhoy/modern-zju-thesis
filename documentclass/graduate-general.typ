@@ -9,17 +9,16 @@
 #import "../utils/fonts.typ": *
 #import "../utils/header.typ": footer, header
 
-#import "../utils/supplement.typ": show-set-supplement
+
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/near-chapter.typ": numbered-near-chapter
 #import "../utils/bib-provider.typ": bib-provider
 #import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
-#import "../utils/flex-caption.typ": show-flex-caption
 
-#import "../utils/i-figured.typ"
 
 #import "./style/paragraph-text.typ": show-paragraph-text
+#import "./style/caption-crossref.typ": show-caption-crossref
 
 #let show-outline(s) = {
   show outline.entry.where(level: 1): set text(weight: "bold")
@@ -81,9 +80,8 @@
 
 
   // Headings
-  show heading: i-figured.reset-counters.with(extra-kinds: ("algorithm",))
 
-  set heading(numbering: "1.1")
+
   show heading.where(level: 1): set text(size: 字号.小三)
   show heading.where(level: 1): x => {
     twoside-pagebreak
@@ -97,18 +95,7 @@
   show heading.where(level: 4): set text(size: 字号.小四)
   show heading: set block(above: 1.5em, below: 1.5em)
 
-
-  // Reference
-  show: show-set-supplement
-
-  show figure: i-figured.show-figure.with(extra-prefixes: (algorithm: "alg:"))
-
-  show math.equation.where(block: true): i-figured.show-equation
-  show figure.where(kind: table): set figure.caption(position: top)
-
-  show figure.where(kind: "algorithm"): set figure.caption(position: top)
-
-  show: show-flex-caption
+  show: show-caption-crossref
 
 
   doc

@@ -14,11 +14,9 @@
 #import "../utils/near-chapter.typ": numbered-near-chapter
 #import "../utils/appendix.typ": appendix
 #import "../utils/bib-provider.typ": bib-provider
-#import "../utils/flex-caption.typ": show-flex-caption
-
-#import "../utils/i-figured.typ"
 
 #import "./style/paragraph-text.typ": show-paragraph-text
+#import "./style/caption-crossref.typ": show-caption-crossref
 
 #let abstractmatter(s) = {
   set page(numbering: "i")
@@ -124,21 +122,14 @@
         ]]
     ]
   }
-  set heading(numbering: "1.1")
-  // 图 1.1, 2.1 for each subsection
-  show heading: i-figured.reset-counters.with(extra-kinds: ("algorithm",))
+
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.小四)
   show heading: set block(above: 1.2em, below: 1.2em)
 
-  // Reference
-  show: show-set-supplement
-  show figure: i-figured.show-figure.with(extra-prefixes: (algorithm: "alg:"))
-  show math.equation.where(block: true): i-figured.show-equation
-  show figure.where(kind: table): set figure.caption(position: top)
-  show figure.where(kind: "algorithm"): set figure.caption(position: top)
-  show: show-flex-caption
+  show: show-caption-crossref
+
   doc
 }
 

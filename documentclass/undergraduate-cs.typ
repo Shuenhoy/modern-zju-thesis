@@ -17,13 +17,10 @@
 #import "../utils/twoside.typ": show-twoside-pagebreak, twoside-numbering-footer, twoside-pagebreak
 #import "../utils/structure.typ": frontmatter, mainmatter
 #import "../utils/appendix.typ": appendix
-#import "../utils/flex-caption.typ": show-flex-caption
 
-
-#import "../utils/i-figured.typ"
 
 #import "./style/paragraph-text.typ": show-paragraph-text
-
+#import "./style/caption-crossref.typ": show-caption-crossref
 
 #let undergraduate-cs-set-style(doc, twoside: true, bibmode: "citext") = {
   // Page geometry
@@ -60,8 +57,6 @@
 
 
   // Headings
-  show heading: i-figured.reset-counters.with(extra-kinds: ("algorithm",))
-
   set heading(
     numbering: (..numbers) => {
       let level = numbers.pos().len()
@@ -82,18 +77,12 @@
 
 
   // Reference
-  show: show-set-supplement
-  show figure: i-figured.show-figure.with(extra-prefixes: (algorithm: "alg:"))
-  show math.equation.where(block: true): i-figured.show-equation
-  show figure.where(kind: table): set figure.caption(position: top)
-
-  show figure.where(kind: "algorithm"): set figure.caption(position: top)
+  show: show-caption-crossref
 
   // Part
   show: show-part
   show: show-outline-with-part
 
-  show: show-flex-caption
 
   doc
 }
