@@ -130,7 +130,7 @@
   show heading.where(level: 2): set text(size: 字号.小三)
   show heading.where(level: 3): set text(size: 字号.四号)
   show heading.where(level: 4): set text(size: 字号.小四)
-  show heading: set block(above: 1.2em, below: 1.2em, sticky: false)
+  show heading: set block(above: 1.2em, below: 1.2em)
 
   // Reference
   show: show-set-supplement
