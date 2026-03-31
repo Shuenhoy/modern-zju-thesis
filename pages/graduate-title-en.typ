@@ -76,7 +76,11 @@
           columns: (auto, 1fr),
           align: (end, center),
 
-          ..info.reviewer-en.enumerate(start: 0).map(v => ([Thesis reviewer #(v.at(0) + 1):], v.at(1))).flatten(),
+          ..info
+            .reviewer-en
+            .enumerate(start: 0)
+            .map(v => ([Thesis reviewer #(v.at(0) + 1):#h(0.5em)], v.at(1)))
+            .flatten(),
         )
         #if (info.title-en.len() <= 2) {
           v(20pt)
@@ -86,15 +90,20 @@
         #grid(
           columns: (auto, 1fr),
           align: (end, center),
-          [#h(2em)Chair:], info.committe-en.at(0),
+          [#h(2em)Chair:#h(0.5em)], info.committe-en.at(0),
         )
-        #v(-1em)
+        #v(-0.5em)
         #align(left)[#h(-3em)#text(size: 字号.五号)[(Committee of oral defence)]]
         #grid(
           columns: (auto, 1fr),
           align: (end, center),
 
-          ..info.committe-en.enumerate(start: 0).slice(1).map(v => ([Committeeman #(v.at(0)):], v.at(1))).flatten(),
+          ..info
+            .committe-en
+            .enumerate(start: 0)
+            .slice(1)
+            .map(v => ([Committeeman #(v.at(0)):#h(0.5em)], v.at(1)))
+            .flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
         #align(center)[

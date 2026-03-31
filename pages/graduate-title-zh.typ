@@ -85,12 +85,17 @@
           columns: (auto, 1fr),
           align: (end, center),
 
-          label("论文评阅人1："), info.reviewer.at(0),
-          ..info.reviewer.enumerate(start: 0).slice(1).map(v => (label[评阅人#(v.at(0) + 1)：], v.at(1))).flatten(),
+          label("论文评阅人1：") + h(0.2em), info.reviewer.at(0),
+          ..info
+            .reviewer
+            .enumerate(start: 0)
+            .slice(1)
+            .map(v => (label[评阅人#(v.at(0) + 1)：#h(0.2em)], v.at(1)))
+            .flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
 
-          label("答辩委员会主席 ："), info.committe.at(0),
-          ..info.committe.enumerate(start: 0).slice(1).map(v => (label[委员#(v.at(0))：], v.at(1))).flatten(),
+          label("答辩委员会主席：" + h(0.2em)), info.committe.at(0),
+          ..info.committe.enumerate(start: 0).slice(1).map(v => (label[委员#(v.at(0))：#h(0.2em)], v.at(1))).flatten(),
           grid.cell(stroke: none)[], grid.cell(stroke: none)[],
         )
         #align(center)[
