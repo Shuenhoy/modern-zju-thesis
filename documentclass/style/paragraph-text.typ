@@ -10,8 +10,8 @@
 
   set text(font: 字体.仿宋, size: 字号.小四, lang: "zh", discretionary-ligatures: true)
   set underline(offset: 0.2em)
-
+  show figure: set block(spacing: 2em)
+  show math.equation.where(block: true): set block(inset: (top: 0.5em, bottom: 0.5em), sticky: true)
   show math.equation.where(block: false): set math.frac(style: "horizontal")
-
   c
 }
