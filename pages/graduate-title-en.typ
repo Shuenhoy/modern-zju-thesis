@@ -72,6 +72,7 @@
       width: 70%,
       [
         #set text(size: 字号.四号)
+        #set par(leading: 0.75em, spacing: 0.75em)
         #grid(
           columns: (auto, 1fr),
           align: (end, center),
@@ -92,8 +93,8 @@
           align: (end, center),
           [#h(2em)Chair:#h(0.5em)], info.committe-en.at(0),
         )
-        #v(-0.5em)
-        #align(left)[#h(-3em)#text(size: 字号.五号)[(Committee of oral defence)]]
+
+        #move(dy: -0.5em, dx: -8em)[#text(size: 字号.五号)[(Committee of oral defence)]]
         #grid(
           columns: (auto, 1fr),
           align: (end, center),

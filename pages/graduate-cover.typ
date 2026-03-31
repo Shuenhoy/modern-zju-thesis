@@ -45,6 +45,7 @@
 
     [
       #set text(size: 字号.小四, font: 字体.宋体)
+      #set par(leading: 0.75em, spacing: 0.75em)
 
       #grid(
         columns: (auto, auto, 1fr, auto, auto),

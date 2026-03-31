@@ -43,6 +43,7 @@
       width: 80%,
       [
         #set text(size: 字号.小二, font: title-fill-font, weight: "bold")
+        #set par(leading: 0.75em, spacing: 0.75em)
         #grid(
           columns: 1fr,
           align: (center),
