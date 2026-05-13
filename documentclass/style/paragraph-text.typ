@@ -1,10 +1,20 @@
 #import "../../utils/fonts.typ": 字体, 字号
 #import "../../utils/cjk-fontstyle.typ": show-cn-fontstyle
+#import "../../utils/global-options.typ": experimental-parize
+
+#import "@preview/parize:0.1.0": par-indent
 
 #let show-paragraph-text(c) = {
   show: show-cn-fontstyle
 
-  set par(leading: 0.75em, spacing: 0.75em, first-line-indent: (amount: 2em, all: true), justify: true)
+  show: it => {
+    if experimental-parize {
+      show: par-indent
+      it
+    } else {
+      it
+    }
+  }
   set list(indent: 2em)
   set enum(indent: 2em)
 
